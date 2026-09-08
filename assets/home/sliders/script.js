@@ -1,4 +1,5 @@
-sconst track = document.getElementById("oceanTrack");
+const track = document.getElementById("oceanTrack");
+
 const slides = document.querySelectorAll(".ocean-slide");
 
 const prevBtn = document.getElementById("prevSlide");
@@ -7,275 +8,126 @@ const nextBtn = document.getElementById("nextSlide");
 const dots = document.querySelectorAll(".ocean-dot");
 
 let currentSlide = 0;
-let isAnimating = false;
 
 
-/* =================================
-   UPDATE SLIDE — SMOOTH
-================================= */
-
-function updateSlide(instant = false) {
-
-  if (instant) {
-    track.style.transition = "none";
-  } else {
-    track.style.transition =
-      "transform 0.85s cubic-bezier(.77,0,.18,1)";
-  }
+function updateSlide() {
 
   track.style.transform =
     `translate3d(-${currentSlide * 100}%, 0, 0)`;
 
-
-  /* Active slide */
-
   slides.forEach((slide, index) => {
-
     slide.classList.toggle(
       "active",
       index === currentSlide
     );
-
   });
 
-
-  /* Active dot */
-
   dots.forEach((dot, index) => {
-
     dot.classList.toggle(
       "active",
       index === currentSlide
     );
-
-    dot.setAttribute(
-      "aria-selected",
-      index === currentSlide
-        ? "true"
-        : "false"
-    );
-
   });
-
 }
 
 
-/* =================================
-   NEXT
-================================= */
+nextBtn.addEventListener("click", () => {
 
-function nextSlide() {
+  currentSlide++;
 
-  if (isAnimating) return;
-
-  isAnimating = true;
-
-  currentSlide =
-    (currentSlide + 1) % slides.length;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
 
   updateSlide();
 
-  setTimeout(() => {
-    isAnimating = false;
-  }, 850);
-
-}
+});
 
 
-/* =================================
-   PREVIOUS
-================================= */
+prevBtn.addEventListener("click", () => {
 
-function previousSlide() {
+  currentSlide--;
 
-  if (isAnimating) return;
-
-  isAnimating = true;
-
-  currentSlide =
-    (currentSlide - 1 + slides.length)
-    % slides.length;
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
 
   updateSlide();
 
-  setTimeout(() => {
-    isAnimating = false;
-  }, 850);
+});
 
-}
-
-
-/* =================================
-   BUTTONS
-================================= */
-
-if (nextBtn) {
-
-  nextBtn.addEventListener(
-    "click",
-    nextSlide
-  );
-
-}
-
-
-if (prevBtn) {
-
-  prevBtn.addEventListener(
-    "click",
-    previousSlide
-  );
-
-}
-
-
-/* =================================
-   DOTS
-================================= */
 
 dots.forEach((dot) => {
 
   dot.addEventListener("click", () => {
 
-    if (isAnimating) return;
-
-    const target =
+    currentSlide =
       Number(dot.dataset.slide);
 
-    if (
-      target < 0 ||
-      target >= slides.length ||
-      target === currentSlide
-    ) {
-      return;
-    }
-
-    isAnimating = true;
-
-    currentSlide = target;
-
     updateSlide();
-
-    setTimeout(() => {
-      isAnimating = false;
-    }, 850);
 
   });
 
 });
 
 
-/* =================================
-   TOUCH SWIPE
-================================= */
-
 let startX = 0;
 let startY = 0;
 
+
 track.addEventListener(
   "touchstart",
-  (event) => {
+  (e) => {
 
-    startX =
-      event.touches[0].clientX;
-
-    startY =
-      event.touches[0].clientY;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
 
   },
-  {
-    passive: true
-  }
+  { passive: true }
 );
 
 
 track.addEventListener(
   "touchend",
-  (event) => {
+  (e) => {
 
-    if (isAnimating) return;
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
 
-    const endX =
-      event.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    const diffY = startY - endY;
 
-    const endY =
-      event.changedTouches[0].clientY;
-
-    const diffX =
-      startX - endX;
-
-    const diffY =
-      startY - endY;
-
-
-    /* Ignore vertical swipe */
-
-    if (
-      Math.abs(diffY) >
-      Math.abs(diffX)
-    ) {
+    if (Math.abs(diffY) > Math.abs(diffX)) {
       return;
     }
 
-
-    /* Minimum swipe */
-
-    if (
-      Math.abs(diffX) < 50
-    ) {
+    if (Math.abs(diffX) < 50) {
       return;
     }
-
 
     if (diffX > 0) {
 
-      nextSlide();
+      currentSlide++;
+
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      }
 
     } else {
 
-      previousSlide();
+      currentSlide--;
+
+      if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
 
     }
+
+    updateSlide();
 
   },
-  {
-    passive: true
-  }
+  { passive: true }
 );
 
 
-/* =================================
-   KEYBOARD
-================================= */
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (event.key === "ArrowRight") {
-      nextSlide();
-    }
-
-    if (event.key === "ArrowLeft") {
-      previousSlide();
-    }
-
-  }
-);
-
-
-/* =================================
-   INITIAL
-================================= */
-
-updateSlide(true);
-
-
-/* Restore transition */
-
-requestAnimationFrame(() => {
-
-  track.style.transition =
-    "transform 0.85s cubic-bezier(.77,0,.18,1)";
-
-});
+updateSlide();
