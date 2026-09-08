@@ -1,98 +1,310 @@
-const track = document.getElementById("oceanTrack");
-const slides = document.querySelectorAll(".ocean-slide");
-const prevBtn = document.getElementById("prevSlide");
-const nextBtn = document.getElementById("nextSlide");
-const dots = document.querySelectorAll(".dot");
+document.addEventListener("DOMContentLoaded", function () {
 
-let currentSlide = 0;
+  const track = document.getElementById("oceanTrack");
+  const slides = document.querySelectorAll(".ocean-slide");
 
-function updateSlide() {
+  const prevBtn = document.getElementById("prevSlide");
+  const nextBtn = document.getElementById("nextSlide");
 
-  track.style.transform =
-    `translate3d(-${currentSlide * 100}%, 0, 0)`;
+  const dots = document.querySelectorAll(".dot");
 
-  dots.forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentSlide);
-    dot.setAttribute(
-      "aria-selected",
-      index === currentSlide ? "true" : "false"
-    );
-  });
-}
+  /* Check required elements */
 
-nextBtn.addEventListener("click", () => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  updateSlide();
-});
+  if (!track) {
+    console.error("oceanTrack not found");
+    return;
+  }
 
-prevBtn.addEventListener("click", () => {
-  currentSlide =
-    (currentSlide - 1 + slides.length) % slides.length;
+  if (!slides.length) {
+    console.error("ocean-slide not found");
+    return;
+  }
 
-  updateSlide();
-});
+  let currentSlide = 0;
+  let isMoving = false;
 
-dots.forEach((dot) => {
-
-  dot.addEventListener("click", () => {
-
-    const index = Number(dot.dataset.slide);
-
-    if (index >= 0 && index < slides.length) {
-      currentSlide = index;
-      updateSlide();
-    }
-
-  });
-
-});
+  const duration = 800;
 
 
-/* ===============================
-   TOUCH SWIPE
-================================ */
+  /* =================================
+     UPDATE SLIDE
+  ================================= */
 
-let startX = 0;
-let startY = 0;
+  function updateSlide() {
 
-track.addEventListener(
-  "touchstart",
-  (event) => {
+    track.style.transform =
+      "translate3d(-" +
+      (currentSlide * 100) +
+      "%, 0, 0)";
 
-    startX = event.touches[0].clientX;
-    startY = event.touches[0].clientY;
 
-  },
-  { passive: true }
-);
+    /* Active slide */
 
-track.addEventListener(
-  "touchend",
-  (event) => {
+    slides.forEach(function (slide, index) {
 
-    const endX = event.changedTouches[0].clientX;
-    const endY = event.changedTouches[0].clientY;
+      slide.classList.toggle(
+        "active",
+        index === currentSlide
+      );
 
-    const diffX = startX - endX;
-    const diffY = startY - endY;
+    });
 
-    if (Math.abs(diffY) > Math.abs(diffX)) return;
 
-    if (Math.abs(diffX) < 50) return;
+    /* Active dot */
 
-    if (diffX > 0) {
-      currentSlide = (currentSlide + 1) % slides.length;
-    } else {
-      currentSlide =
-        (currentSlide - 1 + slides.length) % slides.length;
+    dots.forEach(function (dot, index) {
+
+      dot.classList.toggle(
+        "active",
+        index === currentSlide
+      );
+
+      dot.setAttribute(
+        "aria-selected",
+        index === currentSlide
+          ? "true"
+          : "false"
+      );
+
+    });
+
+  }
+
+
+  /* =================================
+     NEXT SLIDE
+  ================================= */
+
+  function nextSlide() {
+
+    if (isMoving) return;
+
+    isMoving = true;
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+      currentSlide = 0;
     }
 
     updateSlide();
 
-  },
-  { passive: true }
-);
+    setTimeout(function () {
+      isMoving = false;
+    }, duration);
+
+  }
 
 
-/* INITIAL */
-updateSlide();
+  /* =================================
+     PREVIOUS SLIDE
+  ================================= */
+
+  function previousSlide() {
+
+    if (isMoving) return;
+
+    isMoving = true;
+
+    currentSlide--;
+
+    if (currentSlide < 0) {
+      currentSlide = slides.length - 1;
+    }
+
+    updateSlide();
+
+    setTimeout(function () {
+      isMoving = false;
+    }, duration);
+
+  }
+
+
+  /* =================================
+     NEXT BUTTON
+  ================================= */
+
+  if (nextBtn) {
+
+    nextBtn.addEventListener(
+      "click",
+      nextSlide
+    );
+
+  }
+
+
+  /* =================================
+     PREVIOUS BUTTON
+  ================================= */
+
+  if (prevBtn) {
+
+    prevBtn.addEventListener(
+      "click",
+      previousSlide
+    );
+
+  }
+
+
+  /* =================================
+     DOTS
+  ================================= */
+
+  dots.forEach(function (dot) {
+
+    dot.addEventListener("click", function () {
+
+      if (isMoving) return;
+
+      const slideNumber =
+        Number(this.dataset.slide);
+
+
+      if (
+        Number.isNaN(slideNumber) ||
+        slideNumber < 0 ||
+        slideNumber >= slides.length
+      ) {
+        return;
+      }
+
+
+      if (slideNumber === currentSlide) {
+        return;
+      }
+
+
+      isMoving = true;
+
+      currentSlide = slideNumber;
+
+      updateSlide();
+
+
+      setTimeout(function () {
+        isMoving = false;
+      }, duration);
+
+    });
+
+  });
+
+
+  /* =================================
+     TOUCH SWIPE
+  ================================= */
+
+  let startX = 0;
+  let startY = 0;
+
+  let touching = false;
+
+
+  track.addEventListener(
+    "touchstart",
+    function (event) {
+
+      startX =
+        event.touches[0].clientX;
+
+      startY =
+        event.touches[0].clientY;
+
+      touching = true;
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  track.addEventListener(
+    "touchend",
+    function (event) {
+
+      if (!touching) return;
+
+      touching = false;
+
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const endY =
+        event.changedTouches[0].clientY;
+
+
+      const diffX =
+        startX - endX;
+
+      const diffY =
+        startY - endY;
+
+
+      /* Ignore vertical movement */
+
+      if (
+        Math.abs(diffY) >
+        Math.abs(diffX)
+      ) {
+        return;
+      }
+
+
+      /* Minimum swipe distance */
+
+      if (
+        Math.abs(diffX) < 50
+      ) {
+        return;
+      }
+
+
+      if (diffX > 0) {
+
+        nextSlide();
+
+      } else {
+
+        previousSlide();
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  /* =================================
+     KEYBOARD
+  ================================= */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (event.key === "ArrowRight") {
+        nextSlide();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousSlide();
+      }
+
+    }
+  );
+
+
+  /* =================================
+     INITIAL
+  ================================= */
+
+  updateSlide();
+
+});
