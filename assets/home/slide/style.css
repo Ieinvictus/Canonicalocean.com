@@ -1,0 +1,1072 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: #263b3f;
+  background: #ffffff;
+}
+
+
+/* =========================================
+   CANONICAL OCEAN SHOWCASE
+========================================= */
+
+.ocean-showcase {
+  position: relative;
+
+  width: 100%;
+
+  /*
+    IMPORTANT:
+    Bottle + dots બહાર આવી શકે
+  */
+  overflow:hidden;
+}
+
+.ocean-slider {
+  position: relative;
+
+  width: 100%;
+  height: 700px;
+
+  /*
+    IMPORTANT:
+    Bottle અને dots clip ન થાય
+  */
+  overflow: hidden  ;
+
+  background: #eaf5f5;
+}
+
+
+/* =========================================
+   SLIDE TRACK
+========================================= */
+
+.ocean-track {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  transition:
+    transform 0.65s cubic-bezier(.77, 0, .18, 1);
+
+  will-change: transform;
+
+  /*
+    Horizontal swipe allowed,
+    vertical page scrolling preserved
+  */
+  touch-action: pan-y;
+}
+
+.ocean-slide {
+  position: relative;
+
+  flex: 0 0 100%;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+    Only slide content clips.
+    Fixed bottle is outside this.
+  */
+  overflow: hidden;
+
+  border: 0;
+}
+
+
+/* =========================================
+   LEFT PANEL
+========================================= */
+
+.slide-left {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 50%;
+  height: 100%;
+
+  padding-left: clamp(40px, 9vw, 145px);
+  padding-right: 120px;
+
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef8f8 0%,
+      #dceff0 100%
+    );
+
+  /*
+    Angled center divider
+  */
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    88% 50%,
+    100% 100%,
+    0 100%
+  );
+
+  border: none;
+
+  z-index: 10;
+}
+
+
+/* =========================================
+   LEFT DECORATIVE PATTERN
+========================================= */
+
+.slide-left::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0,
+      transparent 13px,
+      rgba(8, 127, 137, 0.045) 14px,
+      rgba(8, 127, 137, 0.045) 16px
+    );
+
+  pointer-events: none;
+}
+
+.slide-left > * {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.slide-left span {
+  display: block;
+
+  color: #087f89;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 18px;
+}
+
+.slide-left h1 {
+  color: #263b3f;
+
+  font-size: clamp(42px, 5vw, 74px);
+
+  line-height: 0.95;
+
+  letter-spacing: -3px;
+
+  margin-bottom: 25px;
+}
+
+.slide-left h1 strong {
+  color: #087f89;
+}
+
+.slide-left p {
+  width: min(410px, 100%);
+
+  color: #40565a;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+  margin-bottom: 27px;
+}
+
+.slide-left a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  width: fit-content;
+
+  color: #087f89;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  transition:
+    letter-spacing 0.25s ease;
+}
+
+.slide-left a:hover {
+  letter-spacing: 2px;
+}
+
+.slide-left a b {
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+
+/* =========================================
+   RIGHT PANEL
+========================================= */
+
+.slide-right {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+
+  width: 57%;
+  height: 100%;
+
+  /*
+    Only image panel clips
+  */
+  overflow: hidden;
+
+  clip-path: polygon(
+    12% 0,
+    100% 0,
+    100% 100%,
+    12% 100%,
+    0 50%
+  );
+
+  border: none;
+
+  z-index: 5;
+}
+
+
+/* =========================================
+   RIGHT IMAGE
+========================================= */
+
+.slide-right img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center center;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  transform: scale(1.01);
+
+  transition:
+    transform 0.8s ease;
+}
+
+.ocean-slide:hover .slide-right img {
+  transform: scale(1.03);
+}
+
+
+/* =========================================
+   FIXED CENTER BOTTLE
+========================================= */
+
+.fixed-bottle {
+  position: absolute;
+
+  /*
+    Horizontal center
+  */
+  left: 50%;
+
+  /*
+    EXACT BOTTOM = 0px
+  */
+  bottom: 0;
+
+  top: -14%;
+
+  /*
+    Bottle size
+  */
+  width: clamp(270px, 27vw, 430px);
+
+  /*
+    Bigger than slide
+    => top extends outside
+  */
+  height: 128%;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  /*
+    Above both panels
+  */
+  z-index: 1000;
+
+  pointer-events: none;
+
+  /*
+    VERY IMPORTANT
+  */
+  overflow: visible !important;
+}
+
+
+/* =========================================
+   BOTTLE GLOW
+========================================= */
+
+.bottle-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  width: 50%;
+  height: 75%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.35);
+
+  filter: blur(45px);
+
+  z-index: -1;
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   BOTTLE IMAGE
+========================================= */
+
+.fixed-bottle img {
+  display: block;
+
+  width: 100%;
+  height:800px;
+
+  /*
+    Transparent PNG:
+    contain = full bottle visible
+  */
+  object-fit: cover;
+
+  /*
+    Bottom exactly aligned
+  */
+  object-position: center bottom;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  filter:
+    drop-shadow(
+      0 22px 25px rgba(0, 0, 0, 0.23)
+    );
+}
+
+
+/* =========================================
+   NAVIGATION BUTTON
+========================================= */
+
+.ocean-nav {
+  position: absolute;
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(8, 127, 137, 0.2);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.85);
+
+  backdrop-filter: blur(8px);
+
+  color: #087f89;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 1100;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.ocean-nav:hover {
+  background: #087f89;
+
+  color: #ffffff;
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
+}
+
+.ocean-nav.prev {
+  left: 10px;
+}
+
+.ocean-nav.next {
+  right: 10px;
+}
+
+
+/* =========================================
+   DOTS
+   OUTSIDE SLIDE
+========================================= */
+
+.slide-dots {
+  position: relative;
+
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  z-index: 2000;
+
+  background: #ffffff;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #657477;
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.dot.active {
+  width: 26px;
+  height: 10px;
+
+  background: #087f89;
+
+  border-radius: 20px;
+}
+
+
+/* =========================================
+   VERY LARGE SCREEN
+========================================= */
+
+@media (min-width: 1600px) {
+
+  .ocean-slider {
+    height: 820px;
+  }
+
+  .slide-left {
+    width: 57%;
+
+    padding-left: 10%;
+    padding-right: 150px;
+  }
+
+  .slide-right {
+    width: 57%;
+  }
+
+  .fixed-bottle {
+    width: 470px;
+    height: 128%;
+
+    bottom: 0;
+  }
+
+}
+
+
+/* =========================================
+   EXTRA LARGE SCREEN
+========================================= */
+
+@media (min-width: 2000px) {
+
+  .ocean-slider {
+    height: 900px;
+  }
+
+  .fixed-bottle {
+    width: 520px;
+    height: 128%;
+
+    bottom: 0;
+  }
+
+}
+
+
+/* =========================================
+   1201 - 1599
+========================================= */
+
+@media (max-width: 1599px) and (min-width: 1201px) {
+
+  .ocean-slider {
+    height: 700px;
+  }
+
+  .fixed-bottle {
+    width: 400px;
+    height: 128%;
+
+    bottom: 0;
+  }
+
+}
+
+
+/* =========================================
+   LAPTOP
+========================================= */
+
+@media (max-width: 1200px) and (min-width: 801px) {
+
+  .ocean-slider {
+    height: 650px;
+  }
+
+  .slide-left {
+    padding-left: 6%;
+    padding-right: 100px;
+  }
+
+  .slide-left h1 {
+    font-size: 52px;
+
+    letter-spacing: -2px;
+  }
+
+  .slide-left p {
+    font-size: 14px;
+  }
+
+  .fixed-bottle {
+    width: 350px;
+    height: 127%;
+
+    bottom: 0;
+  }
+
+  .ocean-nav {
+    width: 46px;
+    height: 46px;
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+  .ocean-slider {
+    height: 650px;
+  }
+
+  .slide-left {
+    width: 57%;
+
+    padding-left: 5%;
+    padding-right: 75px;
+  }
+
+  .slide-left h1 {
+    font-size: 40px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .slide-left p {
+    font-size: 13px;
+
+    line-height: 1.55;
+  }
+
+  .slide-right {
+    width: 57%;
+  }
+
+  .fixed-bottle {
+    width: 320px;
+    height: 125%;
+
+    bottom: 0;
+  }
+
+  .ocean-nav {
+    width: 43px;
+    height: 43px;
+
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .ocean-slider {
+    height: 680px;
+
+    overflow: visible !important;
+  }
+
+
+  /* -----------------------------------------
+     SLIDE
+  ----------------------------------------- */
+
+  .ocean-slide {
+    display: block;
+
+    overflow: hidden;
+  }
+
+
+  /* -----------------------------------------
+     LEFT CONTENT
+  ----------------------------------------- */
+
+  .slide-left {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 47%;
+
+    padding:
+      30px
+      20px;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    text-align: center;
+
+    clip-path: none;
+  }
+
+  .slide-left span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+  }
+
+  .slide-left h1 {
+    font-size: 37px;
+
+    line-height: 0.98;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 15px;
+  }
+
+  .slide-left p {
+    width: 100%;
+
+    max-width: 350px;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+  .slide-left a {
+    margin: 0 auto;
+  }
+
+
+  /* -----------------------------------------
+     RIGHT IMAGE
+  ----------------------------------------- */
+
+  .slide-right {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 47%;
+
+    width: 100%;
+    height: 53%;
+
+    clip-path: none;
+  }
+
+  .slide-right img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center center;
+  }
+
+
+  /* -----------------------------------------
+     FIXED CENTER BOTTLE
+  ----------------------------------------- */
+
+  .fixed-bottle {
+    position: absolute;
+
+    left: 50%;
+
+    top: auto;
+    bottom: 0;
+
+    width: 255px;
+
+    /*
+      Mobile bottle size
+    */
+    height: 78%;
+
+    transform:
+      translateX(-50%);
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    z-index: 1000;
+
+    overflow: visible !important;
+  }
+
+  .fixed-bottle img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center bottom;
+  }
+
+
+  /* -----------------------------------------
+     NAVIGATION
+  ----------------------------------------- */
+
+  .ocean-nav {
+    top: 60%;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 22px;
+
+    z-index: 1100;
+  }
+
+  .ocean-nav.prev {
+    left: 8px;
+  }
+
+  .ocean-nav.next {
+    right: 8px;
+  }
+
+
+  /* -----------------------------------------
+     DOTS OUTSIDE
+  ----------------------------------------- */
+
+  .slide-dots {
+    left: 50%;
+
+    bottom: -30px;
+
+    transform:
+      translateX(-50%);
+
+    gap: 8px;
+
+    z-index: 2000;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .ocean-slider {
+    height: 640px;
+
+    overflow: visible !important;
+  }
+
+
+  /* -----------------------------------------
+     LEFT CONTENT
+  ----------------------------------------- */
+
+  .slide-left {
+    height: 45%;
+
+    padding:
+      25px
+      15px;
+  }
+
+  .slide-left span {
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .slide-left h1 {
+    font-size: 31px;
+  }
+
+  .slide-left p {
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    margin-bottom: 14px;
+  }
+
+
+  /* -----------------------------------------
+     RIGHT IMAGE
+  ----------------------------------------- */
+
+  .slide-right {
+    top: 45%;
+
+    height: 55%;
+  }
+
+
+  /* -----------------------------------------
+     FIXED BOTTLE
+  ----------------------------------------- */
+
+  .fixed-bottle {
+    left: 50%;
+
+    top: auto;
+    bottom: 0;
+
+    width: 220px;
+
+    height: 80%;
+
+    transform:
+      translateX(-50%);
+
+    overflow: visible !important;
+  }
+
+
+  /* -----------------------------------------
+     NAVIGATION
+  ----------------------------------------- */
+
+  .ocean-nav {
+    top: 59%;
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 20px;
+  }
+
+  .ocean-nav.prev {
+    left: 7px;
+  }
+
+  .ocean-nav.next {
+    right: 7px;
+  }
+
+
+  /* -----------------------------------------
+     DOTS OUTSIDE
+  ----------------------------------------- */
+
+  .slide-dots {
+    bottom: -28px;
+
+    gap: 7px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.active {
+    width: 22px;
+    height: 8px;
+  }
+
+}
+
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 340px) {
+
+  .ocean-slider {
+    height: 600px;
+  }
+
+  .slide-left h1 {
+    font-size: 28px;
+  }
+
+  .slide-left p {
+    font-size: 11px;
+  }
+
+  .fixed-bottle {
+    width: 205px;
+    height: 80%;
+
+    bottom: 0;
+  }
+
+  .ocean-nav {
+    width: 32px;
+    height: 32px;
+
+    font-size: 18px;
+  }
+
+  .ocean-nav.prev {
+    left: 5px;
+  }
+
+  .ocean-nav.next {
+    right: 5px;
+  }
+
+    }
