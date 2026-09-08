@@ -24,32 +24,24 @@ body {
 
 
 /* =========================================
-   CANONICAL OCEAN SHOWCASE
+   BLUE BOTTAL SHOWCASE
 ========================================= */
 
-.ocean-showcase {
+.blue-bottal-showcase {
   position: relative;
 
   width: 100%;
 
-  /*
-    IMPORTANT:
-    Bottle + dots બહાર આવી શકે
-  */
-  overflow:hidden;
+  overflow: hidden;
 }
 
-.ocean-slider {
+.blue-bottal-slider {
   position: relative;
 
   width: 100%;
   height: 700px;
 
-  /*
-    IMPORTANT:
-    Bottle અને dots clip ન થાય
-  */
-  overflow: hidden  ;
+  overflow: hidden;
 
   background: #eaf5f5;
 }
@@ -59,7 +51,7 @@ body {
    SLIDE TRACK
 ========================================= */
 
-.ocean-track {
+.blue-bottal-track {
   display: flex;
 
   width: 100%;
@@ -70,14 +62,10 @@ body {
 
   will-change: transform;
 
-  /*
-    Horizontal swipe allowed,
-    vertical page scrolling preserved
-  */
   touch-action: pan-y;
 }
 
-.ocean-slide {
+.blue-bottal-slide {
   position: relative;
 
   flex: 0 0 100%;
@@ -85,10 +73,6 @@ body {
   width: 100%;
   height: 100%;
 
-  /*
-    Only slide content clips.
-    Fixed bottle is outside this.
-  */
   overflow: hidden;
 
   border: 0;
@@ -99,7 +83,7 @@ body {
    LEFT PANEL
 ========================================= */
 
-.slide-left {
+.blue-bottal-left {
   position: absolute;
 
   left: 0;
@@ -123,9 +107,6 @@ body {
       #dceff0 100%
     );
 
-  /*
-    Angled center divider
-  */
   clip-path: polygon(
     0 0,
     100% 0,
@@ -144,7 +125,7 @@ body {
    LEFT DECORATIVE PATTERN
 ========================================= */
 
-.slide-left::before {
+.blue-bottal-left::before {
   content: "";
 
   position: absolute;
@@ -163,7 +144,7 @@ body {
   pointer-events: none;
 }
 
-.slide-left > * {
+.blue-bottal-left > * {
   position: relative;
 
   z-index: 2;
@@ -174,7 +155,7 @@ body {
    LEFT CONTENT
 ========================================= */
 
-.slide-left span {
+.blue-bottal-left span {
   display: block;
 
   color: #087f89;
@@ -187,7 +168,7 @@ body {
   margin-bottom: 18px;
 }
 
-.slide-left h1 {
+.blue-bottal-left h1 {
   color: #263b3f;
 
   font-size: clamp(42px, 5vw, 74px);
@@ -199,11 +180,11 @@ body {
   margin-bottom: 25px;
 }
 
-.slide-left h1 strong {
+.blue-bottal-left h1 strong {
   color: #087f89;
 }
 
-.slide-left p {
+.blue-bottal-left p {
   width: min(410px, 100%);
 
   color: #40565a;
@@ -215,7 +196,7 @@ body {
   margin-bottom: 27px;
 }
 
-.slide-left a {
+.blue-bottal-left a {
   display: inline-flex;
 
   align-items: center;
@@ -238,11 +219,11 @@ body {
     letter-spacing 0.25s ease;
 }
 
-.slide-left a:hover {
+.blue-bottal-left a:hover {
   letter-spacing: 2px;
 }
 
-.slide-left a b {
+.blue-bottal-left a b {
   font-size: 21px;
 
   line-height: 1;
@@ -253,7 +234,7 @@ body {
    RIGHT PANEL
 ========================================= */
 
-.slide-right {
+.blue-bottal-right {
   position: absolute;
 
   right: 0;
@@ -262,9 +243,6 @@ body {
   width: 57%;
   height: 100%;
 
-  /*
-    Only image panel clips
-  */
   overflow: hidden;
 
   clip-path: polygon(
@@ -285,7 +263,7 @@ body {
    RIGHT IMAGE
 ========================================= */
 
-.slide-right img {
+.blue-bottal-right img {
   display: block;
 
   width: 100%;
@@ -307,7 +285,7 @@ body {
     transform 0.8s ease;
 }
 
-.ocean-slide:hover .slide-right img {
+.blue-bottal-slide:hover .blue-bottal-right img {
   transform: scale(1.03);
 }
 
@@ -316,30 +294,17 @@ body {
    FIXED CENTER BOTTLE
 ========================================= */
 
-.fixed-bottle {
+.blue-bottal-fixed {
   position: absolute;
 
-  /*
-    Horizontal center
-  */
   left: 50%;
 
-  /*
-    EXACT BOTTOM = 0px
-  */
   bottom: 0;
 
   top: -14%;
 
-  /*
-    Bottle size
-  */
   width: clamp(270px, 27vw, 430px);
 
-  /*
-    Bigger than slide
-    => top extends outside
-  */
   height: 128%;
 
   transform:
@@ -355,16 +320,10 @@ body {
   border: none;
   outline: none;
 
-  /*
-    Above both panels
-  */
   z-index: 1000;
 
   pointer-events: none;
 
-  /*
-    VERY IMPORTANT
-  */
   overflow: visible !important;
 }
 
@@ -373,7 +332,7 @@ body {
    BOTTLE GLOW
 ========================================= */
 
-.bottle-glow {
+.blue-bottal-glow {
   position: absolute;
 
   left: 50%;
@@ -402,21 +361,14 @@ body {
    BOTTLE IMAGE
 ========================================= */
 
-.fixed-bottle img {
+.blue-bottal-fixed img {
   display: block;
 
   width: 100%;
-  height:800px;
+  height: 800px;
 
-  /*
-    Transparent PNG:
-    contain = full bottle visible
-  */
   object-fit: cover;
 
-  /*
-    Bottom exactly aligned
-  */
   object-position: center bottom;
 
   background: transparent;
@@ -435,7 +387,7 @@ body {
    NAVIGATION BUTTON
 ========================================= */
 
-.ocean-nav {
+.blue-bottal-nav {
   position: absolute;
 
   top: 50%;
@@ -477,7 +429,7 @@ body {
     transform 0.25s ease;
 }
 
-.ocean-nav:hover {
+.blue-bottal-nav:hover {
   background: #087f89;
 
   color: #ffffff;
@@ -487,21 +439,20 @@ body {
     scale(1.08);
 }
 
-.ocean-nav.prev {
+.blue-bottal-nav.prev {
   left: 10px;
 }
 
-.ocean-nav.next {
+.blue-bottal-nav.next {
   right: 10px;
 }
 
 
 /* =========================================
    DOTS
-   OUTSIDE SLIDE
 ========================================= */
 
-.slide-dots {
+.blue-bottal-dots {
   position: relative;
 
   width: 100%;
@@ -520,7 +471,7 @@ body {
   background: #ffffff;
 }
 
-.dot {
+.blue-bottal-dot {
   width: 10px;
   height: 10px;
 
@@ -539,7 +490,7 @@ body {
     background 0.3s ease;
 }
 
-.dot.active {
+.blue-bottal-dot.active {
   width: 26px;
   height: 10px;
 
@@ -555,22 +506,22 @@ body {
 
 @media (min-width: 1600px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 820px;
   }
 
-  .slide-left {
+  .blue-bottal-left {
     width: 57%;
 
     padding-left: 10%;
     padding-right: 150px;
   }
 
-  .slide-right {
+  .blue-bottal-right {
     width: 57%;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 470px;
     height: 128%;
 
@@ -586,11 +537,11 @@ body {
 
 @media (min-width: 2000px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 900px;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 520px;
     height: 128%;
 
@@ -606,11 +557,11 @@ body {
 
 @media (max-width: 1599px) and (min-width: 1201px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 700px;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 400px;
     height: 128%;
 
@@ -626,33 +577,33 @@ body {
 
 @media (max-width: 1200px) and (min-width: 801px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 650px;
   }
 
-  .slide-left {
+  .blue-bottal-left {
     padding-left: 6%;
     padding-right: 100px;
   }
 
-  .slide-left h1 {
+  .blue-bottal-left h1 {
     font-size: 52px;
 
     letter-spacing: -2px;
   }
 
-  .slide-left p {
+  .blue-bottal-left p {
     font-size: 14px;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 350px;
     height: 127%;
 
     bottom: 0;
   }
 
-  .ocean-nav {
+  .blue-bottal-nav {
     width: 46px;
     height: 46px;
   }
@@ -666,41 +617,41 @@ body {
 
 @media (max-width: 800px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 650px;
   }
 
-  .slide-left {
+  .blue-bottal-left {
     width: 57%;
 
     padding-left: 5%;
     padding-right: 75px;
   }
 
-  .slide-left h1 {
+  .blue-bottal-left h1 {
     font-size: 40px;
 
     letter-spacing: -1.5px;
   }
 
-  .slide-left p {
+  .blue-bottal-left p {
     font-size: 13px;
 
     line-height: 1.55;
   }
 
-  .slide-right {
+  .blue-bottal-right {
     width: 57%;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 320px;
     height: 125%;
 
     bottom: 0;
   }
 
-  .ocean-nav {
+  .blue-bottal-nav {
     width: 43px;
     height: 43px;
 
@@ -716,7 +667,7 @@ body {
 
 @media (max-width: 600px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 680px;
 
     overflow: visible !important;
@@ -727,7 +678,7 @@ body {
      SLIDE
   ----------------------------------------- */
 
-  .ocean-slide {
+  .blue-bottal-slide {
     display: block;
 
     overflow: hidden;
@@ -738,7 +689,7 @@ body {
      LEFT CONTENT
   ----------------------------------------- */
 
-  .slide-left {
+  .blue-bottal-left {
     position: absolute;
 
     left: 0;
@@ -760,7 +711,7 @@ body {
     clip-path: none;
   }
 
-  .slide-left span {
+  .blue-bottal-left span {
     font-size: 10px;
 
     letter-spacing: 3px;
@@ -768,7 +719,7 @@ body {
     margin-bottom: 12px;
   }
 
-  .slide-left h1 {
+  .blue-bottal-left h1 {
     font-size: 37px;
 
     line-height: 0.98;
@@ -778,7 +729,7 @@ body {
     margin-bottom: 15px;
   }
 
-  .slide-left p {
+  .blue-bottal-left p {
     width: 100%;
 
     max-width: 350px;
@@ -790,7 +741,7 @@ body {
     line-height: 1.5;
   }
 
-  .slide-left a {
+  .blue-bottal-left a {
     margin: 0 auto;
   }
 
@@ -799,7 +750,7 @@ body {
      RIGHT IMAGE
   ----------------------------------------- */
 
-  .slide-right {
+  .blue-bottal-right {
     position: absolute;
 
     left: 0;
@@ -812,7 +763,7 @@ body {
     clip-path: none;
   }
 
-  .slide-right img {
+  .blue-bottal-right img {
     width: 100%;
     height: 100%;
 
@@ -826,7 +777,7 @@ body {
      FIXED CENTER BOTTLE
   ----------------------------------------- */
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     position: absolute;
 
     left: 50%;
@@ -836,9 +787,6 @@ body {
 
     width: 255px;
 
-    /*
-      Mobile bottle size
-    */
     height: 78%;
 
     transform:
@@ -854,7 +802,7 @@ body {
     overflow: visible !important;
   }
 
-  .fixed-bottle img {
+  .blue-bottal-fixed img {
     width: 100%;
     height: 100%;
 
@@ -868,7 +816,7 @@ body {
      NAVIGATION
   ----------------------------------------- */
 
-  .ocean-nav {
+  .blue-bottal-nav {
     top: 60%;
 
     width: 40px;
@@ -879,11 +827,11 @@ body {
     z-index: 1100;
   }
 
-  .ocean-nav.prev {
+  .blue-bottal-nav.prev {
     left: 8px;
   }
 
-  .ocean-nav.next {
+  .blue-bottal-nav.next {
     right: 8px;
   }
 
@@ -892,7 +840,7 @@ body {
      DOTS OUTSIDE
   ----------------------------------------- */
 
-  .slide-dots {
+  .blue-bottal-dots {
     left: 50%;
 
     bottom: -30px;
@@ -914,7 +862,7 @@ body {
 
 @media (max-width: 380px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 640px;
 
     overflow: visible !important;
@@ -925,7 +873,7 @@ body {
      LEFT CONTENT
   ----------------------------------------- */
 
-  .slide-left {
+  .blue-bottal-left {
     height: 45%;
 
     padding:
@@ -933,17 +881,17 @@ body {
       15px;
   }
 
-  .slide-left span {
+  .blue-bottal-left span {
     font-size: 9px;
 
     letter-spacing: 2.5px;
   }
 
-  .slide-left h1 {
+  .blue-bottal-left h1 {
     font-size: 31px;
   }
 
-  .slide-left p {
+  .blue-bottal-left p {
     font-size: 12px;
 
     line-height: 1.45;
@@ -956,7 +904,7 @@ body {
      RIGHT IMAGE
   ----------------------------------------- */
 
-  .slide-right {
+  .blue-bottal-right {
     top: 45%;
 
     height: 55%;
@@ -967,7 +915,7 @@ body {
      FIXED BOTTLE
   ----------------------------------------- */
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     left: 50%;
 
     top: auto;
@@ -988,7 +936,7 @@ body {
      NAVIGATION
   ----------------------------------------- */
 
-  .ocean-nav {
+  .blue-bottal-nav {
     top: 59%;
 
     width: 35px;
@@ -997,11 +945,11 @@ body {
     font-size: 20px;
   }
 
-  .ocean-nav.prev {
+  .blue-bottal-nav.prev {
     left: 7px;
   }
 
-  .ocean-nav.next {
+  .blue-bottal-nav.next {
     right: 7px;
   }
 
@@ -1010,18 +958,18 @@ body {
      DOTS OUTSIDE
   ----------------------------------------- */
 
-  .slide-dots {
+  .blue-bottal-dots {
     bottom: -28px;
 
     gap: 7px;
   }
 
-  .dot {
+  .blue-bottal-dot {
     width: 8px;
     height: 8px;
   }
 
-  .dot.active {
+  .blue-bottal-dot.active {
     width: 22px;
     height: 8px;
   }
@@ -1035,38 +983,38 @@ body {
 
 @media (max-width: 340px) {
 
-  .ocean-slider {
+  .blue-bottal-slider {
     height: 600px;
   }
 
-  .slide-left h1 {
+  .blue-bottal-left h1 {
     font-size: 28px;
   }
 
-  .slide-left p {
+  .blue-bottal-left p {
     font-size: 11px;
   }
 
-  .fixed-bottle {
+  .blue-bottal-fixed {
     width: 205px;
     height: 80%;
 
     bottom: 0;
   }
 
-  .ocean-nav {
+  .blue-bottal-nav {
     width: 32px;
     height: 32px;
 
     font-size: 18px;
   }
 
-  .ocean-nav.prev {
+  .blue-bottal-nav.prev {
     left: 5px;
   }
 
-  .ocean-nav.next {
+  .blue-bottal-nav.next {
     right: 5px;
   }
 
-    }
+}
