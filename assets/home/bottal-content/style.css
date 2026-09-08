@@ -1,0 +1,597 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #17201f;
+  background: #ffffff;
+}
+
+
+/* =================================
+   COMMON SECTION
+================================= */
+
+section {
+  width: 100%;
+}
+
+.section-heading {
+  text-align: center;
+  padding: 75px 20px 50px;
+}
+
+.section-heading span {
+  display: block;
+
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+
+  color: #147d86;
+
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  color: #273333;
+}
+
+.section-heading p {
+  margin-top: 15px;
+
+  font-size: 16px;
+
+  color: #687473;
+}
+
+
+/* =================================
+   OUR WATER
+================================= */
+
+.water-section {
+  background: #ffffff;
+
+  padding-bottom: 90px;
+}
+
+.water-grid {
+  width: min(1200px, 90%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  grid-template-rows:
+    auto auto;
+
+  gap: 28px;
+}
+
+
+/* Images */
+
+.water-image {
+  width: 100%;
+  height: 320px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+}
+
+.water-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.5s ease;
+}
+
+.water-image:hover img {
+  transform: scale(1.06);
+}
+
+
+/* Content */
+
+.water-content {
+  grid-column: span 2;
+
+  min-height: 290px;
+
+  padding: 45px;
+
+  background: #eaf7f7;
+
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.small-title {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  color: #147d86;
+
+  margin-bottom: 15px;
+}
+
+.water-content h3 {
+  font-size: clamp(28px, 3vw, 42px);
+
+  line-height: 1.05;
+
+  color: #263535;
+
+  margin-bottom: 22px;
+}
+
+.water-content h3 strong {
+  display: block;
+
+  color: #147d86;
+}
+
+.water-content p {
+  max-width: 600px;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+  color: #4e5d5d;
+
+  margin-bottom: 10px;
+}
+
+
+/* =================================
+   BOTTLES
+================================= */
+
+.bottles-section {
+  background: #edf8f8;
+
+  padding-bottom: 90px;
+}
+
+.bottles-heading {
+  padding-bottom: 35px;
+}
+
+
+/* Slider */
+
+.bottle-slider {
+  position: relative;
+
+  width: min(1120px, 88%);
+
+  margin: auto;
+
+  overflow: hidden;
+}
+
+.bottle-track {
+  display: flex;
+
+  gap: 35px;
+
+  transition: transform 0.5s ease;
+}
+
+
+/* Bottle Card */
+
+.bottle-card {
+  flex: 0 0 calc((100% - 70px) / 3);
+
+  min-width: 0;
+}
+
+.bottle-image {
+  width: 100%;
+  height: 320px;
+
+  background: #dceff0;
+
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 25px;
+}
+
+.bottle-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+.bottle-card:hover .bottle-image img {
+  transform: scale(1.04);
+}
+
+.bottle-card h3 {
+  font-size: 24px;
+
+  line-height: 1.08;
+
+  color: #263333;
+
+  margin-bottom: 12px;
+}
+
+.bottle-card p {
+  color: #596767;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  min-height: 48px;
+
+  margin-bottom: 15px;
+}
+
+.bottle-card a {
+  color: #147d86;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.bottle-card a::after {
+  content: "  →";
+
+  font-size: 20px;
+
+  vertical-align: middle;
+}
+
+
+/* =================================
+   SLIDER BUTTONS
+================================= */
+
+.slider-btn {
+  position: absolute;
+
+  top: 105px;
+
+  z-index: 5;
+
+  width: 45px;
+  height: 45px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #263b3b;
+
+  font-size: 38px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.slider-btn:hover {
+  color: #147d86;
+
+  transform: scale(1.15);
+}
+
+.prev {
+  left: -5px;
+}
+
+.next {
+  right: -5px;
+}
+
+
+/* =================================
+   LARGE LAPTOP
+================================= */
+
+@media (max-width: 1100px) {
+
+  .water-grid {
+    width: 92%;
+
+    gap: 20px;
+  }
+
+  .water-content {
+    padding: 30px;
+  }
+
+  .bottle-slider {
+    width: 86%;
+  }
+
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 800px) {
+
+  .section-heading {
+    padding-top: 60px;
+    padding-bottom: 35px;
+  }
+
+  .water-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    width: 92%;
+
+    gap: 18px;
+  }
+
+  .water-image {
+    height: 350px;
+  }
+
+  .water-content {
+    grid-column: span 2;
+
+    min-height: auto;
+
+    padding: 35px;
+  }
+
+  .bottle-slider {
+    width: 82%;
+  }
+
+  .bottle-card {
+    flex: 0 0 calc((100% - 25px) / 2);
+  }
+
+  .bottle-track {
+    gap: 25px;
+  }
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .section-heading {
+    padding: 55px 20px 30px;
+  }
+
+  .section-heading h2 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+  }
+
+  .section-heading p {
+    font-size: 14px;
+  }
+
+
+  /* Water */
+
+  .water-section {
+    padding-bottom: 60px;
+  }
+
+  .water-grid {
+    width: calc(100% - 32px);
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .water-image {
+    height: 350px;
+  }
+
+  .water-content {
+    grid-column: auto;
+
+    padding: 28px 24px;
+
+    min-height: 0;
+  }
+
+  .water-content h3 {
+    font-size: 29px;
+
+    margin-bottom: 17px;
+  }
+
+  .water-content p {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+
+  /* Bottles */
+
+  .bottles-section {
+    padding-bottom: 65px;
+  }
+
+  .bottle-slider {
+    width: calc(100% - 70px);
+  }
+
+  .bottle-track {
+    gap: 15px;
+  }
+
+  .bottle-card {
+    flex: 0 0 100%;
+  }
+
+  .bottle-image {
+    height: 350px;
+  }
+
+  .bottle-card h3 {
+    font-size: 23px;
+  }
+
+  .bottle-card p {
+    font-size: 14px;
+  }
+
+  .slider-btn {
+    width: 35px;
+    height: 40px;
+
+    font-size: 30px;
+
+    top: 110px;
+  }
+
+  .prev {
+    left: -45px;
+  }
+
+  .next {
+    right: -45px;
+  }
+
+}
+
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media (max-width: 380px) {
+
+  .section-heading h2 {
+    font-size: 34px;
+  }
+
+  .water-grid {
+    width: calc(100% - 24px);
+  }
+
+  .water-image {
+    height: 350px;
+  }
+
+  .water-content {
+    padding: 24px 20px;
+  }
+
+  .water-content h3 {
+    font-size: 26px;
+  }
+
+  
+  .bottle-slider {
+    width: calc(100% - 65px);
+    overflow: hidden;
+  }
+  
+  .bottle-track-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .bottle-track {
+    gap: 20px;
+  }
+
+  .bottle-card {
+    flex: 0 0 100%;
+  }
+
+  .bottle-image {
+    height: 320px;
+  }
+  .slider-btn {
+   top: 95px;
+
+    width: 32px;
+    height: 42px;
+
+    font-size: 28px;
+
+    z-index: 100;
+  }
+
+  .prev {
+    left: -38px;
+  }
+
+  .next {
+    right: -38px;
+  }
+
+}
+
+
+@media (max-width: 1599px) and (min-width: 1201px) {
+
+  .bottle-image {
+    height: 450px;
+  }
+  .water-image {
+    height: 450px;
+  }
+
+}
