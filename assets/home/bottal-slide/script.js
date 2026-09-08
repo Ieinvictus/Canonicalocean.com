@@ -1,18 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const track = document.getElementById("oceanTrack");
-  const slides = document.querySelectorAll(".ocean-slide");
-  const nextBtn = document.getElementById("nextSlide");
-  const prevBtn = document.getElementById("prevSlide");
-  const dots = document.querySelectorAll(".dot");
+  const track = document.getElementById("blueBottalTrack");
+  const slides = document.querySelectorAll(".blue-bottal-slide");
+  const nextBtn = document.getElementById("blueBottalNext");
+  const prevBtn = document.getElementById("blueBottalPrev");
+  const dots = document.querySelectorAll(".blue-bottal-dot");
 
   if (!track || slides.length === 0) return;
 
   let currentSlide = 0;
   let autoSlide;
 
-  const duration = 800;
-  const autoTime = 4000; // 4 seconds
+  // Automatic slide time: 4 seconds
+  const autoTime = 4000;
+
+
+  /* =========================================
+     SHOW SLIDE
+  ========================================= */
 
   function showSlide(index) {
 
@@ -29,58 +34,102 @@ document.addEventListener("DOMContentLoaded", function () {
     track.style.transform =
       "translate3d(-" + (currentSlide * 100) + "%, 0, 0)";
 
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === currentSlide);
+
+    slides.forEach(function (slide, i) {
+      slide.classList.toggle(
+        "active",
+        i === currentSlide
+      );
     });
 
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === currentSlide);
+
+    dots.forEach(function (dot, i) {
+
+      dot.classList.toggle(
+        "active",
+        i === currentSlide
+      );
+
       dot.setAttribute(
         "aria-selected",
         i === currentSlide ? "true" : "false"
       );
+
     });
+
   }
 
+
+  /* =========================================
+     NEXT SLIDE
+  ========================================= */
 
   function nextSlide() {
     showSlide(currentSlide + 1);
   }
 
 
+  /* =========================================
+     PREVIOUS SLIDE
+  ========================================= */
+
   function previousSlide() {
     showSlide(currentSlide - 1);
   }
 
 
-  // NEXT BUTTON
+  /* =========================================
+     NEXT BUTTON
+  ========================================= */
+
   if (nextBtn) {
+
     nextBtn.addEventListener("click", function () {
+
       nextSlide();
       restartAutoSlide();
+
     });
+
   }
 
 
-  // PREVIOUS BUTTON
+  /* =========================================
+     PREVIOUS BUTTON
+  ========================================= */
+
   if (prevBtn) {
+
     prevBtn.addEventListener("click", function () {
+
       previousSlide();
       restartAutoSlide();
+
     });
+
   }
 
 
-  // DOTS
-  dots.forEach((dot) => {
+  /* =========================================
+     DOT BUTTONS
+  ========================================= */
+
+  dots.forEach(function (dot) {
 
     dot.addEventListener("click", function () {
 
-      const slideNumber = Number(this.dataset.slide);
+      const slideNumber =
+        Number(this.dataset.slide);
 
-      if (!Number.isNaN(slideNumber)) {
+      if (
+        !Number.isNaN(slideNumber) &&
+        slideNumber >= 0 &&
+        slideNumber < slides.length
+      ) {
+
         showSlide(slideNumber);
         restartAutoSlide();
+
       }
 
     });
@@ -88,13 +137,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  // AUTOMATIC SLIDER
+  /* =========================================
+     AUTOMATIC SLIDER
+  ========================================= */
+
   function startAutoSlide() {
 
     clearInterval(autoSlide);
 
     autoSlide = setInterval(function () {
+
       nextSlide();
+
     }, autoTime);
 
   }
@@ -105,7 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  // MOBILE SWIPE
+  /* =========================================
+     MOBILE SWIPE
+  ========================================= */
+
   let startX = 0;
   let startY = 0;
 
@@ -131,11 +188,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const diffX = startX - endX;
       const diffY = startY - endY;
 
+
       // Ignore vertical swipe
-      if (Math.abs(diffY) > Math.abs(diffX)) return;
+      if (Math.abs(diffY) > Math.abs(diffX)) {
+        return;
+      }
+
 
       // Minimum swipe distance
-      if (Math.abs(diffX) < 50) return;
+      if (Math.abs(diffX) < 50) {
+        return;
+      }
+
 
       if (diffX > 0) {
         nextSlide();
@@ -150,23 +214,33 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  // KEYBOARD
+  /* =========================================
+     KEYBOARD CONTROL
+  ========================================= */
+
   document.addEventListener("keydown", function (e) {
 
     if (e.key === "ArrowRight") {
+
       nextSlide();
       restartAutoSlide();
+
     }
 
     if (e.key === "ArrowLeft") {
+
       previousSlide();
       restartAutoSlide();
+
     }
 
   });
 
 
-  // START
+  /* =========================================
+     START SLIDER
+  ========================================= */
+
   showSlide(0);
   startAutoSlide();
 
