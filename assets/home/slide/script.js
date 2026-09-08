@@ -1,83 +1,47 @@
 const track = document.getElementById("oceanTrack");
-
 const slides = document.querySelectorAll(".ocean-slide");
-
 const prevBtn = document.getElementById("prevSlide");
 const nextBtn = document.getElementById("nextSlide");
-
 const dots = document.querySelectorAll(".dot");
 
 let currentSlide = 0;
-
-
-/* ===============================
-   UPDATE SLIDE
-================================ */
 
 function updateSlide() {
 
   track.style.transform =
     `translate3d(-${currentSlide * 100}%, 0, 0)`;
 
-
   dots.forEach((dot, index) => {
-
-    dot.classList.toggle(
-      "active",
-      index === currentSlide
+    dot.classList.toggle("active", index === currentSlide);
+    dot.setAttribute(
+      "aria-selected",
+      index === currentSlide ? "true" : "false"
     );
-
   });
-
 }
 
-
-/* ===============================
-   NEXT
-================================ */
-
 nextBtn.addEventListener("click", () => {
-
-  currentSlide++;
-
-  if (currentSlide >= slides.length) {
-    currentSlide = 0;
-  }
-
+  currentSlide = (currentSlide + 1) % slides.length;
   updateSlide();
-
 });
-
-
-/* ===============================
-   PREVIOUS
-================================ */
 
 prevBtn.addEventListener("click", () => {
-
-  currentSlide--;
-
-  if (currentSlide < 0) {
-    currentSlide = slides.length - 1;
-  }
+  currentSlide =
+    (currentSlide - 1 + slides.length) % slides.length;
 
   updateSlide();
-
 });
-
-
-/* ===============================
-   DOTS
-================================ */
 
 dots.forEach((dot) => {
 
   dot.addEventListener("click", () => {
 
-    currentSlide =
-      Number(dot.dataset.slide);
+    const index = Number(dot.dataset.slide);
 
-    updateSlide();
+    if (index >= 0 && index < slides.length) {
+      currentSlide = index;
+      updateSlide();
+    }
 
   });
 
@@ -91,77 +55,36 @@ dots.forEach((dot) => {
 let startX = 0;
 let startY = 0;
 
-let isDragging = false;
-
-
 track.addEventListener(
   "touchstart",
   (event) => {
 
-    startX =
-      event.touches[0].clientX;
-
-    startY =
-      event.touches[0].clientY;
-
-    isDragging = true;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
 
   },
   { passive: true }
 );
 
-
 track.addEventListener(
   "touchend",
   (event) => {
 
-    if (!isDragging) return;
+    const endX = event.changedTouches[0].clientX;
+    const endY = event.changedTouches[0].clientY;
 
-    const endX =
-      event.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    const diffY = startY - endY;
 
-    const endY =
-      event.changedTouches[0].clientY;
+    if (Math.abs(diffY) > Math.abs(diffX)) return;
 
-    const diffX =
-      startX - endX;
-
-    const diffY =
-      startY - endY;
-
-    isDragging = false;
-
-
-    /* Ignore vertical swipe */
-
-    if (Math.abs(diffY) > Math.abs(diffX)) {
-      return;
-    }
-
-
-    /* Minimum swipe */
-
-    if (Math.abs(diffX) < 50) {
-      return;
-    }
-
+    if (Math.abs(diffX) < 50) return;
 
     if (diffX > 0) {
-
-      currentSlide++;
-
-      if (currentSlide >= slides.length) {
-        currentSlide = 0;
-      }
-
+      currentSlide = (currentSlide + 1) % slides.length;
     } else {
-
-      currentSlide--;
-
-      if (currentSlide < 0) {
-        currentSlide = slides.length - 1;
-      }
-
+      currentSlide =
+        (currentSlide - 1 + slides.length) % slides.length;
     }
 
     updateSlide();
@@ -172,5 +95,4 @@ track.addEventListener(
 
 
 /* INITIAL */
-
 updateSlide();
