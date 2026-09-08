@@ -2,309 +2,172 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const track = document.getElementById("oceanTrack");
   const slides = document.querySelectorAll(".ocean-slide");
-
-  const prevBtn = document.getElementById("prevSlide");
   const nextBtn = document.getElementById("nextSlide");
-
+  const prevBtn = document.getElementById("prevSlide");
   const dots = document.querySelectorAll(".dot");
 
-  /* Check required elements */
-
-  if (!track) {
-    console.error("oceanTrack not found");
-    return;
-  }
-
-  if (!slides.length) {
-    console.error("ocean-slide not found");
-    return;
-  }
+  if (!track || slides.length === 0) return;
 
   let currentSlide = 0;
-  let isMoving = false;
+  let autoSlide;
 
   const duration = 800;
+  const autoTime = 4000; // 4 seconds
 
+  function showSlide(index) {
 
-  /* =================================
-     UPDATE SLIDE
-  ================================= */
+    if (index >= slides.length) {
+      index = 0;
+    }
 
-  function updateSlide() {
+    if (index < 0) {
+      index = slides.length - 1;
+    }
+
+    currentSlide = index;
 
     track.style.transform =
-      "translate3d(-" +
-      (currentSlide * 100) +
-      "%, 0, 0)";
+      "translate3d(-" + (currentSlide * 100) + "%, 0, 0)";
 
-
-    /* Active slide */
-
-    slides.forEach(function (slide, index) {
-
-      slide.classList.toggle(
-        "active",
-        index === currentSlide
-      );
-
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentSlide);
     });
 
-
-    /* Active dot */
-
-    dots.forEach(function (dot, index) {
-
-      dot.classList.toggle(
-        "active",
-        index === currentSlide
-      );
-
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
       dot.setAttribute(
         "aria-selected",
-        index === currentSlide
-          ? "true"
-          : "false"
+        i === currentSlide ? "true" : "false"
       );
-
     });
-
   }
 
-
-  /* =================================
-     NEXT SLIDE
-  ================================= */
 
   function nextSlide() {
-
-    if (isMoving) return;
-
-    isMoving = true;
-
-    currentSlide++;
-
-    if (currentSlide >= slides.length) {
-      currentSlide = 0;
-    }
-
-    updateSlide();
-
-    setTimeout(function () {
-      isMoving = false;
-    }, duration);
-
+    showSlide(currentSlide + 1);
   }
 
-
-  /* =================================
-     PREVIOUS SLIDE
-  ================================= */
 
   function previousSlide() {
-
-    if (isMoving) return;
-
-    isMoving = true;
-
-    currentSlide--;
-
-    if (currentSlide < 0) {
-      currentSlide = slides.length - 1;
-    }
-
-    updateSlide();
-
-    setTimeout(function () {
-      isMoving = false;
-    }, duration);
-
+    showSlide(currentSlide - 1);
   }
 
 
-  /* =================================
-     NEXT BUTTON
-  ================================= */
-
+  // NEXT BUTTON
   if (nextBtn) {
-
-    nextBtn.addEventListener(
-      "click",
-      nextSlide
-    );
-
+    nextBtn.addEventListener("click", function () {
+      nextSlide();
+      restartAutoSlide();
+    });
   }
 
 
-  /* =================================
-     PREVIOUS BUTTON
-  ================================= */
-
+  // PREVIOUS BUTTON
   if (prevBtn) {
-
-    prevBtn.addEventListener(
-      "click",
-      previousSlide
-    );
-
+    prevBtn.addEventListener("click", function () {
+      previousSlide();
+      restartAutoSlide();
+    });
   }
 
 
-  /* =================================
-     DOTS
-  ================================= */
-
-  dots.forEach(function (dot) {
+  // DOTS
+  dots.forEach((dot) => {
 
     dot.addEventListener("click", function () {
 
-      if (isMoving) return;
+      const slideNumber = Number(this.dataset.slide);
 
-      const slideNumber =
-        Number(this.dataset.slide);
-
-
-      if (
-        Number.isNaN(slideNumber) ||
-        slideNumber < 0 ||
-        slideNumber >= slides.length
-      ) {
-        return;
+      if (!Number.isNaN(slideNumber)) {
+        showSlide(slideNumber);
+        restartAutoSlide();
       }
-
-
-      if (slideNumber === currentSlide) {
-        return;
-      }
-
-
-      isMoving = true;
-
-      currentSlide = slideNumber;
-
-      updateSlide();
-
-
-      setTimeout(function () {
-        isMoving = false;
-      }, duration);
 
     });
 
   });
 
 
-  /* =================================
-     TOUCH SWIPE
-  ================================= */
+  // AUTOMATIC SLIDER
+  function startAutoSlide() {
 
+    clearInterval(autoSlide);
+
+    autoSlide = setInterval(function () {
+      nextSlide();
+    }, autoTime);
+
+  }
+
+
+  function restartAutoSlide() {
+    startAutoSlide();
+  }
+
+
+  // MOBILE SWIPE
   let startX = 0;
   let startY = 0;
 
-  let touching = false;
-
-
   track.addEventListener(
     "touchstart",
-    function (event) {
+    function (e) {
 
-      startX =
-        event.touches[0].clientX;
-
-      startY =
-        event.touches[0].clientY;
-
-      touching = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
 
     },
-    {
-      passive: true
-    }
+    { passive: true }
   );
 
 
   track.addEventListener(
     "touchend",
-    function (event) {
+    function (e) {
 
-      if (!touching) return;
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
 
-      touching = false;
+      const diffX = startX - endX;
+      const diffY = startY - endY;
 
+      // Ignore vertical swipe
+      if (Math.abs(diffY) > Math.abs(diffX)) return;
 
-      const endX =
-        event.changedTouches[0].clientX;
-
-      const endY =
-        event.changedTouches[0].clientY;
-
-
-      const diffX =
-        startX - endX;
-
-      const diffY =
-        startY - endY;
-
-
-      /* Ignore vertical movement */
-
-      if (
-        Math.abs(diffY) >
-        Math.abs(diffX)
-      ) {
-        return;
-      }
-
-
-      /* Minimum swipe distance */
-
-      if (
-        Math.abs(diffX) < 50
-      ) {
-        return;
-      }
-
+      // Minimum swipe distance
+      if (Math.abs(diffX) < 50) return;
 
       if (diffX > 0) {
-
         nextSlide();
-
       } else {
-
         previousSlide();
-
       }
+
+      restartAutoSlide();
 
     },
-    {
-      passive: true
-    }
+    { passive: true }
   );
 
 
-  /* =================================
-     KEYBOARD
-  ================================= */
+  // KEYBOARD
+  document.addEventListener("keydown", function (e) {
 
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (event.key === "ArrowRight") {
-        nextSlide();
-      }
-
-      if (event.key === "ArrowLeft") {
-        previousSlide();
-      }
-
+    if (e.key === "ArrowRight") {
+      nextSlide();
+      restartAutoSlide();
     }
-  );
+
+    if (e.key === "ArrowLeft") {
+      previousSlide();
+      restartAutoSlide();
+    }
+
+  });
 
 
-  /* =================================
-     INITIAL
-  ================================= */
-
-  updateSlide();
+  // START
+  showSlide(0);
+  startAutoSlide();
 
 });
