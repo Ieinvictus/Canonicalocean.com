@@ -1,0 +1,745 @@
+/* =========================================
+   GOOGLE FONT
+========================================= */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap'
+);
+
+
+/* =========================================
+   CANONICAL OCEAN BLOG
+========================================= */
+
+.co-blog {
+  position: relative;
+
+  width: 100%;
+
+  padding: 95px 0 100px;
+
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(63, 190, 190, 0.10),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 85%,
+      rgba(210, 190, 130, 0.08),
+      transparent 28%
+    ),
+    #f6fbfa;
+
+  font-family: 'Poppins', sans-serif;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   DECORATIVE WATER RING
+========================================= */
+
+.co-blog::before {
+  content: "";
+
+  position: absolute;
+
+  width: 460px;
+  height: 460px;
+
+  right: -280px;
+  top: -260px;
+
+  border: 1px solid
+    rgba(8, 127, 137, 0.09);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 45px rgba(8,127,137,0.025),
+    0 0 0 90px rgba(8,127,137,0.018);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.co-blog-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1180px, 92%);
+
+  margin: auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.co-blog-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 48px;
+}
+
+.co-blog-eyebrow {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #087f89;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+}
+
+.co-blog-header h2 {
+  color: #17383d;
+
+  font-size: clamp(38px, 5vw, 64px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+}
+
+.co-blog-header h2 strong {
+  color: #087f89;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   VIEW ALL
+========================================= */
+
+.co-blog-all {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding-bottom: 7px;
+
+  color: #087f89;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid
+    rgba(8,127,137,0.30);
+
+  transition:
+    gap 0.3s ease,
+    color 0.3s ease;
+}
+
+.co-blog-all span {
+  font-size: 18px;
+}
+
+.co-blog-all:hover {
+  gap: 15px;
+
+  color: #06474e;
+}
+
+
+/* =========================================
+   SLIDER
+========================================= */
+
+.co-blog-slider {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.co-blog-window {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.co-blog-track {
+  display: flex;
+
+  gap: 26px;
+
+  transition:
+    transform 0.7s cubic-bezier(.77,0,.18,1);
+
+  will-change: transform;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.co-blog-card {
+  position: relative;
+
+  flex: 0 0 calc(
+    (100% - 52px) / 3
+  );
+
+  min-width: 0;
+
+  background: #ffffff;
+
+  border: 1px solid
+    rgba(8,127,137,0.08);
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 35px
+    rgba(10,70,75,0.06);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.co-blog-card:hover {
+  transform:
+    translateY(-7px);
+
+  box-shadow:
+    0 22px 50px
+    rgba(10,70,75,0.12);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.co-blog-image {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  height: 245px;
+
+  overflow: hidden;
+
+  background: #dcefee;
+}
+
+.co-blog-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s ease;
+}
+
+.co-blog-card:hover
+.co-blog-image img {
+  transform:
+    scale(1.06);
+}
+
+
+/* =========================================
+   IMAGE TAG
+========================================= */
+
+.co-blog-tag {
+  position: absolute;
+
+  left: 16px;
+  top: 16px;
+
+  padding: 7px 10px;
+
+  color: #ffffff;
+
+  background:
+    rgba(5,67,73,0.82);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+
+/* =========================================
+   IMAGE ICON
+========================================= */
+
+.co-blog-image-icon {
+  position: absolute;
+
+  right: 16px;
+  bottom: 16px;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.92);
+
+  color: #087f89;
+
+  font-size: 12px;
+
+  transform:
+    translateY(8px);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.co-blog-card:hover
+.co-blog-image-icon {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.co-blog-content {
+  padding: 25px 25px 28px;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.co-blog-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  color: #087f89;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+.co-blog-meta span {
+  color: #a5b8ba;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.co-blog-content h3 {
+  min-height: 65px;
+
+  margin-bottom: 13px;
+
+  color: #18373b;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.4px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.co-blog-content p {
+  min-height: 66px;
+
+  margin-bottom: 22px;
+
+  color: #64777a;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   READ STORY
+========================================= */
+
+.co-blog-read {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #087f89;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  text-decoration: none;
+
+  transition:
+    gap 0.3s ease;
+}
+
+.co-blog-read span {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+.co-blog-read:hover {
+  gap: 15px;
+}
+
+
+/* =========================================
+   ARROWS
+========================================= */
+
+.co-blog-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(8,127,137,0.16);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.95);
+
+  color: #087f89;
+
+  cursor: pointer;
+
+  z-index: 10;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0,50,55,0.08);
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.co-blog-arrow:hover {
+  background: #087f89;
+
+  color: #ffffff;
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
+}
+
+.co-blog-prev {
+  left: -23px;
+}
+
+.co-blog-next {
+  right: -23px;
+}
+
+
+/* =========================================
+   DOTS
+========================================= */
+
+.co-blog-dots {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 38px;
+}
+
+.co-blog-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #b7c8c9;
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.co-blog-dot.active {
+  width: 25px;
+
+  border-radius: 20px;
+
+  background: #087f89;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .co-blog {
+    padding: 75px 0 80px;
+  }
+
+  .co-blog-card {
+    flex: 0 0 calc(
+      (100% - 26px) / 2
+    );
+  }
+
+  .co-blog-image {
+    height: 230px;
+  }
+
+  .co-blog-prev {
+    left: -15px;
+  }
+
+  .co-blog-next {
+    right: -15px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .co-blog {
+    padding: 60px 0 65px;
+  }
+
+  .co-blog-container {
+    width: 88%;
+  }
+
+
+  .co-blog-header {
+    align-items: flex-start;
+
+    margin-bottom: 30px;
+  }
+
+  .co-blog-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+  }
+
+  .co-blog-header h2 {
+    font-size: 38px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .co-blog-all {
+    font-size: 9px;
+
+    white-space: nowrap;
+  }
+
+
+  /* ONE CARD */
+
+  .co-blog-card {
+    flex: 0 0 100%;
+  }
+
+  .co-blog-image {
+    height: 225px;
+  }
+
+  .co-blog-content {
+    padding: 22px 20px 25px;
+  }
+
+  .co-blog-content h3 {
+    min-height: auto;
+
+    font-size: 19px;
+  }
+
+  .co-blog-content p {
+    min-height: auto;
+
+    font-size: 12px;
+
+    margin-bottom: 20px;
+  }
+
+
+  /* ARROWS */
+
+  .co-blog-arrow {
+    width: 38px;
+    height: 38px;
+
+    font-size: 11px;
+  }
+
+  .co-blog-prev {
+    left: -18px;
+  }
+
+  .co-blog-next {
+    right: -18px;
+  }
+
+
+  /* DOTS */
+
+  .co-blog-dots {
+    margin-top: 27px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .co-blog {
+    padding: 50px 0 55px;
+  }
+
+  .co-blog-container {
+    width: 86%;
+  }
+
+  .co-blog-header h2 {
+    font-size: 34px;
+  }
+
+  .co-blog-image {
+    height: 205px;
+  }
+
+  .co-blog-content {
+    padding: 20px 17px 22px;
+  }
+
+  .co-blog-content h3 {
+    font-size: 17px;
+  }
+
+  .co-blog-arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .co-blog-prev {
+    left: -16px;
+  }
+
+  .co-blog-next {
+    right: -16px;
+  }
+
+  }
