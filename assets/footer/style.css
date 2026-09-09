@@ -1,0 +1,824 @@
+/* =========================================
+   GOOGLE FONT
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+
+  font-family: 'Poppins', sans-serif;
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   CANONICAL OCEAN FOOTER
+========================================= */
+
+.co-footer {
+  position: relative;
+
+  width: 100%;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(80, 190, 190, 0.18) 0%,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(210, 190, 130, 0.10) 0%,
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #082f35 0%,
+      #06474e 42%,
+      #075c63 72%,
+      #043b42 100%
+    );
+
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   WATER / BEVERAGE DECORATION
+========================================= */
+
+.co-footer::before {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  right: -220px;
+  top: -300px;
+
+  border: 1px solid
+    rgba(220, 245, 242, 0.14);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 45px
+      rgba(220, 245, 242, 0.025),
+
+    0 0 0 90px
+      rgba(220, 245, 242, 0.018),
+
+    0 0 0 140px
+      rgba(220, 245, 242, 0.012);
+
+  pointer-events: none;
+}
+
+
+.co-footer::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: -150px;
+  bottom: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(105, 210, 205, 0.08);
+
+  filter: blur(20px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   MAIN FOOTER CONTAINER
+========================================= */
+
+.co-footer-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1180px, 92%);
+
+  margin: 0 auto;
+
+  padding: 60px 0 48px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 1.8fr)
+    1fr
+    1.2fr;
+
+  gap: 70px;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.co-footer-brand {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.co-footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  text-decoration: none;
+}
+
+.co-footer-logo img {
+  display: block;
+
+  width: 155px;
+  height: auto;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0)
+    invert(1);
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.co-footer-logo:hover img {
+  transform:
+    translateY(-2px);
+
+  opacity: 0.88;
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.co-footer-brand p {
+  max-width: 390px;
+
+  margin-top: 22px;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  letter-spacing: 0.1px;
+}
+
+
+/* =========================================
+   BEVERAGE ICONS
+========================================= */
+
+.co-beverage-icons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 22px;
+}
+
+.co-beverage-icons span {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.16);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color:
+    rgba(255, 255, 255, 0.75);
+
+  font-size: 14px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.co-beverage-icons span:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  border-color:
+    rgba(255, 255, 255, 0.30);
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   SOCIAL MEDIA
+========================================= */
+
+.co-social {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.co-social a {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.18);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.co-social a:hover {
+  color: #ffffff;
+
+  background:
+    rgba(255, 255, 255, 0.15);
+
+  border-color:
+    rgba(255, 255, 255, 0.35);
+
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   FOOTER HEADINGS
+========================================= */
+
+.co-footer h3 {
+  margin: 4px 0 22px;
+
+  color: #f4eee0;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   QUICK LINKS + CONTACT
+========================================= */
+
+.co-footer-links,
+.co-footer-contact {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================
+   ALL FOOTER LINKS
+========================================= */
+
+.co-footer a {
+  color:
+    rgba(255, 255, 255, 0.70);
+
+  text-decoration: none;
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* =========================================
+   EXPLORE LINKS
+========================================= */
+
+.co-footer-links a {
+  position: relative;
+
+  margin-bottom: 17px;
+}
+
+
+/* =========================================
+   CONTACT LINKS
+========================================= */
+
+.co-footer-contact a {
+  position: relative;
+
+  margin-bottom: 17px;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   LINK UNDERLINE
+========================================= */
+
+.co-footer-links a::after,
+.co-footer-contact a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1px;
+
+  background: #9edbd8;
+
+  transition:
+    width 0.3s ease;
+}
+
+
+/* =========================================
+   LINK HOVER
+========================================= */
+
+.co-footer-links a:hover,
+.co-footer-contact a:hover {
+  color: #ffffff;
+
+  transform:
+    translateX(4px);
+}
+
+.co-footer-links a:hover::after,
+.co-footer-contact a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================
+   CONTACT ICON
+========================================= */
+
+.co-footer-contact a i {
+  color:
+    rgba(158, 219, 216, 0.85);
+
+  transition:
+    color 0.25s ease;
+}
+
+.co-footer-contact a:hover i {
+  color: #ffffff;
+}
+
+
+/* =========================================
+   BOTTOM BAR
+========================================= */
+
+.co-footer-bottom {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1180px, 92%);
+
+  margin: 0 auto;
+
+  padding: 20px 0;
+
+  border-top: 1px solid
+    rgba(255, 255, 255, 0.12);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   COPYRIGHT
+========================================= */
+
+.co-footer-bottom p {
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.48);
+
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================
+   PRIVACY / TERMS
+========================================= */
+
+.co-footer-legal {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.co-footer-legal a {
+  position: relative;
+
+  font-size: 11px;
+
+  color:
+    rgba(255, 255, 255, 0.48);
+}
+
+.co-footer-legal a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 1px;
+
+  background: #9edbd8;
+
+  transition:
+    width 0.25s ease;
+}
+
+.co-footer-legal a:hover {
+  color: #ffffff;
+
+  transform: none;
+}
+
+.co-footer-legal a:hover::after {
+  width: 100%;
+}
+
+.co-footer-legal span {
+  color:
+    rgba(255, 255, 255, 0.25);
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+
+  .co-footer-container {
+    grid-template-columns:
+      1.5fr 1fr;
+
+    gap: 45px;
+
+    padding: 50px 0 40px;
+  }
+
+
+  .co-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+
+  .co-footer-brand p {
+    max-width: 500px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+  .co-footer-container {
+    width: 88%;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 35px 25px;
+
+    padding: 42px 0 32px;
+  }
+
+
+  /* BRAND */
+
+  .co-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+
+  /* LOGO */
+
+  .co-footer-logo img {
+    width: 135px;
+  }
+
+
+  /* ABOUT */
+
+  .co-footer-brand p {
+    margin-top: 17px;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+  /* HEADINGS */
+
+  .co-footer h3 {
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  /* LINKS */
+
+  .co-footer a {
+    font-size: 12px;
+  }
+
+
+  .co-footer-links a,
+  .co-footer-contact a {
+    margin-bottom: 15px;
+  }
+
+
+  /* BEVERAGE ICONS */
+
+  .co-beverage-icons {
+    margin-top: 19px;
+
+    gap: 9px;
+  }
+
+
+  .co-beverage-icons span {
+    width: 32px;
+    height: 32px;
+
+    font-size: 13px;
+  }
+
+
+  /* SOCIAL */
+
+  .co-social {
+    margin-top: 20px;
+
+    gap: 8px;
+  }
+
+
+  .co-social a {
+    width: 34px;
+    height: 34px;
+
+    font-size: 13px;
+  }
+
+
+  /* BOTTOM */
+
+  .co-footer-bottom {
+    width: 88%;
+
+    padding: 17px 0;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .co-footer-container {
+    width: 90%;
+
+    gap: 30px 18px;
+  }
+
+
+  /* LOGO */
+
+  .co-footer-logo img {
+    width: 120px;
+  }
+
+
+  /* ABOUT */
+
+  .co-footer-brand p {
+    font-size: 12px;
+  }
+
+
+  /* BEVERAGE ICONS */
+
+  .co-beverage-icons span {
+    width: 30px;
+    height: 30px;
+
+    font-size: 12px;
+  }
+
+
+  /* SOCIAL */
+
+  .co-social a {
+    width: 32px;
+    height: 32px;
+
+    font-size: 12px;
+  }
+
+
+  /* COPYRIGHT */
+
+  .co-footer-bottom p,
+  .co-footer-legal a {
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 340px) {
+
+  .co-footer-container {
+    width: 92%;
+
+    padding-top: 36px;
+  }
+
+
+  .co-footer-logo img {
+    width: 112px;
+  }
+
+
+  .co-footer-brand p {
+    font-size: 11.5px;
+  }
+
+
+  .co-social {
+    gap: 7px;
+  }
+
+
+  .co-social a {
+    width: 30px;
+    height: 30px;
+
+    font-size: 11px;
+  }
+
+}
