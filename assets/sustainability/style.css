@@ -1320,8 +1320,298 @@
 
 
 .co-eco-pill-row {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  flex-wrap: 
+position: relative;
+z-index: 2;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 10px;
+margin-top: 40px;
+}
+
+
+.co-eco-pill-row span {
+padding: 13px 19px;
+border: 1px solid rgba(255,255,255,.25);
+border-radius: 40px;
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1px;
+}
+
+
+.co-eco-pill-row i {
+margin-right: 7px;
+color: #a9e8e5;
+}
+
+
+/* WATER BACKGROUND */
+
+.co-eco-future-water {
+position: absolute;
+width: 600px;
+height: 600px;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+border-radius: 50%;
+border: 1px solid rgba(255,255,255,.07);
+}
+
+
+.co-eco-future-water::before,
+.co-eco-future-water::after {
+content: "";
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(255,255,255,.05);
+}
+
+
+.co-eco-future-water::before {
+inset: 60px;
+}
+
+
+.co-eco-future-water::after {
+inset: 120px;
+}
+
+
+/* =====================================================
+END
+===================================================== */
+
+.co-eco-end {
+padding: 100px 20px;
+text-align: center;
+background: var(--paper);
+}
+
+
+.co-eco-end > span {
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 4px;
+color: var(--orange);
+}
+
+
+.co-eco-end h2 {
+margin: 20px 0 0;
+font-size: clamp(43px, 6vw, 78px);
+line-height: .95;
+letter-spacing: -4px;
+}
+
+
+.co-eco-end h2 strong {
+display: block;
+color: var(--ocean);
+}
+
+
+/* =====================================================
+TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+.co-eco-hero {
+min-height: 650px;
+}
+
+.co-eco-orbit {
+width: 300px;
+height: 300px;
+right: -60px;
+opacity: .7;
+}
+
+.co-eco-intro {
+grid-template-columns: 60px 1fr;
+}
+
+.co-eco-intro > p {
+grid-column: 2;
+margin-top: 0;
+}
+
+.co-eco-story,
+.co-eco-packaging {
+grid-template-columns: 1fr;
+}
+
+.co-eco-story-image {
+min-height: 450px;
+}
+
+.co-eco-packaging {
+min-height: auto;
+}
+
+.co-eco-bottle-stage {
+min-height: 550px;
+}
+
+.co-eco-nature {
+grid-template-columns: 1fr 1fr;
+}
+
+.co-eco-nature-photo {
+min-height: 450px;
+}
+
+.co-eco-nature-copy {
+grid-column: 2;
+}
+
+}
+
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+.co-eco-hero {
+min-height: 650px;
+padding: 60px 25px;
+align-items: flex-start;
+}
+
+.co-eco-overline {
+font-size: 9px;
+letter-spacing: 2px;
+}
+
+.co-eco-hero h1 {
+font-size: 58px;
+letter-spacing: -3px;
+}
+
+.co-eco-hero p {
+font-size: 14px;
+}
+
+.co-eco-orbit {
+width: 250px;
+height: 250px;
+right: -75px;
+bottom: 25px;
+top: auto;
+transform: none;
+}
+
+.co-eco-drop {
+width: 90px;
+height: 90px;
+}
+
+.co-eco-drop i {
+font-size: 38px;
+}
+
+.co-eco-wave {
+bottom: -60px;
+height: 110px;
+}
+
+.co-eco-intro,
+.co-eco-story,
+.co-eco-packaging,
+.co-eco-nature {
+width: 90%;
+}
+
+.co-eco-intro {
+display: block;
+padding: 80px 0 60px;
+}
+
+.co-eco-intro-number {
+margin-bottom: 25px;
+}
+
+.co-eco-intro h2 {
+font-size: 42px;
+}
+
+.co-eco-intro > p {
+margin-top: 30px;
+}
+
+.co-eco-story-content,
+.co-eco-packaging-copy {
+padding: 40px 28px;
+}
+
+.co-eco-story-image {
+min-height: 380px;
+}
+
+.co-eco-story-content h3 {
+font-size: 40px;
+}
+
+.co-eco-packaging {
+margin: 70px auto;
+}
+
+.co-eco-packaging-copy h2 {
+font-size: 48px;
+}
+
+.co-eco-bottle-stage {
+min-height: 500px;
+}
+
+.co-eco-bottle-stage img {
+width: 190px;
+}
+
+.co-eco-circle {
+width: 350px;
+height: 350px;
+}
+
+.co-eco-nature {
+display: block;
+margin-bottom: 70px;
+}
+
+.co-eco-nature-title {
+padding: 20px 0 35px;
+}
+
+.co-eco-nature-title h2 {
+font-size: 44px;
+}
+
+.co-eco-nature-photo {
+min-height: 400px;
+}
+
+.co-eco-nature-copy {
+padding: 35px 0;
+}
+
+.co-eco-future {
+padding: 90px 25px;
+}
+
+.co-eco-future h2 {
+font-size: 46px;
+}
+
+.co-eco-end {
+padding: 75px 20px;
+}
+
+.co-eco-end h2 {
+font-size: 47px;
+}
+
+}
