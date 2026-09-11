@@ -1557,17 +1557,44 @@ font-size: 40px;
 }
 
 .co-eco-packaging {
-margin: 70px auto;
+width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .co-eco-packaging-copy h2 {
 font-size: 48px;
 }
+.co-eco-packaging-copy p {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+    margin-right: 0;
 
+    font-size: 13px;
+    line-height: 1.8;
+
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
 .co-eco-bottle-stage {
 min-height: 500px;
 }
 
+  .co-eco-stats {
+    width: 100%;
+    max-width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+  }
 .co-eco-bottle-stage img {
 width: 190px;
 }
