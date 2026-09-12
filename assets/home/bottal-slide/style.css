@@ -355,7 +355,7 @@ body {
   border: none;
   outline: none;
 
-  z-index: 1000;
+  z-index: 1;
 
   pointer-events: none;
 
@@ -456,7 +456,7 @@ body {
 
   cursor: pointer;
 
-  z-index: 1100;
+  z-index: 1;
 
   transition:
     background 0.25s ease,
