@@ -1,0 +1,2512 @@
+/* =====================================================
+   CANONICAL OCEAN™
+   OUR WATER — PREMIUM PRODUCT PAGE
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    "Poppins",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #193a3e;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(63,190,190,.11),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(210,190,130,.09),
+      transparent 28%
+    ),
+    #f6fbfa!important;
+
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.co-water-page {
+  width: 100%;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(0, 109, 119, 0.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(223, 127, 53, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f6fbfa 0%,
+      #e8f3f0 50%,
+      #f6fbfa 100%
+    );
+}
+/* =====================================================
+   ALL H2 — CANONICAL OCEAN TEAL
+===================================================== */
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.co-water-hero {
+  position: relative;
+
+  min-height: 760px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      110deg,
+      #043d45 0%,
+      #006d77 55%,
+      #168c93 100%
+    );
+
+  color: #fff;
+}
+
+.co-water-hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 720px;
+  height: 720px;
+
+  right: -240px;
+  top: -190px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 50%;
+}
+
+.co-water-hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  right: -140px;
+  top: -90px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius: 50%;
+}
+
+.co-water-hero-inner {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 86%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    .85fr;
+
+  align-items: center;
+
+  min-height: 760px;
+}
+
+.co-water-hero-copy {
+  padding: 80px 0;
+}
+
+.co-water-overline {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #b9eeee;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
+}
+
+.co-water-hero h1 {
+  margin: 0;
+
+  max-width: 700px;
+
+  font-size:
+    clamp(
+      58px,
+      7vw,
+      104px
+    );
+
+  line-height: .87;
+
+  letter-spacing: -5px;
+
+  font-weight: 300;
+}
+
+.co-water-hero h1 strong {
+  display: block;
+
+  color: #b9eeee;
+
+  font-weight: 800;
+}
+
+.co-water-hero-copy p {
+  max-width: 520px;
+
+  margin: 38px 0 0;
+
+  color:
+    rgba(255,255,255,.78);
+
+  font-size: 14px;
+
+  line-height: 1.95;
+}
+
+.co-water-hero-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 35px;
+
+  padding: 15px 22px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.35);
+
+  color: #fff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  transition: .3s ease;
+}
+
+.co-water-hero-btn:hover {
+  background: #fff;
+
+  color: #006d77;
+
+  transform:
+    translateY(-3px);
+}
+
+.co-water-hero-product {
+  position: relative;
+
+  min-height: 680px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.co-water-hero-product::before {
+  content: "";
+
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.08);
+}
+
+.co-water-hero-product img {
+  position: relative;
+
+  z-index: 2;
+
+  width: 300px;
+
+  max-height: 620px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 35px 35px
+      rgba(0,0,0,.25)
+    );
+
+  animation:
+    coBottleFloat 5s ease-in-out infinite;
+}
+
+@keyframes coBottleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.co-water-intro {
+  width: min(1200px, 86%);
+
+  margin: auto;
+
+  padding: 115px 0 90px;
+
+  display: grid;
+
+  grid-template-columns:
+    90px
+    1.15fr
+    .85fr;
+
+  gap: 45px;
+}
+
+.co-water-number {
+  color: #df7f35;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-intro h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      42px,
+      5vw,
+      70px
+    );
+
+  line-height: .95;
+color: #006d77;
+  
+  letter-spacing: -3px;
+
+  font-weight: 300;
+}
+
+.co-water-intro h2 strong {
+  display: block;
+
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+.co-water-intro-copy p {
+  margin: 0 0 18px;
+
+  color: #5c7073;
+
+  font-size: 14px;
+
+  line-height: 1.95;
+}
+
+
+/* =====================================================
+   FEATURE
+===================================================== */
+
+.co-water-feature {
+  position: relative;
+
+  width: min(1200px, 86%);
+
+  min-height: 570px;
+
+  margin:
+    0 auto 120px;
+
+  overflow: hidden;
+
+  background: #043d45;
+
+  color: #fff;
+}
+
+.co-water-feature img {
+  width: 100%;
+  height: 570px;
+
+  display: block;
+
+  object-fit: cover;
+
+  opacity: .72;
+
+  transition:
+    transform .8s ease;
+}
+
+.co-water-feature:hover img {
+  transform: scale(1.04);
+}
+
+.co-water-feature-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,35,40,.92),
+      rgba(0,35,40,.45) 55%,
+      rgba(0,35,40,.05)
+    );
+}
+
+.co-water-feature-content {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 65px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  max-width: 580px;
+}
+
+.co-water-feature-content span {
+  color: #b9eeee;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-feature-content h2 {
+  margin: 20px 0;
+  
+  font-size:
+    clamp(
+      45px,
+      5vw,
+      72px
+    );
+
+  line-height: .92;
+
+  letter-spacing: -3px;
+
+  font-weight: 300;
+}
+
+.co-water-feature-content h2 strong {
+  color: #b9eeee;
+
+  font-weight: 800;
+}
+
+.co-water-feature-content p {
+  max-width: 500px;
+
+  margin: 0;
+
+  color:
+    rgba(255,255,255,.75);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+
+/* =====================================================
+   COLLECTION
+===================================================== */
+
+.co-water-products {
+  width: min(1200px, 86%);
+
+  margin:
+    0 auto 120px;
+}
+
+.co-water-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+  margin-bottom: 50px;
+}
+
+.co-water-heading-label {
+  color: #df7f35;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-heading h2 {
+  margin: 15px 0 0;
+color: #006d77;
+  
+  font-size:
+    clamp(
+      44px,
+      5vw,
+      72px
+    );
+
+  line-height: .9;
+
+  letter-spacing: -3px;
+
+  font-weight: 300;
+}
+
+.co-water-heading h2 strong {
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+.co-water-heading-side {
+  max-width: 300px;
+
+  color: #66777a;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+.co-water-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.co-water-card {
+  position: relative;
+
+  min-height: 560px;
+
+  padding: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border:
+    1px solid
+    rgba(0,70,75,.07);
+
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+}
+
+.co-water-card:hover {
+  transform:
+    translateY(-10px);
+
+  box-shadow:
+    0 28px 60px
+    rgba(0,50,55,.13);
+}
+
+.co-water-card-number {
+  position: absolute;
+
+  top: 28px;
+  right: 28px;
+
+  color: #df7f35;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.co-water-card-image {
+  height: 330px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  background:
+    radial-gradient(
+      circle,
+      #e4f5f2,
+      #f8fbfa 65%
+    );
+}
+
+.co-water-card-image img {
+  width: 170px;
+  height: 300px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 20px 20px
+      rgba(0,40,45,.17)
+    );
+
+  transition:
+    transform .5s ease;
+}
+
+.co-water-card:hover
+.co-water-card-image img {
+  transform:
+    translateY(-10px)
+    scale(1.04);
+}
+
+.co-water-card-tag {
+  margin-bottom: 10px;
+
+  Color:#df7f35;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.co-water-card h3 {
+  margin: 0;
+
+  color: #193a3e;
+
+  font-size: 27px;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+}
+
+.co-water-card p {
+  margin: 15px 0 0;
+
+  color: #647679;
+
+  font-size: 12px;
+
+  line-height: 1.75;
+}
+
+.co-water-card-link {
+  margin-top: auto;
+
+  padding-top: 25px;
+
+  color: #006d77;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.co-water-card-link i {
+  margin-left: 7px;
+
+  transition:
+    transform .3s ease;
+}
+
+.co-water-card:hover
+.co-water-card-link i {
+  transform:
+    translateX(5px);
+}
+
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.co-water-story {
+  width: min(1200px, 86%);
+
+  margin: 70px auto;
+
+  display: grid;
+
+  grid-template-columns:
+    .9fr
+    1.1fr;
+
+  min-height: 620px;
+
+ background: #e8f3f0!important;
+}
+
+.co-water-story-image {
+  overflow: hidden;
+
+  min-height: 620px;
+}
+
+.co-water-story-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition:
+    transform .8s ease;
+}
+
+.co-water-story:hover
+.co-water-story-image img {
+  transform: scale(1.05);
+}
+
+.co-water-story-content {
+  padding: 75px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.co-water-story-content > span {
+  color: #df7f35;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-story-content h2 {
+  margin: 18px 0 28px;
+color: #006d77;
+  font-size:
+    clamp(
+      42px,
+      5vw,
+      68px
+    );
+
+  line-height: .94;
+
+  letter-spacing: -3px;
+
+  font-weight: 300;
+}
+
+.co-water-story-content h2 strong {
+  display: block;
+
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+.co-water-story-content p {
+  max-width: 530px;
+
+  margin: 0 0 20px;
+
+  color: #56696c;
+
+  font-size: 14px;
+
+  line-height: 1.95;
+}
+
+
+/* =====================================================
+   QUALITY
+===================================================== */
+
+.co-water-quality {
+  padding: 95px 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #043d45,
+      #006d77
+    );
+
+  color: #fff;
+}
+
+.co-water-quality-inner {
+  width: min(1200px, 86%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1.1fr
+    repeat(3, 1fr);
+
+  gap: 35px;
+
+  align-items: center;
+}
+
+.co-water-quality-intro span {
+  color: #b9eeee;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-quality-intro h2 {
+  margin: 15px 0 0;
+
+  font-size: 40px;
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 300;
+}
+
+.co-water-quality-intro h2 strong {
+  color: #b9eeee;
+
+  font-weight: 800;
+}
+
+.co-water-quality-item {
+  min-height: 130px;
+
+  padding-left: 25px;
+
+  border-left:
+    1px solid
+    rgba(255,255,255,.20);
+}
+
+.co-water-quality-item i {
+  color: #b9eeee;
+
+  font-size: 23px;
+}
+
+.co-water-quality-item h3 {
+  margin: 15px 0 7px;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+}
+
+.co-water-quality-item p {
+  margin: 0;
+
+  color:
+    rgba(255,255,255,.68);
+
+  font-size: 11px;
+
+  line-height: 1.7;
+}
+
+
+/* =====================================================
+   LIFESTYLE
+===================================================== */
+
+.co-water-lifestyle {
+  width: min(1200px, 86%);
+
+  margin:
+    120px auto;
+}
+
+.co-water-lifestyle-heading {
+  margin-bottom: 45px;
+}
+
+.co-water-lifestyle-heading span {
+  color: #df7f35;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.co-water-lifestyle-heading h2 {
+  margin: 16px 0 0;
+color: #006d77;
+  font-size:
+    clamp(
+      42px,
+      5vw,
+      68px
+    );
+
+  line-height: .95;
+
+  letter-spacing: -3px;
+
+  font-weight: 300;
+}
+
+.co-water-lifestyle-heading h2 strong {
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+.co-water-lifestyle-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.3fr
+    .7fr;
+
+  gap: 18px;
+}
+
+.co-water-lifestyle-main {
+  position: relative;
+
+  min-height: 500px;
+
+  overflow: hidden;
+
+  background: #043d45;
+}
+
+.co-water-lifestyle-main img {
+  width: 100%;
+  height: 500px;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition:
+    transform .8s ease;
+}
+
+.co-water-lifestyle-main:hover img {
+  transform: scale(1.05);
+}
+
+.co-water-lifestyle-main::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(0,25,30,.82),
+      transparent 60%
+    );
+}
+
+.co-water-lifestyle-copy {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 35px;
+  bottom: 35px;
+
+  color: #fff;
+}
+
+.co-water-lifestyle-copy span {
+  color: #b9eeee;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.co-water-lifestyle-copy h3 {
+  margin: 12px 0 0;
+  font-size: 30px;
+
+  letter-spacing: -1px;
+}
+
+.co-water-lifestyle-side {
+  display: grid;
+
+  grid-template-rows:
+    1fr 1fr;
+
+  gap: 18px;
+}
+
+.co-water-lifestyle-box {
+  position: relative;
+
+  padding: 35px;
+
+  overflow: hidden;
+
+  background: #f5eee2;
+}
+
+.co-water-lifestyle-box:nth-child(2) {
+  background: #e1f1ed;
+}
+
+.co-water-lifestyle-box i {
+  color: #006d77;
+
+  font-size: 25px;
+}
+
+.co-water-lifestyle-box h3 {
+  margin: 20px 0 10px;
+color: #006d77;
+  font-size: 24px;
+
+  line-height: 1;
+}
+
+.co-water-lifestyle-box p {
+  margin: 0;
+
+  color: #647679;
+
+  font-size: 12px;
+
+  line-height: 1.75;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.co-water-end {
+  position: relative;
+
+  padding:
+    130px 25px 150px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #043d45,
+      #006d77
+    );
+
+  color: #fff;
+}
+
+.co-water-end::before {
+  content: "";
+
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 50%;
+}
+
+.co-water-end span {
+  position: relative;
+
+  z-index: 2;
+
+  color: #b9eeee;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
+}
+
+.co-water-end h2 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 20px 0;
+
+  font-size:
+    clamp(
+      48px,
+      7vw,
+      90px
+    );
+
+  line-height: .9;
+
+  letter-spacing: -4px;
+
+  font-weight: 300;
+}
+
+.co-water-end h2 strong {
+  color: #b9eeee;
+
+  font-weight: 800;
+}
+
+.co-water-end p {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 550px;
+
+  margin: 25px auto 0;
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.co-water-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(35px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.co-water-reveal.visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .co-water-hero-inner {
+    grid-template-columns:
+      1fr
+      .75fr;
+  }
+
+  .co-water-hero h1 {
+    font-size: 65px;
+  }
+
+  .co-water-hero-product img {
+    width: 240px;
+  }
+
+  .co-water-intro {
+    grid-template-columns:
+      60px
+      1fr;
+  }
+
+  .co-water-intro-copy {
+    grid-column: 2;
+  }
+
+  .co-water-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .co-water-quality-inner {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .co-water-hero {
+    min-height: 720px;
+  }
+
+  .co-water-hero-inner {
+    width:
+      calc(100% - 32px);
+
+    min-height: 720px;
+
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .co-water-hero-copy {
+    padding: 70px 0 0;
+  }
+
+  .co-water-overline {
+    font-size: 9px;
+
+    letter-spacing: 2.5px;
+  }
+
+  .co-water-hero h1 {
+    font-size: 52px;
+
+    letter-spacing: -3px;
+  }
+
+  .co-water-hero-copy p {
+    font-size: 13px;
+
+    margin:
+      25px auto 0;
+
+    max-width: 430px;
+  }
+
+  .co-water-hero-btn {
+    margin-top: 25px;
+  }
+
+  .co-water-hero-product {
+    min-height: 300px;
+  }
+
+  .co-water-hero-product::before {
+    width: 280px;
+    height: 280px;
+  }
+
+  .co-water-hero-product img {
+    width: 175px;
+
+    max-height: 320px;
+  }
+
+
+  /* INTRO */
+
+  .co-water-intro {
+    width:
+      calc(100% - 32px);
+
+    padding:
+      75px 0 65px;
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .co-water-intro h2 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+  .co-water-intro-copy {
+    grid-column: auto;
+  }
+
+
+  /* FEATURE */
+
+  .co-water-feature {
+    width:
+      calc(100% - 32px);
+
+    min-height: 500px;
+
+    margin-bottom: 75px;
+  }
+
+  .co-water-feature img {
+    height: 500px;
+  }
+
+  .co-water-feature-content {
+    left: 28px;
+    right: 28px;
+  }
+
+  .co-water-feature-content h2 {
+    font-size: 43px;
+
+    letter-spacing: -2px;
+  }
+
+
+  /* COLLECTION */
+
+  .co-water-products {
+    width:
+      calc(100% - 32px);
+
+    margin-bottom: 75px;
+  }
+
+  .co-water-heading {
+    display: block;
+
+    margin-bottom: 30px;
+  }
+
+  .co-water-heading h2 {
+    font-size: 43px;
+
+    letter-spacing: -2px;
+  }
+
+  .co-water-heading-side {
+    margin-top: 20px;
+
+    max-width: 100%;
+  }
+
+  .co-water-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .co-water-card {
+    min-height: 510px;
+
+    padding: 22px;
+  }
+
+  .co-water-card-image {
+    height: 310px;
+  }
+
+
+  /* STORY */
+
+  .co-water-story {
+    width:
+      calc(100% - 32px);
+
+    margin-bottom: 75px;
+
+    grid-template-columns: 1fr;
+  }
+
+  .co-water-story-image {
+    min-height: 420px;
+  }
+
+  .co-water-story-content {
+    padding:
+      45px 28px;
+  }
+
+  .co-water-story-content h2 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+
+  /* QUALITY */
+
+  .co-water-quality {
+    padding: 75px 0;
+  }
+
+  .co-water-quality-inner {
+    width:
+      calc(100% - 32px);
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .co-water-quality-item {
+    min-height: auto;
+
+    padding:
+      20px 0 0;
+
+    border-left: 0;
+
+    border-top:
+      1px solid
+      rgba(255,255,255,.20);
+  }
+
+
+  /* LIFESTYLE */
+
+  .co-water-lifestyle {
+    width:
+      calc(100% - 32px);
+
+    margin:
+      75px auto;
+  }
+
+  .co-water-lifestyle-heading h2 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+  .co-water-lifestyle-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .co-water-lifestyle-main {
+    min-height: 390px;
+  }
+
+  .co-water-lifestyle-main img {
+    height: 390px;
+  }
+
+  .co-water-lifestyle-side {
+    grid-template-rows: auto;
+  }
+
+  .co-water-lifestyle-box {
+    min-height: 220px;
+  }
+
+
+  /* FINAL */
+
+  .co-water-end {
+    padding:
+      100px 20px 120px;
+  }
+
+  .co-water-end h2 {
+    font-size: 50px;
+
+    letter-spacing: -3px;
+  }
+
+  .co-water-end::before {
+    width: 380px;
+    height: 380px;
+  }
+
+}
+/* =====================================================
+   CANONICAL OCEAN™
+   OUR ENERGY — COMING SOON
+===================================================== */
+
+.co-energy-coming {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 720px;
+
+  padding: 140px 0 130px!important;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(57,183,181,.18),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 15% 80%,
+      rgba(223,127,53,.08),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #f7fbfa 0%,
+      #e8f5f2 48%,
+      #f8fbfa 100%
+    );
+
+  color: #193a3e;
+}
+
+
+/* =====================================================
+   BACKGROUND ORBITS
+===================================================== */
+
+.co-energy-bg-circle {
+  position: absolute;
+
+  width: 620px;
+  height: 620px;
+
+  right: -220px;
+  top: -170px;
+
+  border:
+    1px solid
+    rgba(0,109,119,.12);
+
+  border-radius: 50%;
+}
+
+.co-energy-bg-circle::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 70px;
+
+  border:
+    1px solid
+    rgba(0,109,119,.08);
+
+  border-radius: 50%;
+}
+
+.co-energy-bg-circle.circle-two {
+  width: 380px;
+  height: 380px;
+
+  right: 80px;
+  top: 80px;
+
+  border-color:
+    rgba(223,127,53,.10);
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.co-energy-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 86%);
+
+  min-height: 520px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    .9fr;
+
+  align-items: center;
+
+  gap: 60px;
+  
+}
+
+
+/* =====================================================
+   LEFT
+===================================================== */
+
+.co-energy-copy {
+  max-width: 590px;
+}
+
+.co-energy-overline {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #df7f35;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
+}
+
+
+.co-energy-copy h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      55px,
+      7vw,
+      92px
+    );
+
+  line-height: .85;
+
+  letter-spacing: -5px;
+
+  font-weight: 300;
+
+  color: #006d77;
+}
+
+
+.co-energy-copy h2 strong {
+  display: block;
+
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+
+.co-energy-line {
+  width: 75px;
+  height: 3px;
+
+  margin: 28px 0;
+
+  background: #df7f35;
+}
+
+
+.co-energy-copy h3 {
+  margin: 0;
+
+  max-width: 500px;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  letter-spacing: -1px;
+
+  font-weight: 400;
+
+  color: #193a3e;
+}
+
+
+.co-energy-copy h3 strong {
+  color: #006d77;
+
+  font-weight: 800;
+}
+
+
+.co-energy-copy p {
+  max-width: 530px;
+
+  margin: 25px 0 0;
+
+  color: #607174;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+}
+
+
+/* =====================================================
+   COMING SOON BADGE
+===================================================== */
+
+.co-energy-coming-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+
+  padding: 13px 19px;
+
+  border:
+    1px solid
+    rgba(0,109,119,.18);
+
+  background:
+    rgba(255,255,255,.65);
+
+  color: #006d77;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  backdrop-filter: blur(8px);
+}
+
+
+.co-energy-coming-badge i {
+  color: #df7f35;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   PRODUCT SIDE
+===================================================== */
+
+.co-energy-products {
+  position: relative;
+
+  min-height: 520px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.co-energy-product-card {
+  position: relative;
+
+  width: 390px;
+  height: 470px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.co-energy-product-glow {
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(57,183,181,.30),
+      rgba(57,183,181,.05) 50%,
+      transparent 70%
+    );
+
+  filter: blur(4px);
+}
+
+
+/* =====================================================
+   ENERGY CAN TEASER
+===================================================== */
+
+.co-energy-can {
+  position: relative;
+
+  z-index: 2;
+
+  width: 175px;
+  height: 390px;
+
+  padding:
+    35px 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius:
+    22px 22px 28px 28px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #043d45,
+      #006d77 48%,
+      #168c93
+    );
+
+  color: #fff;
+
+  box-shadow:
+    0 35px 55px
+    rgba(0,55,60,.25);
+
+  transform:
+    rotate(-4deg);
+
+  animation:
+    coEnergyFloat 5s ease-in-out infinite;
+}
+
+
+.co-energy-can::before {
+  content: "";
+
+  position: absolute;
+
+  top: -7px;
+  left: 8px;
+  right: 8px;
+
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: #dce8e7;
+
+  box-shadow:
+    inset 0 -3px 4px
+    rgba(0,0,0,.15);
+}
+
+
+.co-energy-can::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 12px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  border-radius: 16px;
+}
+
+
+.co-energy-can-logo {
+  position: relative;
+
+  z-index: 2;
+
+  text-align: center;
+
+  color: #b9eeee;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: 2px;
+}
+
+
+.co-energy-can i {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 55px;
+
+  color: #df7f35;
+
+  font-size: 52px;
+
+  filter:
+    drop-shadow(
+      0 0 15px
+      rgba(223,127,53,.35)
+    );
+}
+
+
+.co-energy-can > strong {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 18px;
+
+  color: #fff;
+
+  font-size: 25px;
+
+  letter-spacing: 3px;
+
+  font-weight: 800;
+}
+
+
+.co-energy-can small {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 12px;
+
+  color:
+    rgba(255,255,255,.60);
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+@keyframes coEnergyFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-4deg);
+  }
+
+  50% {
+    transform:
+      translateY(-13px)
+      rotate(-2deg);
+  }
+
+}
+
+
+/* =====================================================
+   FLAVOURS
+===================================================== */
+
+.co-energy-flavours {
+  position: absolute;
+
+  z-index: 4;
+
+  right: 0;
+  bottom: 35px;
+
+  width: 250px;
+
+  padding: 22px;
+
+  background:
+    rgba(255,255,255,.82);
+
+  border:
+    1px solid
+    rgba(0,109,119,.10);
+
+  box-shadow:
+    0 20px 45px
+    rgba(0,50,55,.08);
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+.co-energy-flavours > span {
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: #df7f35;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.co-energy-flavour-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.co-energy-flavour-list b {
+  padding: 7px 9px;
+
+  background: #e8f3f0;
+
+  color: #006d77;
+
+  font-size: 7px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.co-energy-bottom {
+  position: relative;
+
+  z-index: 3;
+
+  width: min(1200px, 86%);
+
+  margin: 55px auto 0;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(0,109,119,.12);
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+
+.co-energy-bottom span {
+  color: #006d77;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+
+.co-energy-bottom p {
+  margin: 0;
+
+  color: #718184;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.co-energy-product-card:hover
+.co-energy-can {
+  animation-play-state: paused;
+
+  transform:
+    translateY(-8px)
+    rotate(0deg)
+    scale(1.03);
+
+  transition:
+    transform .5s ease;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .co-energy-container {
+    grid-template-columns:
+      1fr
+      .8fr;
+
+    gap: 25px;
+  }
+
+  .co-energy-copy h2 {
+    font-size: 65px;
+  }
+
+  .co-energy-product-card {
+    transform: scale(.9);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+/* =====================================================
+   MOBILE — ENERGY CENTER PRODUCT
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .co-energy-coming {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+
+    padding:
+      75px 0 60px;
+  }
+
+
+  .co-energy-container {
+    width:
+      calc(100% - 32px);
+
+    max-width:
+      calc(100% - 32px);
+
+    margin:
+      0 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 30px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     CONTENT
+  ========================= */
+
+  .co-energy-copy {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+  }
+
+
+  .co-energy-copy h2 {
+    font-size: 52px;
+
+    line-height: .88;
+
+    letter-spacing: -3px;
+  }
+
+
+  .co-energy-line {
+    margin:
+      22px auto;
+  }
+
+
+  .co-energy-copy h3 {
+    font-size: 25px;
+
+    line-height: 1.05;
+  }
+
+
+  .co-energy-copy p {
+    width: 100%;
+    max-width: 430px;
+
+    margin:
+      24px auto 0;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+  }
+
+
+  .co-energy-coming-badge {
+    margin-top: 25px;
+  }
+
+
+  /* =========================
+     PRODUCT AREA
+  ========================= */
+
+  .co-energy-products {
+    position: relative;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-height: 570px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     CAN HOLDER
+  ========================= */
+
+  .co-energy-product-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 330px;
+
+    height: 390px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    transform: none;
+  }
+
+
+  /* =========================
+     GLOW
+  ========================= */
+
+  .co-energy-product-glow {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+      translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+  }
+
+
+  /* =========================
+     CAN — CENTER
+  ========================= */
+
+  .co-energy-can {
+    position: relative;
+
+    z-index: 2;
+
+    width: 145px;
+    max-width: 145px;
+
+    height: 350px;
+
+    margin: 0;
+
+    flex-shrink: 0;
+
+    transform:
+      rotate(-3deg);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     CAN CONTENT
+  ========================= */
+
+  .co-energy-can-logo {
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .co-energy-can i {
+    margin-top: 42px;
+
+    font-size: 40px;
+  }
+
+
+  .co-energy-can > strong {
+    margin-top: 14px;
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .co-energy-can small {
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  /* =========================
+     FLAVOUR CARD
+     BELOW CAN
+  ========================= */
+
+  .co-energy-flavours {
+    position: relative;
+
+    z-index: 5;
+
+    right: auto;
+    left: auto;
+    bottom: auto;
+
+    width:
+      min(250px, 100%);
+
+    max-width:
+      250px;
+
+    margin:
+      -25px auto 0;
+
+    padding: 17px;
+
+    box-sizing: border-box;
+
+    text-align: left;
+
+    background:
+      rgba(255,255,255,.95);
+
+    border:
+      1px solid
+      rgba(0,109,119,.10);
+
+    box-shadow:
+      0 18px 40px
+      rgba(0,50,55,.12);
+  }
+
+
+  .co-energy-flavours > span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .co-energy-flavour-list {
+    display: grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 6px;
+  }
+
+
+  .co-energy-flavour-list b {
+    padding:
+      8px 5px;
+
+    text-align: center;
+
+    font-size: 6px;
+
+    letter-spacing: .8px;
+  }
+
+
+  /* =========================
+     BOTTOM
+  ========================= */
+
+  .co-energy-bottom {
+    width:
+      calc(100% - 32px);
+
+    max-width:
+      calc(100% - 32px);
+
+    margin:
+      35px 16px 0;
+
+    display: block;
+
+    text-align: center;
+
+    box-sizing: border-box;
+  }
+
+
+  .co-energy-bottom p {
+    margin-top: 12px;
+
+    line-height: 1.7;
+  }
+
+}
