@@ -1,0 +1,169 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  /* =====================================================
+     SCROLL REVEAL
+  ===================================================== */
+
+  const revealItems =
+    document.querySelectorAll(".co-contact-reveal");
+
+
+  if ("IntersectionObserver" in window) {
+
+    const revealObserver =
+      new IntersectionObserver(
+        function (entries) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealItems.forEach(function (item) {
+
+      revealObserver.observe(item);
+
+    });
+
+  } else {
+
+    revealItems.forEach(function (item) {
+
+      item.classList.add("visible");
+
+    });
+
+  }
+
+
+  /* =====================================================
+     FAQ ACCORDION
+  ===================================================== */
+
+  const faqItems =
+    document.querySelectorAll(".co-contact-faq-item");
+
+
+  faqItems.forEach(function (item) {
+
+    const button =
+      item.querySelector("button");
+
+    const answer =
+      item.querySelector(".co-contact-faq-answer");
+
+
+    if (!button || !answer) return;
+
+
+    button.addEventListener("click", function () {
+
+      const isOpen =
+        item.classList.contains("open");
+
+
+      faqItems.forEach(function (otherItem) {
+
+        otherItem.classList.remove("open");
+
+        const otherAnswer =
+          otherItem.querySelector(
+            ".co-contact-faq-answer"
+          );
+
+        if (otherAnswer) {
+          otherAnswer.style.maxHeight = null;
+        }
+
+      });
+
+
+      if (!isOpen) {
+
+        item.classList.add("open");
+
+        answer.style.maxHeight =
+          answer.scrollHeight + "px";
+
+      }
+
+    });
+
+  });
+
+
+  /* =====================================================
+     HERO BOTTLE MOUSE EFFECT
+  ===================================================== */
+
+  const heroVisual =
+    document.querySelector(
+      ".co-contact-hero-visual"
+    );
+
+  const heroBottle =
+    heroVisual
+      ? heroVisual.querySelector("img")
+      : null;
+
+
+  if (
+    heroVisual &&
+    heroBottle &&
+    window.matchMedia("(min-width: 901px)").matches
+  ) {
+
+
+    heroVisual.addEventListener(
+      "mousemove",
+      function (event) {
+
+        const rect =
+          heroVisual.getBoundingClientRect();
+
+
+        const x =
+          (event.clientX - rect.left) /
+          rect.width - .5;
+
+
+        const y =
+          (event.clientY - rect.top) /
+          rect.height - .5;
+
+
+        heroBottle.style.transform =
+          `translate(${x * 12}px, ${y * 12}px) rotate(${x * 3}deg)`;
+
+      }
+    );
+
+
+    heroVisual.addEventListener(
+      "mouseleave",
+      function () {
+
+        heroBottle.style.transform = "";
+
+      }
+    );
+
+  }
+
+
+});
