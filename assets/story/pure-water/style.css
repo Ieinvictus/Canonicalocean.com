@@ -1105,7 +1105,7 @@ a {
    MOBILE
 ===================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
   .co-story-hero {
     min-height: 650px;
