@@ -1538,6 +1538,14 @@ color: #006d77;
     font-size: 42px;
   }
 
+  .co-editorial-vertical {
+    position: absolute;
+    left: calc(50% + 115px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    z-index: 5;
+  }
 
   /* FAMILY */
 
