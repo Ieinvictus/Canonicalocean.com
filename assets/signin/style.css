@@ -1,0 +1,1444 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --teal: #006d77;
+  --deep: #193a3e;
+  --aqua: #3fbebe;
+  --gold: #d2be82;
+  --paper: #f6fbfa;
+  --white: #ffffff;
+  --line: rgba(25, 58, 62, 0.12);
+  --muted: #718285;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--paper);
+  color: var(--deep);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   MAIN AUTH SHELL
+========================================================= */
+
+.auth-shell {
+  min-height: 100vh;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(360px, 0.9fr)
+    minmax(520px, 1.1fr);
+}
+
+
+/* =========================================================
+   BRAND PANEL
+========================================================= */
+
+.brand-panel {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  padding:
+    38px
+    7vw
+    32px;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(63, 190, 190, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(210, 190, 130, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      #003f45,
+      #006d77 55%,
+      #004e55
+    );
+
+  color: #fff;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* Decorative circle */
+
+.brand-panel::after {
+  content: "";
+
+  position: absolute;
+
+  width: 560px;
+  height: 560px;
+
+  right: -250px;
+  bottom: -250px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.09);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 80px
+    rgba(255, 255, 255, 0.025),
+
+    0 0 0 160px
+    rgba(255, 255, 255, 0.018);
+}
+
+
+/* =========================================================
+   BRAND TOP
+========================================================= */
+
+.brand-top {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+/* Logo */
+
+.brand img {
+  width: 190px;
+
+  max-width: 45vw;
+
+  height: auto;
+
+  display: block;
+
+  filter:
+    brightness(0)
+    invert(1);
+}
+
+
+/* Account pill */
+
+.b2b-pill {
+  padding:
+    10px
+    13px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.25);
+
+  border-radius: 99px;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+
+  white-space: nowrap;
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* =========================================================
+   BRAND COPY
+========================================================= */
+
+.brand-copy {
+  position: relative;
+
+  z-index: 2;
+
+  margin: auto 0;
+
+  padding: 80px 0;
+}
+
+
+.eyebrow,
+.section-label {
+  display: block;
+
+  font-size: 9px;
+
+  letter-spacing: 2.4px;
+
+  font-weight: 800;
+
+  color: var(--aqua);
+}
+
+
+.brand-copy h1 {
+  margin: 22px 0;
+
+  font-family:
+    "DM Serif Display",
+    serif;
+
+  font-size:
+    clamp(48px, 5vw, 78px);
+
+  font-weight: 400;
+
+  line-height: 0.94;
+
+  letter-spacing: -2px;
+}
+
+
+.brand-copy h1 em {
+  font-style: italic;
+
+  color: #e7d9a8;
+}
+
+
+.brand-copy p {
+  max-width: 520px;
+
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.9;
+
+  color:
+    rgba(255, 255, 255, 0.76);
+}
+
+
+/* =========================================================
+   WATERMARK
+========================================================= */
+
+.brand-watermark {
+  position: absolute;
+
+  z-index: 1;
+
+  right: 4%;
+  bottom: 6%;
+
+  text-align: right;
+
+  line-height: 0.68;
+
+  opacity: 0.07;
+
+  font-family:
+    "DM Serif Display",
+    serif;
+}
+
+
+.brand-watermark span,
+.brand-watermark strong {
+  display: block;
+
+  font-size:
+    clamp(60px, 9vw, 150px);
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   BRAND BOTTOM
+========================================================= */
+
+.brand-bottom {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 25px;
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+}
+
+
+.brand-bottom i {
+  margin-right: 7px;
+
+  color: #9be2df;
+}
+
+
+/* =========================================================
+   AUTH PANEL
+========================================================= */
+
+.auth-panel {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 35px;
+
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(63, 190, 190, 0.09),
+      transparent 28%
+    ),
+    #f6fbfa;
+}
+
+
+.auth-card {
+  width: min(760px, 100%);
+
+  padding:
+    10px
+    25px;
+}
+
+
+/* =========================================================
+   MOBILE BRAND
+========================================================= */
+
+.mobile-brand {
+  display: none;
+}
+
+
+/* =========================================================
+   AUTH HEADER
+========================================================= */
+
+.auth-head {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+}
+
+
+.auth-head h2 {
+  margin:
+    8px
+    0
+    6px;
+
+  font-family:
+    "DM Serif Display",
+    serif;
+
+  font-size: 43px;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+.auth-head h2 span {
+  color: var(--teal);
+}
+
+
+.auth-head p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   ACCOUNT TYPE SELECTOR
+========================================================= */
+
+.account-types {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-bottom: 25px;
+}
+
+
+.type-card {
+  width: 100%;
+
+  min-width: 0;
+
+  border:
+    1px solid
+    var(--line);
+
+  background: #fff;
+
+  border-radius: 13px;
+
+  padding:
+    16px
+    12px;
+
+  text-align: left;
+
+  color: #66777a;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.type-card:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(0, 109, 119, 0.35);
+
+  box-shadow:
+    0 8px 24px
+    rgba(0, 109, 119, 0.06);
+}
+
+
+.type-card i {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: #6f8d90;
+
+  font-size: 17px;
+}
+
+
+.type-card b {
+  display: block;
+
+  color: var(--deep);
+
+  font-size: 11px;
+
+  line-height: 1.35;
+}
+
+
+.type-card small {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 8px;
+
+  line-height: 1.4;
+
+  color: #89999b;
+}
+
+
+.type-card.active {
+  border-color:
+    rgba(0, 109, 119, 0.55);
+
+  background:
+    linear-gradient(
+      145deg,
+      #f2faf9,
+      #ffffff
+    );
+
+  box-shadow:
+    0 10px 28px
+    rgba(0, 109, 119, 0.08);
+}
+
+
+.type-card.active i {
+  color: var(--teal);
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.field {
+  display: block;
+
+  min-width: 0;
+
+  margin-bottom: 15px;
+}
+
+
+.field > span {
+  display: block;
+
+  margin:
+    0
+    0
+    7px;
+
+  color: #526568;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+
+.field em {
+  font-style: normal;
+
+  color: #a4afb0;
+
+  font-weight: 500;
+
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.input-wrap {
+  min-height: 49px;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    0
+    13px;
+
+  border:
+    1px solid
+    rgba(25, 58, 62, 0.13);
+
+  border-radius: 11px;
+
+  background: #fff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.input-wrap:focus-within {
+  border-color:
+    rgba(0, 109, 119, 0.6);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(0, 109, 119, 0.06);
+}
+
+
+.input-wrap > i {
+  flex:
+    0 0 17px;
+
+  width: 17px;
+
+  text-align: center;
+
+  color: #719093;
+
+  font-size: 13px;
+}
+
+
+.input-wrap input,
+.input-wrap select,
+.input-wrap textarea {
+  width: 100%;
+
+  min-width: 0;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--deep);
+
+  font-size: 11px;
+}
+
+
+.input-wrap input::placeholder {
+  color: #a5b0b1;
+}
+
+
+.input-wrap select {
+  cursor: pointer;
+
+  appearance: auto;
+}
+
+
+/* =========================================================
+   PASSWORD EYE
+========================================================= */
+
+.eye {
+  flex:
+    0 0 auto;
+
+  border: 0;
+
+  outline: 0;
+
+  padding: 5px;
+
+  background: transparent;
+
+  color: #849395;
+
+  cursor: pointer;
+}
+
+
+.eye:hover {
+  color: var(--teal);
+}
+
+
+/* =========================================================
+   LOGIN OPTIONS
+========================================================= */
+
+.form-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin:
+    2px
+    0
+    20px;
+}
+
+
+.check {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 8px;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  color: #718083;
+}
+
+
+.check input {
+  width: 13px;
+  height: 13px;
+
+  margin:
+    2px
+    0
+    0;
+
+  accent-color: var(--teal);
+}
+
+
+.text-btn {
+  border: 0;
+
+  outline: 0;
+
+  padding: 0;
+
+  background: none;
+
+  color: var(--teal);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.text-btn:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   PRIMARY LOGIN BUTTON
+========================================================= */
+
+.primary-btn {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 8px;
+
+  padding:
+    0
+    18px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #005b64,
+      #007d86
+    );
+
+  color: #fff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 14px 30px
+    rgba(0, 109, 119, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 18px 35px
+    rgba(0, 109, 119, 0.25);
+}
+
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+
+.primary-btn i {
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   PASSKEY
+========================================================= */
+
+.passkey-btn {
+  width: 100%;
+
+  min-height: 52px;
+
+  margin-top: 10px;
+
+  padding:
+    0
+    18px;
+
+  border:
+    1px solid
+    rgba(0, 109, 119, 0.12);
+
+  border-radius: 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 11px;
+
+  background: #eef7f6;
+
+  color: var(--teal);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.passkey-btn:hover {
+  transform: translateY(-1px);
+
+  background: #e7f3f1;
+
+  box-shadow:
+    0 10px 25px
+    rgba(0, 40, 45, 0.08);
+}
+
+
+.passkey-btn i {
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.secure-note {
+  margin:
+    13px
+    0
+    0;
+
+  text-align: center;
+
+  color: #849294;
+
+  font-size: 9px;
+
+  line-height: 1.6;
+}
+
+
+.secure-note i {
+  margin-right: 4px;
+
+  color: var(--teal);
+}
+
+
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+.status {
+  display: none;
+
+  margin-top: 15px;
+
+  padding:
+    12px
+    14px;
+
+  border-radius: 10px;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+
+.status.show {
+  display: block;
+}
+
+
+.status.success {
+  background: #e9f8f1;
+
+  color: #12664c;
+}
+
+
+.status.error {
+  background: #fff0ef;
+
+  color: #a33e36;
+}
+
+
+/* =========================================================
+   LEGAL / CREATE ACCOUNT
+========================================================= */
+
+.legal {
+  margin:
+    20px
+    0
+    0;
+
+  text-align: center;
+
+  color: #9aa6a8;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+}
+
+
+.legal .text-btn {
+  display: inline;
+
+  margin-left: 3px;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .auth-shell {
+    grid-template-columns:
+      minmax(320px, 0.85fr)
+      minmax(480px, 1.15fr);
+  }
+
+  .brand-panel {
+    padding:
+      32px
+      5vw
+      28px;
+  }
+
+  .brand img {
+    width: 165px;
+  }
+
+  .brand-copy h1 {
+    font-size:
+      clamp(45px, 5vw, 68px);
+  }
+
+  .auth-panel {
+    padding:
+      30px
+      20px;
+  }
+
+  .auth-card {
+    padding:
+      10px
+      15px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-panel {
+    min-height: 370px;
+
+    padding:
+      28px
+      7vw;
+  }
+
+  .brand-copy {
+    margin: 30px 0;
+
+    padding: 25px 0;
+  }
+
+  .brand-copy h1 {
+    font-size: 58px;
+  }
+
+  .brand-copy p {
+    max-width: 600px;
+  }
+
+  .auth-panel {
+    min-height: auto;
+
+    padding:
+      40px
+      25px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE 600PX
+========================================================= */
+
+@media (max-width: 600px) {
+
+  html,
+  body {
+    width: 100%;
+
+    min-height: 100%;
+
+    overflow-x: hidden;
+  }
+
+
+  /* Hide desktop brand */
+
+  .brand-panel {
+    display: none;
+  }
+
+
+  /* Auth */
+
+  .auth-panel {
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+      20px
+      14px;
+
+    align-items: flex-start;
+
+    justify-content: flex-start;
+  }
+
+
+  .auth-card {
+    width: 100%;
+
+    padding:
+      5px
+      3px;
+  }
+
+
+  /* Mobile logo */
+
+  .mobile-brand {
+    width: 42px;
+
+    height: 42px;
+
+    margin:
+      0
+      0
+      20px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 12px;
+
+    background: #eaf5f4;
+  }
+
+
+  .mobile-brand img {
+    width: 25px;
+
+    height: 25px;
+
+    object-fit: contain;
+  }
+
+
+  /* Header */
+
+  .auth-head {
+    margin-bottom: 22px;
+  }
+
+
+  .auth-head h2 {
+    margin-top: 7px;
+
+    font-size: 36px;
+
+    line-height: 1.02;
+  }
+
+
+  .auth-head p {
+    font-size: 10px;
+
+    line-height: 1.6;
+  }
+
+
+  .section-label {
+    font-size: 8px;
+
+    letter-spacing: 2px;
+  }
+
+
+  /* Account type */
+
+  .account-types {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 6px;
+
+    margin-bottom: 22px;
+  }
+
+
+  .type-card {
+    min-height: 96px;
+
+    padding:
+      12px
+      8px;
+
+    border-radius: 11px;
+  }
+
+
+  .type-card i {
+    margin-bottom: 9px;
+
+    font-size: 14px;
+  }
+
+
+  .type-card b {
+    font-size: 9px;
+
+    line-height: 1.35;
+  }
+
+
+  .type-card small {
+    margin-top: 4px;
+
+    font-size: 6.5px;
+
+    line-height: 1.35;
+  }
+
+
+  /* Fields */
+
+  .field {
+    margin-bottom: 13px;
+  }
+
+
+  .field > span {
+    margin-bottom: 6px;
+
+    font-size: 9px;
+  }
+
+
+  .input-wrap {
+    min-height: 47px;
+
+    padding:
+      0
+      11px;
+
+    gap: 9px;
+
+    border-radius: 10px;
+  }
+
+
+  .input-wrap > i {
+    flex-basis: 16px;
+
+    width: 16px;
+
+    font-size: 12px;
+  }
+
+
+  .input-wrap input {
+    font-size: 11px;
+  }
+
+
+  /* Options */
+
+  .form-row {
+    align-items: flex-start;
+
+    margin-bottom: 18px;
+  }
+
+
+  .check {
+    font-size: 9px;
+  }
+
+
+  .text-btn {
+    font-size: 9px;
+  }
+
+
+  /* Buttons */
+
+  .primary-btn,
+  .passkey-btn {
+    min-height: 49px;
+
+    border-radius: 11px;
+
+    font-size: 10px;
+  }
+
+
+  .passkey-btn {
+    margin-top: 9px;
+  }
+
+
+  .secure-note {
+    margin-top: 11px;
+
+    font-size: 8px;
+  }
+
+
+  .status {
+    font-size: 9px;
+
+    padding:
+      10px
+      12px;
+  }
+
+
+  .legal {
+    margin-top: 17px;
+
+    font-size: 8px;
+  }
+
+
+  .legal .text-btn {
+    font-size: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .auth-panel {
+    padding:
+      18px
+      11px;
+  }
+
+
+  .auth-card {
+    padding:
+      4px
+      2px;
+  }
+
+
+  .auth-head h2 {
+    font-size: 32px;
+  }
+
+
+  .account-types {
+    gap: 4px;
+  }
+
+
+  .type-card {
+    min-height: 91px;
+
+    padding:
+      10px
+      6px;
+  }
+
+
+  .type-card i {
+    font-size: 13px;
+  }
+
+
+  .type-card b {
+    font-size: 8px;
+  }
+
+
+  .type-card small {
+    font-size: 6px;
+  }
+
+
+  .input-wrap {
+    min-height: 46px;
+  }
+
+}
+.google-signup-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #9aa8a9;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.google-signup-divider::before,
+.google-signup-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: #dce7e5;
+}
+
+.google-signup-btn {
+  width: 100%;
+  height: 46px;
+
+  border: 1px solid #dce7e5;
+  border-radius: 10px;
+
+  background: #fff;
+  color: #193a3e;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  cursor: pointer;
+  transition: .2s;
+}
+
+.google-signup-btn:hover {
+  border-color: #006d77;
+  background: #f7fbfa;
+}
+
+.google-signup-btn i {
+  font-size: 14px;
+  }
