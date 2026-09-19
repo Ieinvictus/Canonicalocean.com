@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Create Account | Canonical Ocean</title>
+
+  <meta
+    name="description"
+    content="Create your Canonical Ocean personal, retail partner or distribution partner account."
+  >
+
+  
+  <!-- Canonical URL -->
+  <link
+    rel="canonical"
+    href="https://canonicalocean.com/assets/signup/"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- Your CSS -->
+  <link
+    rel="stylesheet"
+    href="https://canonicalocean.com/assets/signup/style.css/"
+  >
+</head>
+<body>
+
+  <div class="signup-page">
+
+    <!-- =========================
+         LEFT BRAND PANEL
+    ========================== -->
+
+    <aside class="brand-panel">
+
+      <div class="brand-logo">
+
+        <img
+          src="https://canonicalocean.com/assets/cn-logo.png"
+          alt="Canonical Ocean"
+        >
+
+      </div>
+
+
+      <span class="brand-eyebrow">
+        CANONICAL OCEAN · PARTNER PORTAL
+      </span>
+
+
+      <h1>
+        One account.<br>
+        <strong>Built for your role.</strong>
+      </h1>
+
+
+      <p>
+        Create your account and access the Canonical Ocean
+        platform based on your personal or business role.
+      </p>
+
+
+      <!-- BRAND POINTS -->
+
+      <div class="brand-points">
+
+        <div>
+          <i class="fa-solid fa-user"></i>
+          <span>Personal Access</span>
+        </div>
+
+
+        <div>
+          <i class="fa-solid fa-store"></i>
+          <span>Retail Partnership</span>
+        </div>
+
+
+        <div>
+          <i class="fa-solid fa-truck"></i>
+          <span>Distribution Partnership</span>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =========================
+         SIGNUP PANEL
+    ========================== -->
+
+    <main class="signup-panel">
+
+      <div class="signup-card">
+
+
+        <!-- MOBILE BRAND -->
+
+        <div class="mobile-brand">
+
+          <img
+            src="https://canonicalocean.com/assets/cn-logo.png"
+            alt="Canonical Ocean"
+          >
+
+        </div>
+
+
+        <!-- =========================
+             SIGNUP HEADER
+        ========================== -->
+
+        <div class="signup-head">
+
+          <span>
+            CREATE ACCOUNT
+          </span>
+
+
+          <h2>
+            Join the <strong>platform.</strong>
+          </h2>
+
+
+          <p>
+            Select your account type to continue.
+          </p>
+
+        </div>
+
+
+        <!-- =========================
+             ACCOUNT TYPES
+        ========================== -->
+
+        <div class="account-types">
+
+
+          <!-- PERSONAL -->
+
+          <button
+            class="type-card active"
+            type="button"
+            data-type="personal"
+          >
+
+            <i class="fa-solid fa-user"></i>
+
+            <b>
+              Personal
+            </b>
+
+            <small>
+              Website access
+            </small>
+
+          </button>
+
+
+          <!-- RETAIL PARTNER -->
+
+          <button
+            class="type-card"
+            type="button"
+            data-type="retail"
+          >
+
+            <i class="fa-solid fa-store"></i>
+
+            <b>
+              Retail Partner
+            </b>
+
+            <small>
+              Retail business
+            </small>
+
+          </button>
+
+
+          <!-- DISTRIBUTION PARTNER -->
+
+          <button
+            class="type-card"
+            type="button"
+            data-type="distribution"
+          >
+
+            <i class="fa-solid fa-truck"></i>
+
+            <b>
+              Distribution Partner
+            </b>
+
+            <small>
+              Wholesale &amp; distribution
+            </small>
+
+          </button>
+
+
+        </div>
+
+
+        <!-- =========================
+             SIGNUP FORM
+        ========================== -->
+
+        <form
+          id="signupForm"
+          novalidate
+        >
+
+
+          <!-- =========================
+               ACCOUNT TYPE
+          ========================== -->
+
+          <input
+            type="hidden"
+            name="accountType"
+            id="accountType"
+            value="personal"
+          >
+
+
+          <!-- =========================
+               ACCOUNT INFORMATION
+          ========================== -->
+
+          <div class="form-section">
+
+
+            <div class="section-title">
+
+              <span>
+                01
+              </span>
+
+
+              <div>
+
+                <b>
+                  Account information
+                </b>
+
+                <small id="sectionDescription">
+                  Personal account details
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <!--
+              Personal / Retail /
+              Distribution fields
+              are loaded by JavaScript.
+            -->
+
+            <div id="dynamicFields"></div>
+
+          </div>
+
+
+          <!-- =========================
+               ACCOUNT SECURITY
+          ========================== -->
+
+          <div class="security-section">
+
+
+            <div class="section-title">
+
+              <span>
+                02
+              </span>
+
+
+              <div>
+
+                <b>
+                  Account security
+                </b>
+
+                <small>
+                  Create your login credentials
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+
+              <!-- EMAIL -->
+
+              <div class="form-group">
+
+                <label for="email">
+                  Email Address
+                </label>
+
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                >
+
+              </div>
+
+
+              <!-- PASSWORD -->
+
+              <div class="form-group">
+
+                <label for="password">
+                  Password
+                </label>
+
+
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Create a password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+
+              </div>
+
+
+              <!-- CONFIRM PASSWORD -->
+
+              <div class="form-group full">
+
+                <label for="confirmPassword">
+                  Confirm Password
+                </label>
+
+
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm your password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+
+              </div>
+
+
+            </div>
+
+
+            <!-- =========================
+                 EMAIL VERIFICATION NOTE
+            ========================== -->
+
+            <div class="verification-note">
+
+              <i class="fa-solid fa-envelope-circle-check"></i>
+
+
+              <span>
+                After creating your account, a verification link
+                will be sent to your email address.
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- =========================
+               TERMS
+          ========================== -->
+
+          <div class="terms">
+
+            <label>
+
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                required
+              >
+
+
+              <span>
+
+                I agree to the
+
+                <a href="#">
+                  Terms
+                </a>
+
+                and
+
+                <a href="#">
+                  Privacy Policy
+                </a>.
+
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <!-- =========================
+               CREATE ACCOUNT BUTTON
+          ========================== -->
+
+          <button
+            class="submit-btn"
+            type="submit"
+          >
+
+            <span>
+              Create Account
+            </span>
+
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+          </button>
+
+
+          <!-- =========================
+               LOGIN
+          ========================== -->
+
+          <p class="login-link">
+
+            Already have an account?
+
+            <a href="/b2b/login/">
+              Sign in
+            </a>
+
+          </p>
+
+
+        </form>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script type="module"
+        src="https://canonicalocean.com/assets/signup/script.js">
+  </script>
+  
+</body>
+</html>
