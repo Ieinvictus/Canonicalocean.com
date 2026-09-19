@@ -2,6 +2,7 @@
    CANONICAL OCEAN
    FIREBASE SIGNUP
    Email/Password + Google + Firestore
+   Email Verification → Direct Dashboard
 ========================================================= */
 
 
@@ -19,14 +20,16 @@ import {
   sendEmailVerification,
   GoogleAuthProvider,
   signInWithPopup,
-  updateProfile
+  updateProfile,
+  applyActionCode
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
   getFirestore,
   doc,
   setDoc,
-  serverTimestamp
+  serverTimestamp,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -36,7 +39,8 @@ import {
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyArdwTI-xT0aTSyVejFsHb0hnLn_lrF3s4",
+  apiKey:
+    "AIzaSyArdwTI-xT0aASyVejFsHb0hnLn_lrF3s4",
 
   authDomain:
     "canonical-ocean-portal.firebaseapp.com",
@@ -66,18 +70,14 @@ const firebaseConfig = {
 const app =
   initializeApp(firebaseConfig);
 
-
 const auth =
   getAuth(app);
-
 
 const db =
   getFirestore(app);
 
-
 const googleProvider =
   new GoogleAuthProvider();
-
 
 googleProvider.setCustomParameters({
   prompt: "select_account"
@@ -102,6 +102,18 @@ const sectionDescription =
 
 const typeCards =
   document.querySelectorAll(".type-card");
+
+const signupButton =
+  signupForm?.querySelector(".submit-btn");
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let emailVerifiedMode = false;
+
+let verifiedUser = null;
 
 
 /* =========================================================
@@ -490,7 +502,8 @@ function distributionFields() {
 
 function loadFields(type) {
 
-  accountTypeInput.value = type;
+  accountTypeInput.value =
+    type;
 
 
   if (type === "personal") {
@@ -533,25 +546,34 @@ function loadFields(type) {
 
 typeCards.forEach(card => {
 
-  card.addEventListener("click", () => {
+  card.addEventListener(
+    "click",
+    () => {
 
-    typeCards.forEach(item => {
+      if (emailVerifiedMode) {
+        return;
+      }
 
-      item.classList.remove("active");
+      typeCards.forEach(item => {
 
-    });
+        item.classList.remove(
+          "active"
+        );
 
-
-    card.classList.add("active");
-
-
-    const type =
-      card.dataset.type;
+      });
 
 
-    loadFields(type);
+      card.classList.add(
+        "active"
+      );
 
-  });
+
+      loadFields(
+        card.dataset.type
+      );
+
+    }
+  );
 
 });
 
@@ -597,10 +619,6 @@ function collectSignupData() {
     getValue("email");
 
 
-  data.createdAt =
-    serverTimestamp();
-
-
   return data;
 
 }
@@ -634,7 +652,10 @@ function validatePassword() {
   }
 
 
-  if (password !== confirmPassword) {
+  if (
+    password !==
+    confirmPassword
+  ) {
 
     alert(
       "Password and Confirm Password do not match."
@@ -662,7 +683,6 @@ function validateEmail() {
 
   const email =
     getValue("email");
-
 
   const pattern =
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -698,18 +718,16 @@ function validatePhone() {
     document.getElementById("phone");
 
 
-  /*
-    Personal account doesn't
-    have a phone field.
-  */
-
   if (!phone) {
     return true;
   }
 
 
   const number =
-    phone.value.replace(/\D/g, "");
+    phone.value.replace(
+      /\D/g,
+      ""
+    );
 
 
   if (
@@ -734,7 +752,78 @@ function validatePhone() {
 
 
 /* =========================================================
-   SAVE USER TO FIRESTORE
+   VERIFICATION NOTE
+========================================================= */
+
+function showVerificationNote(
+  email,
+  verified = false
+) {
+
+  let note =
+    document.getElementById(
+      "verificationNote"
+    );
+
+
+  if (!note) {
+
+    note =
+      document.createElement(
+        "div"
+      );
+
+    note.id =
+      "verificationNote";
+
+    note.className =
+      "verification-note";
+
+    signupForm.parentNode.insertBefore(
+      note,
+      signupForm
+    );
+
+  }
+
+
+  if (verified) {
+
+    note.innerHTML = `
+      <i class="fa-solid fa-circle-check"></i>
+
+      <span>
+        <strong>Email verified successfully.</strong>
+        Your Canonical Ocean account is ready.
+        Tap <strong>Create Account</strong> to continue
+        directly to your dashboard.
+      </span>
+    `;
+
+    return;
+
+  }
+
+
+  note.innerHTML = `
+    <i class="fa-solid fa-envelope-circle-check"></i>
+
+    <span>
+      <strong>Your account has been created.</strong>
+      We have sent a verification link to
+      <strong>${email}</strong>.
+      Please verify your email address to activate
+      your account. After verification, return here
+      and tap <strong>Create Account</strong> to continue
+      to your Canonical Ocean dashboard.
+    </span>
+  `;
+
+}
+
+
+/* =========================================================
+   SAVE USER PROFILE
 ========================================================= */
 
 async function saveUserProfile(
@@ -746,15 +835,23 @@ async function saveUserProfile(
     user.uid;
 
 
-  /*
-    Remove password from data
-    before Firestore.
-  */
-
   delete data.password;
-
   delete data.confirmPassword;
+  delete data.terms;
 
+
+  const isBusiness =
+    data.accountType === "retail" ||
+    data.accountType === "distribution";
+
+
+  /*
+    Personal:
+    active after email verification
+
+    Business:
+    pending business approval
+  */
 
   const userProfile = {
 
@@ -774,7 +871,11 @@ async function saveUserProfile(
 
     status:
       user.emailVerified
-        ? "active"
+        ? (
+            isBusiness
+              ? "pending_business_approval"
+              : "active"
+          )
         : "pending_email_verification",
 
     createdAt:
@@ -783,30 +884,24 @@ async function saveUserProfile(
   };
 
 
-  /*
-    Copy all other form fields.
-  */
+  Object.keys(data).forEach(
+    key => {
 
-  Object.keys(data).forEach(key => {
+      if (
+        key !== "password" &&
+        key !== "confirmPassword" &&
+        key !== "terms" &&
+        key !== "createdAt"
+      ) {
 
-    if (
-      key !== "password" &&
-      key !== "confirmPassword" &&
-      key !== "createdAt" &&
-      key !== "terms"
-    ) {
+        userProfile[key] =
+          data[key];
 
-      userProfile[key] =
-        data[key];
+      }
 
     }
+  );
 
-  });
-
-
-  /*
-    MAIN USER PROFILE
-  */
 
   await setDoc(
     doc(
@@ -822,13 +917,10 @@ async function saveUserProfile(
 
 
   /*
-    BUSINESS PARTNER DATA
+    BUSINESS PARTNER
   */
 
-  if (
-    data.accountType === "retail" ||
-    data.accountType === "distribution"
-  ) {
+  if (isBusiness) {
 
     const partnerData = {
 
@@ -842,7 +934,7 @@ async function saveUserProfile(
 
       status:
         user.emailVerified
-          ? "active"
+          ? "pending_business_approval"
           : "pending_email_verification",
 
       createdAt:
@@ -851,21 +943,23 @@ async function saveUserProfile(
     };
 
 
-    Object.keys(data).forEach(key => {
+    Object.keys(data).forEach(
+      key => {
 
-      if (
-        key !== "password" &&
-        key !== "confirmPassword" &&
-        key !== "createdAt" &&
-        key !== "terms"
-      ) {
+        if (
+          key !== "password" &&
+          key !== "confirmPassword" &&
+          key !== "terms" &&
+          key !== "createdAt"
+        ) {
 
-        partnerData[key] =
-          data[key];
+          partnerData[key] =
+            data[key];
+
+        }
 
       }
-
-    });
+    );
 
 
     await setDoc(
@@ -886,7 +980,7 @@ async function saveUserProfile(
 
 
 /* =========================================================
-   EMAIL + PASSWORD SIGNUP
+   EMAIL PASSWORD SIGNUP
 ========================================================= */
 
 async function emailPasswordSignup() {
@@ -899,10 +993,6 @@ async function emailPasswordSignup() {
 
 
   try {
-
-    /*
-      Create Firebase user
-    */
 
     const credential =
       await createUserWithEmailAndPassword(
@@ -917,7 +1007,7 @@ async function emailPasswordSignup() {
 
 
     /*
-      Update display name
+      Display name
     */
 
     const firstName =
@@ -928,8 +1018,7 @@ async function emailPasswordSignup() {
 
 
     const fullName =
-      `${firstName} ${secondName}`
-        .trim();
+      `${firstName} ${secondName}`.trim();
 
 
     if (fullName) {
@@ -937,7 +1026,8 @@ async function emailPasswordSignup() {
       await updateProfile(
         user,
         {
-          displayName: fullName
+          displayName:
+            fullName
         }
       );
 
@@ -957,12 +1047,34 @@ async function emailPasswordSignup() {
     */
 
     await sendEmailVerification(
-      user
+      user,
+      {
+        url:
+          "https://canonicalocean.com/signup/",
+        handleCodeInApp: false
+      }
     );
 
 
     /*
-      Save Firestore profile
+      Remember email only.
+      NEVER store password.
+    */
+
+    localStorage.setItem(
+      "canonicalOceanSignupEmail",
+      email
+    );
+
+
+    localStorage.setItem(
+      "canonicalOceanAccountType",
+      data.accountType
+    );
+
+
+    /*
+      Save Firestore
     */
 
     await saveUserProfile(
@@ -972,34 +1084,63 @@ async function emailPasswordSignup() {
 
 
     /*
-      Do not automatically
-      enter dashboard until
-      email is verified.
+      DO NOT sign out.
+      Firebase keeps the authenticated
+      session in this browser.
     */
 
-    alert(
-      "Account created successfully!\n\n" +
-      "A verification link has been sent to " +
-      email +
-      ".\n\n" +
-      "Please verify your email before signing in."
+
+    /*
+      Show professional note
+    */
+
+    showVerificationNote(
+      email,
+      false
     );
 
 
     /*
-      Sign out until verification
+      Disable account type selection
+      while verification is pending.
     */
 
-    await auth.signOut();
+    typeCards.forEach(card => {
+
+      card.style.pointerEvents =
+        "none";
+
+      card.style.opacity =
+        "0.65";
+
+    });
 
 
     /*
-      Go to login
+      Change button state
     */
 
-    window.location.href =
-      "/b2b/login/";
+    if (signupButton) {
 
+      signupButton.disabled =
+        true;
+
+      signupButton.innerHTML = `
+        <span>Check Your Email</span>
+        <i class="fa-solid fa-envelope"></i>
+      `;
+
+    }
+
+
+    /*
+      Do NOT redirect to login.
+    */
+
+    console.log(
+      "Verification email sent to:",
+      email
+    );
 
   }
 
@@ -1010,12 +1151,238 @@ async function emailPasswordSignup() {
       error
     );
 
-
     handleFirebaseError(
       error
     );
 
   }
+
+}
+
+
+/* =========================================================
+   VERIFY EMAIL FROM FIREBASE ACTION LINK
+========================================================= */
+
+async function handleEmailVerification() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+
+  const mode =
+    params.get("mode");
+
+  const oobCode =
+    params.get("oobCode");
+
+
+  if (
+    mode !== "verifyEmail" ||
+    !oobCode
+  ) {
+
+    return false;
+
+  }
+
+
+  try {
+
+    /*
+      Apply Firebase verification code
+    */
+
+    await applyActionCode(
+      auth,
+      oobCode
+    );
+
+
+    /*
+      Reload current Firebase user
+    */
+
+    if (auth.currentUser) {
+
+      await auth.currentUser.reload();
+
+      verifiedUser =
+        auth.currentUser;
+
+    }
+
+
+    emailVerifiedMode =
+      true;
+
+
+    /*
+      Show verified message
+    */
+
+    showVerificationNote(
+      verifiedUser?.email ||
+      localStorage.getItem(
+        "canonicalOceanSignupEmail"
+      ) ||
+      "",
+      true
+    );
+
+
+    /*
+      Change button to active
+    */
+
+    if (signupButton) {
+
+      signupButton.disabled =
+        false;
+
+      signupButton.innerHTML = `
+        <span>Create Account</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      `;
+
+    }
+
+
+   /*
+      Hide unnecessary validation fields
+      from second account creation.
+    */
+
+    const password =
+      document.getElementById(
+        "password"
+      );
+
+    const confirmPassword =
+      document.getElementById(
+        "confirmPassword"
+      );
+
+    if (password) {
+      password.required = false;
+    }
+
+    if (confirmPassword) {
+      confirmPassword.required = false;
+    }
+
+
+    /*
+      Disable account type changes
+    */
+
+    typeCards.forEach(card => {
+
+      card.style.pointerEvents =
+        "none";
+
+      card.style.opacity =
+        "0.65";
+
+    });
+
+
+    /*
+      Clean verification parameters
+      from URL.
+    */
+
+    window.history.replaceState(
+      {},
+      document.title,
+      "/signup/"
+    );
+
+
+    return true;
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Email Verification Error:",
+      error
+    );
+
+
+    showVerificationError(
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================================
+   VERIFICATION ERROR
+========================================================= */
+
+function showVerificationError(
+  error
+) {
+
+  let message =
+    "This verification link is invalid or has expired.";
+
+
+  if (
+    error.code ===
+    "auth/invalid-action-code"
+  ) {
+
+    message =
+      "This verification link has expired or has already been used.";
+
+  }
+
+
+  let note =
+    document.getElementById(
+      "verificationNote"
+    );
+
+
+  if (!note) {
+
+    note =
+      document.createElement(
+        "div"
+      );
+
+    note.id =
+      "verificationNote";
+
+    note.className =
+      "verification-note";
+
+    signupForm.parentNode.insertBefore(
+      note,
+      signupForm
+    );
+
+  }
+
+
+  note.innerHTML = `
+    <i class="fa-solid fa-circle-exclamation"></i>
+
+    <span>
+      <strong>Verification could not be completed.</strong>
+      ${message}
+      Please request a new verification email.
+    </span>
+  `;
 
 }
 
@@ -1028,10 +1395,6 @@ async function googleSignup() {
 
   try {
 
-    /*
-      Google login
-    */
-
     const result =
       await signInWithPopup(
         auth,
@@ -1043,11 +1406,6 @@ async function googleSignup() {
       result.user;
 
 
-    /*
-      Google accounts are
-      already verified.
-    */
-
     const accountType =
       accountTypeInput.value;
 
@@ -1056,17 +1414,12 @@ async function googleSignup() {
       collectSignupData();
 
 
-    /*
-      Google email should be
-      the authenticated email.
-    */
-
     data.email =
       user.email;
 
 
     /*
-      Save profile
+      Google email is already verified.
     */
 
     await saveUserProfile(
@@ -1076,7 +1429,7 @@ async function googleSignup() {
 
 
     /*
-      Dashboard redirect
+      Direct dashboard
     */
 
     redirectAfterLogin(
@@ -1092,7 +1445,6 @@ async function googleSignup() {
       "Google Signup Error:",
       error
     );
-
 
     handleFirebaseError(
       error
@@ -1117,7 +1469,22 @@ function redirectAfterLogin(
   }
 
 
-  if (accountType === "personal") {
+  /*
+    Personal
+  */
+
+  if (
+    accountType ===
+    "personal"
+  ) {
+
+    localStorage.removeItem(
+      "canonicalOceanSignupEmail"
+    );
+
+    localStorage.removeItem(
+      "canonicalOceanAccountType"
+    );
 
     window.location.href =
       "/account/dashboard/";
@@ -1126,6 +1493,10 @@ function redirectAfterLogin(
 
   }
 
+
+  /*
+    Retail / Distribution
+  */
 
   if (
     accountType === "retail" ||
@@ -1140,12 +1511,117 @@ function redirectAfterLogin(
   }
 
 
-  /*
-    Safety fallback
-  */
-
   window.location.href =
     "/account/dashboard/";
+
+}
+
+
+/* =========================================================
+   CONTINUE AFTER VERIFICATION
+========================================================= */
+
+async function continueAfterVerification() {
+
+  try {
+
+    if (!auth.currentUser) {
+
+      alert(
+        "Your verification session has expired. Please sign in again."
+      );
+
+      window.location.href =
+        "/b2b/login/";
+
+      return;
+
+    }
+
+
+    await auth.currentUser.reload();
+
+
+    const user =
+      auth.currentUser;
+
+
+    if (!user.emailVerified) {
+
+      alert(
+        "Please verify your email address first."
+      );
+
+      return;
+
+    }
+
+
+    const accountType =
+      localStorage.getItem(
+        "canonicalOceanAccountType"
+      ) ||
+      accountTypeInput.value;
+
+
+    /*
+      Update Firestore email verification
+    */
+
+    try {
+
+      await updateDoc(
+        doc(
+          db,
+          "users",
+          user.uid
+        ),
+        {
+          emailVerified: true,
+
+          status:
+            accountType === "retail" ||
+            accountType === "distribution"
+              ? "pending_business_approval"
+              : "active"
+        }
+      );
+
+    }
+
+    catch (error) {
+
+      console.warn(
+        "User verification status update skipped:",
+        error
+      );
+
+    }
+
+
+    /*
+      Direct dashboard
+    */
+
+    redirectAfterLogin(
+      accountType,
+      user
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Continue error:",
+      error
+    );
+
+    alert(
+      "Unable to continue. Please sign in again."
+    );
+
+  }
 
 }
 
@@ -1154,13 +1630,17 @@ function redirectAfterLogin(
    FIREBASE ERROR HANDLER
 ========================================================= */
 
-function handleFirebaseError(error) {
+function handleFirebaseError(
+  error
+) {
 
   let message =
     "Something went wrong. Please try again.";
 
 
-  switch (error.code) {
+  switch (
+    error.code
+  ) {
 
     case "auth/email-already-in-use":
 
@@ -1217,6 +1697,14 @@ function handleFirebaseError(error) {
 
       break;
 
+
+    case "auth/too-many-requests":
+
+      message =
+        "Too many attempts. Please wait and try again.";
+
+      break;
+
   }
 
 
@@ -1229,134 +1717,161 @@ function handleFirebaseError(error) {
    FORM SUBMIT
 ========================================================= */
 
-signupForm.addEventListener(
-  "submit",
-  async event => {
+if (signupForm) {
 
-    event.preventDefault();
+  signupForm.addEventListener(
+    "submit",
+    async event => {
 
-
-    /*
-      Browser validation
-    */
-
-    if (!signupForm.checkValidity()) {
-
-      signupForm.reportValidity();
-
-      return;
-
-    }
+      event.preventDefault();
 
 
-    /*
-      Email
-    */
+      /*
+        IMPORTANT:
+        If email has already been verified,
+        Create Account means CONTINUE TO DASHBOARD.
+      */
 
-    if (!validateEmail()) {
-      return;
-    }
+      if (emailVerifiedMode) {
 
+        await continueAfterVerification();
 
-    /*
-      Password
-    */
+        return;
 
-    if (!validatePassword()) {
-      return;
-    }
+      }
 
 
-    /*
-      Phone
-    */
+      /*
+        Browser validation
+      */
 
-    if (!validatePhone()) {
-      return;
-    }
+      if (
+        !signupForm.checkValidity()
+      ) {
 
+        signupForm.reportValidity();
 
-    /*
-      Terms
-    */
+        return;
 
-    const terms =
-      document.getElementById("terms");
+      }
 
 
-    if (!terms.checked) {
+      /*
+        Email
+      */
 
-      alert(
-        "Please accept the Terms and Privacy Policy."
-      );
-
-      terms.focus();
-
-      return;
-
-    }
+      if (!validateEmail()) {
+        return;
+      }
 
 
-    /*
-      Start signup
-    */
+      /*
+        Password
+      */
 
-    const button =
-      signupForm.querySelector(
-        ".submit-btn"
-      );
-
-
-    if (button) {
-
-      button.disabled = true;
-
-      button.innerHTML = `
-        <span>Creating account...</span>
-        <i class="fa-solid fa-spinner fa-spin"></i>
-      `;
-
-    }
+      if (!validatePassword()) {
+        return;
+      }
 
 
-    try {
+      /*
+        Phone
+      */
 
-      await emailPasswordSignup();
+      if (!validatePhone()) {
+        return;
+      }
 
-    }
 
-    finally {
+      /*
+        Terms
+      */
+
+      const terms =
+        document.getElementById(
+          "terms"
+        );
+
+
+      if (
+        !terms ||
+        !terms.checked
+      ) {
+
+        alert(
+          "Please accept the Terms and Privacy Policy."
+        );
+
+        terms?.focus();
+
+        return;
+
+      }
+
+
+      /*
+        Button loading
+      */
+
+      const button =
+        signupForm.querySelector(
+          ".submit-btn"
+        );
+
 
       if (button) {
 
-        button.disabled = false;
+        button.disabled =
+          true;
 
         button.innerHTML = `
-          <span>Create Account</span>
-          <i class="fa-solid fa-arrow-right"></i>
+          <span>Creating account...</span>
+          <i class="fa-solid fa-spinner fa-spin"></i>
         `;
 
       }
 
-    }
 
-  }
-);
+      try {
+
+        await emailPasswordSignup();
+
+      }
+
+      finally {
+
+        /*
+          Do not restore the button
+          if verification process started.
+        */
+
+        if (
+          button &&
+          !emailVerifiedMode &&
+          !auth.currentUser
+        ) {
+
+          button.disabled =
+            false;
+
+          button.innerHTML = `
+            <span>Create Account</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          `;
+
+        }
+
+      }
+
+    }
+  );
+
+}
 
 
 /* =========================================================
-   OPTIONAL GOOGLE BUTTON SUPPORT
+   GOOGLE BUTTON
 ========================================================= */
-
-/*
-  If you add this button to HTML:
-
-  <button id="googleSignupBtn">
-    Continue with Google
-  </button>
-
-  this JS will automatically connect it.
-*/
 
 const googleSignupBtn =
   document.getElementById(
@@ -1370,7 +1885,8 @@ if (googleSignupBtn) {
     "click",
     async () => {
 
-      googleSignupBtn.disabled = true;
+      googleSignupBtn.disabled =
+        true;
 
 
       try {
@@ -1381,7 +1897,8 @@ if (googleSignupBtn) {
 
       finally {
 
-        googleSignupBtn.disabled = false;
+        googleSignupBtn.disabled =
+          false;
 
       }
 
@@ -1395,9 +1912,23 @@ if (googleSignupBtn) {
    INITIAL LOAD
 ========================================================= */
 
-loadFields("personal");
+loadFields(
+  "personal"
+);
 
+
+/* =========================================================
+   CHECK FIREBASE VERIFICATION LINK
+========================================================= */
+
+handleEmailVerification();
+
+
+/* =========================================================
+   CONSOLE
+========================================================= */
 
 console.log(
   "Canonical Ocean Firebase Signup initialized."
 );
+   
