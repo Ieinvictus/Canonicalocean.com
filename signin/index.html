@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sign In | Canonical Ocean Account</title>
+
+  <meta
+    name="description"
+    content="Sign in to your Canonical Ocean account to access your personal account, retail partner or distribution partner portal."
+  >
+
+  <meta
+    name="robots"
+    content="noindex, nofollow"
+  >
+
+  <meta name="author" content="Canonical Ocean">
+
+  <meta name="theme-color" content="#006d77">
+
+  <link
+    rel="canonical"
+    href="https://canonicalocean.com/assets/login/"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- Sign In CSS -->
+  <link
+    rel="stylesheet"
+    href="https://canonicalocean.com/assets/signin/style.css"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://canonicalocean.com/assets/cn-logo.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="https://canonicalocean.com/assets/cn-logo.png"
+  >
+</head>
+
+<body>
+
+<div class="auth-shell">
+
+  <!-- =========================
+       BRAND PANEL
+  ========================== -->
+
+  <aside class="brand-panel">
+
+    <div class="brand-top">
+
+      <div class="brand">
+
+        <img
+          src="https://canonicalocean.com/assets/logo/canonical-ocean-fl-01.png"
+          alt="Canonical Ocean"
+        >
+
+      </div>
+
+      <span class="b2b-pill">
+        ACCOUNT PORTAL
+      </span>
+
+    </div>
+
+
+    <div class="brand-copy">
+
+      <span class="eyebrow">
+        CANONICAL OCEAN · ACCESS
+      </span>
+
+      <h1>
+        Welcome<br>
+        <em>back.</em>
+      </h1>
+
+      <p>
+        Sign in to access your Canonical Ocean account,
+        business services and partner dashboard.
+      </p>
+
+    </div>
+
+
+    <div class="brand-watermark">
+
+      <span>PURE</span>
+      <strong>WATER</strong>
+
+    </div>
+
+
+    <div class="brand-bottom">
+
+      <span>
+        <i class="fa-solid fa-shield-halved"></i>
+        Secure access
+      </span>
+
+      <span>
+        <i class="fa-solid fa-clock"></i>
+        24-hour session
+      </span>
+
+      <span>
+        <i class="fa-solid fa-lock"></i>
+        Protected account
+      </span>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================
+       AUTH PANEL
+  ========================== -->
+
+  <main class="auth-panel">
+
+    <div class="auth-card">
+
+
+      <!-- MOBILE BRAND -->
+
+      <div class="mobile-brand">
+
+        <img
+          src="https://canonicalocean.com/assets/cn-logo.png"
+          alt="Canonical Ocean"
+        >
+
+      </div>
+
+
+      <!-- HEADER -->
+
+      <div class="auth-head">
+
+        <div>
+
+          <span class="section-label">
+            SIGN IN
+          </span>
+
+          <h2>
+            Access your<br>
+            <span>account.</span>
+          </h2>
+
+          <p>
+            Select your account type to continue.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- =========================
+           ACCOUNT TYPE
+      ========================== -->
+
+      <div class="account-types">
+
+
+        <!-- PERSONAL -->
+
+        <button
+          class="type-card active"
+          type="button"
+          data-type="personal"
+        >
+
+          <i class="fa-solid fa-user"></i>
+
+          <b>
+            Personal
+          </b>
+
+          <small>
+            Website access
+          </small>
+
+        </button>
+
+
+        <!-- RETAIL -->
+
+        <button
+          class="type-card"
+          type="button"
+          data-type="retail"
+        >
+
+          <i class="fa-solid fa-store"></i>
+
+          <b>
+            Retail Partner
+          </b>
+
+          <small>
+            Retail business
+          </small>
+
+        </button>
+
+
+        <!-- DISTRIBUTION -->
+
+        <button
+          class="type-card"
+          type="button"
+          data-type="distribution"
+        >
+
+          <i class="fa-solid fa-truck"></i>
+
+          <b>
+            Distribution Partner
+          </b>
+
+          <small>
+            Wholesale &amp; distribution
+          </small>
+
+        </button>
+
+      </div>
+
+
+      <!-- SELECTED ACCOUNT -->
+
+      <input
+        type="hidden"
+        id="accountType"
+        value="personal"
+      >
+
+
+      <!-- =========================
+           LOGIN FORM
+      ========================== -->
+
+      <form id="loginForm">
+
+
+        <!-- EMAIL -->
+
+        <label class="field">
+
+          <span>
+            Email Address
+          </span>
+
+          <div class="input-wrap">
+
+            <i class="fa-regular fa-envelope"></i>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+        </label>
+
+
+        <!-- PASSWORD -->
+
+        <label class="field">
+
+          <span>
+            Password
+          </span>
+
+          <div class="input-wrap">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="eye"
+              id="togglePassword"
+              aria-label="Show password"
+            >
+
+              <i class="fa-regular fa-eye"></i>
+
+            </button>
+
+          </div>
+
+        </label>
+
+
+        <!-- OPTIONS -->
+
+        <div class="form-row">
+
+          <label class="check">
+
+            <input
+              type="checkbox"
+              id="remember"
+            >
+
+            <span>
+              Remember me
+            </span>
+
+          </label>
+
+
+          <button
+            type="button"
+            class="text-btn"
+            id="forgotPassword"
+          >
+            Forgot password?
+          </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
+
+        <button
+          class="primary-btn"
+          type="submit"
+        >
+
+          <span>
+            Sign In
+          </span>
+
+          <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+
+        <!-- PASSKEY -->
+
+        <button
+          type="button"
+          class="passkey-btn"
+          id="passkeyBtn"
+        >
+
+          <i class="fa-solid fa-fingerprint"></i>
+
+          Sign in with Passkey
+          
+
+        </button>
+<div class="google-signup-divider">
+  <span>OR</span>
+</div>
+
+<button
+  type="button"
+  id="googleSignupBtn"
+  class="google-signup-btn"
+>
+  <i class="fa-brands fa-google"></i>
+  Continue with Google
+        </button>
+        
+
+        <!-- SECURITY -->
+
+        <p class="secure-note">
+
+          <i class="fa-solid fa-shield-halved"></i>
+
+          Your session will automatically expire
+          after 24 hours.
+
+        </p>
+
+
+        <!-- STATUS -->
+
+        <div
+          class="status"
+          id="status"
+        ></div>
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <p class="legal">
+
+          Don't have an account?
+
+          <a
+            href="/signup/"
+            class="text-btn"
+          >
+            Create Account
+          </a>
+
+        </p>
+
+
+      </form>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script
+  type="module"
+  src="https://canonicalocean.com/asseets/signin/script.js">
+  </script>
+
+</body>
+</html>
