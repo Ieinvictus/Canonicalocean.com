@@ -40,7 +40,7 @@ import {
 const firebaseConfig = {
 
   apiKey:
-    "AIzaSyArdwTI-xT0aASyVejFsHb0hnLn_lrF3s4",
+    "AIzaSyArdwTI-xT0aTSyVejFsHb0hnLn_lrF3s4",
 
   authDomain:
     "canonical-ocean-portal.firebaseapp.com",
