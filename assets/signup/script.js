@@ -38,30 +38,14 @@ import {
 ========================================================= */
 
 const firebaseConfig = {
-
-  apiKey:
-    "AIzaSyArdwTI-xT0aTSyVejFsHb0hnLn_lrF3s4",
-
-  authDomain:
-    "canonical-ocean-portal.firebaseapp.com",
-
-  projectId:
-    "canonical-ocean-portal",
-
-  storageBucket:
-    "canonical-ocean-portal.firebasestorage.app",
-
-  messagingSenderId:
-    "823443511342",
-
-  appId:
-    "1:823443511342:web:46a3d24bb3f2105ac227bf",
-
-  measurementId:
-    "G-86YWK7QTVB"
-
+  apiKey: "AIzaSyArdwTI-xT0aTSyVejFsHb0hnLn_lrF3s4",
+  authDomain: "canonical-ocean-portal.firebaseapp.com",
+  projectId: "canonical-ocean-portal",
+  storageBucket: "canonical-ocean-portal.firebasestorage.app",
+  messagingSenderId: "823443511342",
+  appId: "1:823443511342:web:46a3d24bb3f2105ac227bf",
+  measurementId: "G-86YWK7QTVB"
 };
-
 
 /* =========================================================
    INITIALIZE FIREBASE
