@@ -1,117 +1,18 @@
 /* =========================================================
-   GLOBAL / BODY
-========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-
-  font-family:
-    Inter,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  background: #f5f8f8;
-
-  color: #102322;
-
-  min-height: 100vh;
-
-  overflow-x: hidden;
-
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-
-/* =========================================================
-   ROOT VARIABLES
-========================================================= */
-
-:root {
-
-  --ocean: #006b68;
-  --ocean-dark: #004d4b;
-  --ocean-light: #e8f7f5;
-
-  --ink: #102322;
-
-  --muted: #71807f;
-
-  --white: #ffffff;
-
-  --bg: #f5f8f8;
-
-  --border: #e4ebea;
-
-  --success: #287a67;
-
-  --warning: #b86d20;
-
-  --blue: #416c9d;
-
-  --shadow:
-    0 8px 25px rgba(0, 70, 65, 0.06);
-
-  --sidebar-width: 260px;
-}
-
-
-/* =========================================================
-   BUTTON RESET
-========================================================= */
-
-button {
-  font-family: inherit;
-}
-
-
-/* =========================================================
-   LINKS
-========================================================= */
-
-a {
-  color: inherit;
-}
-
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-  background: #cceae7;
-  color: #003f3d;
-}
-
-
-/* =========================================================
    CANONICAL OCEAN
-   DASHBOARD SECTION
+   DASHBOARD ONLY
+   PREMIUM BEVERAGE TYPOGRAPHY
 ========================================================= */
 
-.dashboard-section {
+
+/* =========================================================
+   DASHBOARD BASE
+========================================================= */
+
+#dashboard .dashboard-section {
   width: 100%;
+  max-width: 100%;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
 
@@ -119,220 +20,202 @@ img {
    WELCOME
 ========================================================= */
 
-.dashboard-welcome {
-  min-height: 180px;
-
+#dashboard .dashboard-welcome {
+  min-height: 175px;
   padding: 30px;
 
   border-radius: 20px;
-
-  background:
-    radial-gradient(
-      circle at 88% 20%,
-      rgba(255,255,255,.16),
-      transparent 28%
-    ),
-    linear-gradient(
-      125deg,
-      #004d4b,
-      #008b85
-    );
-
-  color: #ffffff;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   gap: 25px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 15px 35px rgba(0,70,65,.10);
 }
 
 
-.dashboard-label {
+#dashboard .dashboard-label {
   display: block;
 
-  color: #a9e9e4;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
   font-size: 9px;
-
-  font-weight: 800;
+  font-weight: 700;
 
   letter-spacing: 1.5px;
+
+  line-height: 1.3;
 
   margin-bottom: 8px;
 }
 
 
-.dashboard-welcome h2 {
-  font-size: clamp(24px, 3vw, 34px);
+/* Main Dashboard Heading */
 
-  line-height: 1.15;
+#dashboard .dashboard-welcome h2 {
 
-  margin-bottom: 10px;
+  margin: 0 0 9px;
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: clamp(24px, 2.6vw, 32px);
+
+  font-weight: 650;
+
+  line-height: 1.18;
+
+  letter-spacing: -0.65px;
+
+  color: #ffffff;
 }
 
 
-.dashboard-welcome p {
-  max-width: 650px;
+/* Partner Name */
+
+#dashboard .dashboard-welcome h2 span {
+
+  color: #a9e9e4;
+
+  font-weight: 650;
+}
+
+
+/* Welcome Description */
+
+#dashboard .dashboard-welcome p {
+
+  max-width: 620px;
+
+  margin: 0;
+
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 400;
+
+  line-height: 1.65;
 
   color: #d4eeec;
-
-  font-size: 13px;
-
-  line-height: 1.6;
-}
-
-
-.partner-status {
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-
-  padding: 9px 13px;
-
-  border-radius: 30px;
-
-  background: rgba(255,255,255,.12);
-
-  border: 1px solid rgba(255,255,255,.15);
-
-  font-size: 10px;
-
-  white-space: nowrap;
-}
-
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #72e0a7;
-
-  box-shadow:
-    0 0 0 4px rgba(114,224,167,.12);
 }
 
 
 /* =========================================================
-   SUMMARY
+   PARTNER STATUS
 ========================================================= */
 
-.dashboard-summary {
+#dashboard .partner-status {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 600;
+}
+
+
+#dashboard .status-dot {
+
+  width: 7px;
+  height: 7px;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+#dashboard .dashboard-summary {
+
+  margin-top: 20px;
+
   display: grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4, minmax(0, 1fr));
 
   gap: 15px;
-
-  margin-top: 20px;
 }
 
 
-.summary-card {
-  background: #ffffff;
+#dashboard .summary-card {
 
-  border: 1px solid var(--border);
+  min-width: 0;
+
+  padding: 17px;
 
   border-radius: 15px;
 
-  padding: 18px;
-
   display: flex;
+
   align-items: center;
 
-  gap: 13px;
-
-  min-width: 0;
+  gap: 12px;
 }
 
 
-.summary-icon {
-  width: 42px;
-  height: 42px;
+/* Summary Label */
 
-  flex-shrink: 0;
+#dashboard .summary-card > div:last-child > span {
 
-  border-radius: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 17px;
-
-  font-weight: 700;
-}
-
-
-.order-icon {
-  background: #e8f6f4;
-  color: #006b68;
-}
-
-
-.quote-icon {
-  background: #f1edfa;
-  color: #6650a7;
-}
-
-
-.payment-icon {
-  background: #fff4e8;
-  color: #b96b22;
-}
-
-
-.delivery-icon {
-  background: #eaf5ef;
-  color: #2c8060;
-}
-
-
-.summary-card span {
   display: block;
 
-  color: var(--muted);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  font-size: 10px;
+  font-size: 9px;
 
-  margin-bottom: 5px;
-}
+  font-weight: 500;
 
-
-.summary-card strong {
-  display: block;
-
-  font-size: 22px;
-
-  line-height: 1.1;
+  line-height: 1.3;
 
   margin-bottom: 4px;
 }
 
 
-.summary-card small {
+/* Summary Number */
+
+#dashboard .summary-card strong {
+
   display: block;
 
-  color: #76908e;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  font-size: 9px;
+  font-size: 20px;
+
+  font-weight: 650;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.3px;
+
+  margin-bottom: 3px;
+}
+
+
+/* Summary Description */
+
+#dashboard .summary-card small {
+
+  display: block;
+
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 400;
+
+  line-height: 1.4;
 }
 
 
 /* =========================================================
-   MAIN GRID
+   DASHBOARD CARDS
 ========================================================= */
 
-.dashboard-grid {
+#dashboard .dashboard-grid {
+
+  margin-top: 20px;
+
   display: grid;
 
   grid-template-columns:
@@ -340,32 +223,27 @@ img {
     minmax(300px, .85fr);
 
   gap: 16px;
-
-  margin-top: 20px;
 }
 
 
-.dashboard-card {
-  background: #ffffff;
-
-  border: 1px solid var(--border);
-
-  border-radius: 16px;
-
-  padding: 20px;
+#dashboard .dashboard-card {
 
   min-width: 0;
 
-  box-shadow:
-    0 5px 20px rgba(0,0,0,.025);
+  padding: 20px;
+
+  border-radius: 16px;
 }
 
 
 /* =========================================================
-   CARD HEADER
+   CARD HEADINGS
 ========================================================= */
 
-.card-header {
+#dashboard .card-header {
+
+  margin-bottom: 17px;
+
   display: flex;
 
   align-items: flex-start;
@@ -373,59 +251,74 @@ img {
   justify-content: space-between;
 
   gap: 15px;
-
-  margin-bottom: 17px;
 }
 
 
-.card-label {
+#dashboard .card-label {
+
   display: block;
 
-  color: var(--ocean);
+  font-family: Poppins, "Segoe UI", sans-serif;
 
   font-size: 8px;
 
-  font-weight: 800;
+  font-weight: 700;
 
-  letter-spacing: 1.3px;
+  letter-spacing: 1.25px;
+
+  line-height: 1.3;
 
   margin-bottom: 5px;
 }
 
 
-.card-header h3 {
+/* Dashboard Card H3 */
+
+#dashboard .card-header h3 {
+
+  margin: 0 0 4px;
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
   font-size: 16px;
 
-  margin-bottom: 4px;
+  font-weight: 650;
+
+  line-height: 1.25;
+
+  letter-spacing: -0.25px;
+
+  color: #193a3e;
 }
 
 
-.card-header p {
-  color: var(--muted);
+/* Card Description */
 
-  font-size: 10px;
+#dashboard .card-header p {
+
+  margin: 0;
+
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  color: #71807f;
 }
 
 
-.view-all-btn {
-  border: none;
+/* View All */
 
-  background: transparent;
+#dashboard .view-all-btn {
 
-  color: var(--ocean);
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  font-size: 10px;
+  font-size: 9px;
 
-  font-weight: 700;
-
-  cursor: pointer;
-
-  white-space: nowrap;
-}
-
-
-.view-all-btn:hover {
-  text-decoration: underline;
+  font-weight: 650;
 }
 
 
@@ -433,14 +326,10 @@ img {
    ACTIVE ORDERS
 ========================================================= */
 
-.order-list {
-  display: flex;
+#dashboard .order-row {
 
-  flex-direction: column;
-}
+  padding: 13px 0;
 
-
-.order-row {
   display: grid;
 
   grid-template-columns:
@@ -451,121 +340,58 @@ img {
   align-items: center;
 
   gap: 15px;
-
-  padding: 13px 0;
-
-  border-top: 1px solid #edf1f0;
 }
 
 
-.order-product {
-  display: flex;
+#dashboard .order-product strong {
 
-  align-items: center;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  gap: 11px;
+  font-size: 10px;
 
-  min-width: 0;
+  font-weight: 650;
 }
 
 
-.product-mini {
-  width: 38px;
-  height: 48px;
+#dashboard .order-product span {
 
-  flex-shrink: 0;
-
-  border-radius: 8px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #005c58,
-      #12aaa2
-    );
-
-  color: #ffffff;
-
-  font-size: 9px;
-
-  font-weight: 900;
-}
-
-
-.order-product strong,
-.order-info strong {
-  display: block;
-
-  font-size: 11px;
-}
-
-
-.order-product span,
-.order-info span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 9px;
-
-  margin-top: 3px;
-}
-
-
-.order-info {
-  text-align: right;
-}
-
-
-.order-status,
-.table-status {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 5px 8px;
-
-  border-radius: 20px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
   font-size: 8px;
 
-  font-weight: 700;
-
-  white-space: nowrap;
+  line-height: 1.4;
 }
 
 
-.processing {
-  background: #fff3df;
+#dashboard .order-info strong {
 
-  color: #b86d20;
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 650;
 }
 
 
-.confirmed {
-  background: #e8f5f1;
+#dashboard .order-info span {
 
-  color: #287a67;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 8px;
 }
 
 
-.dispatched {
-  background: #e9f0fb;
+/* Status */
 
-  color: #416c9d;
-}
+#dashboard .order-status {
 
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-.delivered {
-  background: #e8f6ed;
+  font-size: 7px;
 
-  color: #2c8060;
+  font-weight: 650;
+
+  line-height: 1.2;
 }
 
 
@@ -573,266 +399,99 @@ img {
    DELIVERY
 ========================================================= */
 
-.live-badge {
-  background: #e8f7f1;
+#dashboard .delivery-main strong {
 
-  color: #278060;
-
-  border-radius: 20px;
-
-  padding: 5px 9px;
-
-  font-size: 8px;
-
-  font-weight: 700;
-}
-
-
-.delivery-main {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  margin: 20px 0;
-}
-
-
-.delivery-icon {
-  width: 42px;
-  height: 42px;
-
-  border-radius: 12px;
-
-  background: #e7f5f3;
-
-  color: var(--ocean);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 18px;
-}
-
-
-.delivery-main strong {
-  display: block;
-
-  font-size: 12px;
-}
-
-
-.delivery-main span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 9px;
-
-  margin-top: 4px;
-}
-
-
-.delivery-progress {
-  margin: 25px 0;
-}
-
-
-.progress-line {
-  height: 3px;
-
-  background: #e7eeee;
-
-  position: relative;
-
-  margin: 0 18px;
-}
-
-
-.progress-active {
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  height: 100%;
-
-  width: 72%;
-
-  background: var(--ocean);
-}
-
-
-.delivery-steps {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  margin-top: -8px;
-
-  position: relative;
-}
-
-
-.delivery-steps div {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 6px;
-
-  text-align: center;
-}
-
-
-.delivery-steps b {
-  width: 17px;
-  height: 17px;
-
-  border-radius: 50%;
-
-  background: #e8eeee;
-
-  color: #8b9b99;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 8px;
-}
-
-
-.delivery-steps .completed b,
-.delivery-steps .current b {
-  background: var(--ocean);
-
-  color: #ffffff;
-}
-
-
-.delivery-steps span {
-  color: var(--muted);
-
-  font-size: 8px;
-}
-
-
-.delivery-steps .current span {
-  color: var(--ocean);
-
-  font-weight: 700;
-}
-
-
-.delivery-footer {
-  border-top: 1px solid #edf1f0;
-
-  padding-top: 14px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-}
-
-
-.delivery-footer span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 9px;
-}
-
-
-.delivery-footer strong {
-  display: block;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
   font-size: 11px;
 
-  margin-top: 4px;
+  font-weight: 650;
 }
 
 
-.delivery-footer button {
-  border: 1px solid #cfe5e2;
+#dashboard .delivery-main span {
 
-  background: #f1faf9;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  color: var(--ocean-dark);
+  font-size: 8px;
+}
 
-  border-radius: 8px;
 
-  padding: 7px 11px;
+#dashboard .delivery-steps span {
 
-  font-size: 9px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  font-weight: 700;
+  font-size: 7px;
 
-  cursor: pointer;
+  line-height: 1.3;
+}
+
+
+#dashboard .delivery-footer span {
+
+  font-size: 8px;
+}
+
+
+#dashboard .delivery-footer strong {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 650;
+}
+
+
+#dashboard .delivery-footer button {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 650;
 }
 
 
 /* =========================================================
-   RECENT ORDERS TABLE
+   RECENT ORDERS
 ========================================================= */
 
-.recent-table {
-  width: 100%;
+#dashboard .table-head {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
 }
 
 
-.table-head,
-.table-row {
-  display: grid;
+#dashboard .table-row strong {
 
-  grid-template-columns:
-    1.2fr 1fr 1fr .9fr;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  align-items: center;
+  font-size: 9px;
 
-  gap: 10px;
+  font-weight: 650;
 }
 
 
-.table-head {
-  padding: 9px 0;
+#dashboard .table-row > span {
 
-  color: var(--muted);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  font-size: 8px;
-
-  border-bottom: 1px solid var(--border);
+  font-size: 9px;
 }
 
 
-.table-row {
-  padding: 13px 0;
+#dashboard .table-status {
 
-  border-bottom: 1px solid #edf1f0;
-}
+  font-family: Poppins, "Segoe UI", sans-serif;
 
+  font-size: 7px;
 
-.table-row:last-child {
-  border-bottom: none;
-}
-
-
-.table-row strong,
-.table-row > span {
-  font-size: 10px;
-}
-
-
-.table-row > span {
-  color: var(--muted);
+  font-weight: 650;
 }
 
 
@@ -840,95 +499,61 @@ img {
    PAYMENT
 ========================================================= */
 
-.payment-total {
-  background: #f6faf9;
+#dashboard .payment-total span {
 
-  border: 1px solid #e5f0ee;
-
-  border-radius: 11px;
-
-  padding: 14px;
-
-  margin-bottom: 12px;
-}
-
-
-.payment-total span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 9px;
-}
-
-
-.payment-total strong {
-  display: block;
-
-  color: var(--ocean-dark);
-
-  font-size: 22px;
-
-  margin-top: 5px;
-}
-
-
-.invoice-item {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  padding: 12px 0;
-
-  border-bottom: 1px solid #edf1f0;
-}
-
-
-.invoice-item strong {
-  display: block;
-
-  font-size: 10px;
-}
-
-
-.invoice-item span {
-  display: block;
-
-  color: var(--muted);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
   font-size: 8px;
-
-  margin-top: 3px;
 }
 
 
-.invoice-item b {
-  font-size: 10px;
+#dashboard .payment-total strong {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 21px;
+
+  font-weight: 650;
+
+  letter-spacing: -0.35px;
 }
 
 
-.primary-small-btn {
-  width: 100%;
+#dashboard .invoice-item strong {
 
-  margin-top: 15px;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  border: none;
+  font-size: 9px;
 
-  background: var(--ocean);
+  font-weight: 650;
+}
 
-  color: white;
 
-  border-radius: 9px;
+#dashboard .invoice-item span {
 
-  padding: 10px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
-  font-size: 10px;
+  font-size: 8px;
+}
 
-  font-weight: 700;
 
-  cursor: pointer;
+#dashboard .invoice-item b {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 650;
+}
+
+
+#dashboard .primary-small-btn {
+
+  font-family: Poppins, "Segoe UI", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 650;
 }
 
 
@@ -936,15 +561,15 @@ img {
    LOWER GRID
 ========================================================= */
 
-.dashboard-lower-grid {
-  display: grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap: 16px;
+#dashboard .dashboard-lower-grid {
 
   margin-top: 16px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
 }
 
 
@@ -952,85 +577,32 @@ img {
    QUOTATIONS
 ========================================================= */
 
-.quotation-item {
-  display: flex;
+#dashboard .quote-details strong {
 
-  align-items: center;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  gap: 12px;
+  font-size: 9px;
 
-  padding: 13px 0;
-
-  border-top: 1px solid #edf1f0;
+  font-weight: 650;
 }
 
 
-.quote-number {
-  width: 45px;
-  height: 45px;
+#dashboard .quote-details span {
 
-  border-radius: 10px;
-
-  background: #f0ecfa;
-
-  color: #6650a7;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 8px;
-
-  font-weight: 800;
-
-  flex-shrink: 0;
-}
-
-
-.quote-details {
-  flex: 1;
-}
-
-
-.quote-details strong {
-  display: block;
-
-  font-size: 10px;
-}
-
-
-.quote-details span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 8px;
-
-  margin-top: 4px;
-}
-
-
-.quote-pending,
-.quote-approved {
-  padding: 5px 8px;
-
-  border-radius: 20px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
   font-size: 8px;
 }
 
 
-.quote-pending {
-  background: #fff3df;
+#dashboard .quote-pending,
+#dashboard .quote-approved {
 
-  color: #b86d20;
-}
+  font-family: Poppins, "Segoe UI", sans-serif;
 
+  font-size: 7px;
 
-.quote-approved {
-  background: #e8f6ed;
-
-  color: #2c8060;
+  font-weight: 650;
 }
 
 
@@ -1038,73 +610,31 @@ img {
    PRODUCTS
 ========================================================= */
 
-.product-highlight {
-  display: flex;
+#dashboard .product-highlight strong {
 
-  align-items: center;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  gap: 12px;
+  font-size: 9px;
 
-  padding: 12px 0;
-
-  border-top: 1px solid #edf1f0;
+  font-weight: 650;
 }
 
 
-.product-bottle {
-  width: 34px;
-  height: 47px;
+#dashboard .product-highlight span {
 
-  border-radius: 7px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #005c58,
-      #12aaa2
-    );
-
-  color: white;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
   font-size: 8px;
-
-  font-weight: 900;
-
-  flex-shrink: 0;
 }
 
 
-.product-highlight > div:nth-child(2) {
-  flex: 1;
-}
+#dashboard .product-highlight b {
 
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-.product-highlight strong {
-  display: block;
+  font-size: 7px;
 
-  font-size: 10px;
-}
-
-
-.product-highlight span {
-  display: block;
-
-  color: var(--muted);
-
-  font-size: 8px;
-
-  margin-top: 3px;
-}
-
-
-.product-highlight b {
-  color: #278060;
-
-  font-size: 8px;
+  font-weight: 650;
 }
 
 
@@ -1112,71 +642,37 @@ img {
    ACTIVITY
 ========================================================= */
 
-.activity-dashboard-card {
+#dashboard .activity-dashboard-card {
+
   margin-top: 16px;
 }
 
 
-.dashboard-activity-item {
-  display: flex;
+#dashboard .dashboard-activity-item strong {
 
-  align-items: center;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  gap: 12px;
+  font-size: 9px;
 
-  padding: 14px 0;
-
-  border-top: 1px solid #edf1f0;
+  font-weight: 650;
 }
 
 
-.activity-icon {
-  width: 32px;
-  height: 32px;
+#dashboard .dashboard-activity-item p {
 
-  border-radius: 9px;
-
-  background: #e8f6f4;
-
-  color: var(--ocean);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 12px;
-
-  font-weight: 800;
-
-  flex-shrink: 0;
-}
-
-
-.dashboard-activity-item > div {
-  flex: 1;
-}
-
-
-.dashboard-activity-item strong {
-  display: block;
-
-  font-size: 10px;
-}
-
-
-.dashboard-activity-item p {
-  color: var(--muted);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 
   font-size: 8px;
 
-  margin-top: 3px;
+  line-height: 1.5;
 }
 
 
-.dashboard-activity-item time {
-  color: var(--muted);
+#dashboard .dashboard-activity-item time {
 
-  font-size: 8px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 7px;
 }
 
 
@@ -1184,64 +680,72 @@ img {
    QUICK ACTIONS
 ========================================================= */
 
-.dashboard-quick-actions {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 12px;
+#dashboard .dashboard-quick-actions {
 
   margin-top: 16px;
 
-  padding-bottom: 10px;
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
 }
 
 
-.dashboard-quick-actions button {
-  border: 1px solid var(--border);
+#dashboard .dashboard-quick-actions button {
 
-  background: white;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  border-radius: 11px;
+  font-size: 8px;
 
-  padding: 12px;
+  font-weight: 650;
 
-  color: var(--ink);
+  line-height: 1.3;
+}
 
-  font-size: 9px;
 
-  font-weight: 700;
+/* =========================================================
+   EMPTY STATE
+========================================================= */
 
-  cursor: pointer;
+#dashboard .dashboard-empty-state {
+
+  min-height: 100px;
+
+  padding: 20px;
 
   display: flex;
+
+  flex-direction: column;
 
   align-items: center;
 
   justify-content: center;
 
-  gap: 7px;
-
-  transition: .2s ease;
+  text-align: center;
 }
 
 
-.dashboard-quick-actions button:hover {
-  border-color: #b9dcd9;
+#dashboard .dashboard-empty-state strong {
 
-  background: #f5fbfa;
+  font-family: Poppins, "Segoe UI", sans-serif;
 
-  color: var(--ocean-dark);
+  font-size: 11px;
 
-  transform: translateY(-2px);
+  font-weight: 650;
+
+  margin-bottom: 4px;
 }
 
 
-.dashboard-quick-actions span {
-  color: var(--ocean);
+#dashboard .dashboard-empty-state span {
 
-  font-size: 13px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+
+  font-size: 8px;
+
+  line-height: 1.5;
 }
 
 
@@ -1251,16 +755,19 @@ img {
 
 @media (max-width: 1050px) {
 
-  .dashboard-summary {
+  #dashboard .dashboard-summary {
+
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2, minmax(0, 1fr));
   }
 
-  .dashboard-grid {
+  #dashboard .dashboard-grid {
+
     grid-template-columns: 1fr;
   }
 
-  .dashboard-lower-grid {
+  #dashboard .dashboard-lower-grid {
+
     grid-template-columns: 1fr;
   }
 
@@ -1273,73 +780,95 @@ img {
 
 @media (max-width: 768px) {
 
-  .dashboard-welcome {
-    padding: 24px;
+  #dashboard .dashboard-welcome {
+
+    min-height: 0;
+
+    padding: 23px;
+
+    flex-direction: column;
 
     align-items: flex-start;
 
-    flex-direction: column;
+    gap: 17px;
   }
 
-  .partner-status {
-    align-self: flex-start;
+
+  #dashboard .dashboard-welcome h2 {
+
+    font-size: 23px;
+
+    letter-spacing: -0.45px;
   }
 
-  .dashboard-summary {
-    grid-template-columns: 1fr 1fr;
+
+  #dashboard .dashboard-welcome p {
+
+    font-size: 10px;
+  }
+
+
+  #dashboard .dashboard-summary {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
     gap: 10px;
   }
 
-  .summary-card {
-    padding: 14px;
+
+  #dashboard .summary-card {
+
+    padding: 13px;
 
     gap: 9px;
   }
 
-  .summary-icon {
-    width: 35px;
-    height: 35px;
 
-    font-size: 14px;
+  #dashboard .summary-card strong {
+
+    font-size: 17px;
   }
 
-  .summary-card strong {
-    font-size: 18px;
+
+  #dashboard .dashboard-card {
+
+    padding: 16px;
   }
 
-  .order-row {
+
+  #dashboard .card-header h3 {
+
+    font-size: 15px;
+  }
+
+
+  #dashboard .order-row {
+
     grid-template-columns: 1fr auto;
 
     gap: 10px;
   }
 
-  .order-info {
+
+  #dashboard .order-info {
+
     text-align: left;
   }
 
-  .order-status {
+
+  #dashboard .order-status {
+
     grid-column: 1 / -1;
 
     justify-self: flex-start;
   }
 
-  .table-head,
-  .table-row {
-    grid-template-columns:
-      1fr 1fr;
-  }
 
-  .table-head span:nth-child(3),
-  .table-head span:nth-child(4),
-  .table-row span:nth-child(3),
-  .table-row b:nth-child(4) {
-    display: none;
-  }
+  #dashboard .dashboard-quick-actions {
 
-  .dashboard-quick-actions {
     grid-template-columns:
-      1fr 1fr;
+      repeat(2, minmax(0, 1fr));
   }
 
 }
@@ -1351,24 +880,33 @@ img {
 
 @media (max-width: 480px) {
 
-  .dashboard-summary {
+  #dashboard .dashboard-summary {
+
     grid-template-columns: 1fr;
   }
 
-  .dashboard-welcome h2 {
-    font-size: 23px;
+
+  #dashboard .dashboard-welcome {
+
+    padding: 20px;
   }
 
-  .dashboard-card {
-    padding: 16px;
+
+  #dashboard .dashboard-welcome h2 {
+
+    font-size: 22px;
   }
 
-  .delivery-steps span {
-    font-size: 7px;
+
+  #dashboard .dashboard-card {
+
+    padding: 15px;
   }
 
-  .dashboard-quick-actions {
+
+  #dashboard .dashboard-quick-actions {
+
     grid-template-columns: 1fr;
   }
 
-  }
+   }
