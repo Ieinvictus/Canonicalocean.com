@@ -1,0 +1,995 @@
+/* =========================================================
+   CANONICAL OCEAN
+   PREMIUM CORE WATER CAROUSEL
+   Responsive Typography | Fog Colour Cards
+   No Images | No Waves | No Auto-play
+========================================================= */
+
+:root {
+    --co-primary: #006d77;
+    --co-primary-dark: #004f57;
+    --co-deep: #003b42;
+
+    --co-fog: #eaf4f3;
+    --co-fog-blue: #e8f0f4;
+    --co-fog-mint: #eaf1ed;
+    --co-fog-grey: #eef2f5;
+
+    --co-ink: #16373b;
+    --co-muted: #607779;
+    --co-white: #ffffff;
+    --co-border: #e1eae9;
+
+    --co-shadow:
+        0 25px 65px rgba(0, 67, 73, 0.13);
+
+    --co-font: "Poppins", sans-serif;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--co-font);
+    color: var(--co-ink);
+    background: #ffffff;
+
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+    max-width: 100%;
+}
+
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.co-water-section {
+    position: relative;
+    isolation: isolate;
+
+    width: 100%;
+    min-height: 720px;
+
+    padding: clamp(40px, 6vw, 72px) 0 55px;
+
+    overflow: hidden;
+
+    font-family: var(--co-font);
+    background: #ffffff;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.co-water-heading {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+    max-width: 760px;
+
+    margin: 0 auto clamp(24px, 3.5vw, 38px);
+    padding: 0 20px;
+
+    text-align: center;
+}
+
+.co-eyebrow {
+    display: block;
+
+    margin: 0 0 12px;
+
+    color: var(--co-primary);
+
+    font-size: clamp(10px, 0.85vw, 12px);
+    font-weight: 700;
+
+    letter-spacing: clamp(1.5px, 0.2vw, 2.5px);
+    line-height: 1.5;
+}
+
+.co-water-heading h2 {
+    margin: 0;
+
+    color: var(--co-ink);
+
+    font-size: clamp(28px, 4vw, 54px);
+    font-weight: 800;
+
+    line-height: 1.16;
+    letter-spacing: -0.035em;
+
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+}
+
+.co-water-heading p {
+    width: 100%;
+    max-width: 540px;
+
+    margin: 14px auto 0;
+
+    color: var(--co-muted);
+
+    font-size: clamp(14px, 1.2vw, 16px);
+    font-weight: 400;
+
+    line-height: 1.75;
+
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+}
+
+/* =========================================================
+   CAROUSEL STAGE
+========================================================= */
+
+.co-carousel {
+    position: relative;
+
+    width: 100%;
+    height: 490px;
+
+    perspective: 1450px;
+    perspective-origin: 50% 50%;
+
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+
+    cursor: grab;
+}
+
+.co-carousel.is-dragging,
+.co-carousel.dragging {
+    cursor: grabbing;
+}
+
+/* =========================================================
+   CAROUSEL TRACK
+========================================================= */
+
+.co-track {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform-style: preserve-3d;
+}
+
+/* =========================================================
+   CARD BASE
+========================================================= */
+
+.co-card {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 330px;
+    height: 415px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    border: 1px solid rgba(0, 109, 119, 0.12);
+    border-radius: 22px;
+
+    color: var(--co-ink);
+
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    box-shadow:
+        0 18px 50px rgba(0, 60, 65, 0.09);
+
+    transition:
+        transform 650ms cubic-bezier(.22, .61, .36, 1),
+        opacity 450ms ease,
+        filter 450ms ease,
+        box-shadow 450ms ease,
+        border-color 450ms ease;
+
+    will-change: transform, opacity;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   SOLID FOG COLOUR CARDS
+   No gradients | No waves | No images
+========================================================= */
+
+.wave-01 {
+    background-color: #eaf4f3;
+}
+
+.wave-02 {
+    background-color: #e8f0f4;
+}
+
+.wave-03 {
+    background-color: #eef2f5;
+}
+
+.wave-04 {
+    background-color: #e5f0f0;
+}
+
+.wave-05 {
+    background-color: #eaf1ed;
+}
+
+.wave-06 {
+    background-color: #edf2f4;
+}
+
+.wave-07 {
+    background-color: #e6f1ef;
+}
+
+/* Hide old decorative wave elements */
+
+.wave-lines {
+    display: none !important;
+}
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.co-card-content {
+    position: absolute;
+    z-index: 2;
+
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: clamp(18px, 2vw, 25px);
+
+    border: 0;
+    border-radius: inherit;
+
+    background: transparent;
+}
+
+/* =========================================================
+   CARD TOP LINE
+========================================================= */
+
+.co-card-topline {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid rgba(0, 109, 119, 0.15);
+}
+
+.co-card-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 32px;
+
+    width: 32px;
+    height: 32px;
+
+    margin: 0;
+
+    border: 1px solid rgba(0, 109, 119, 0.25);
+    border-radius: 50%;
+
+    color: var(--co-primary);
+    background: transparent;
+
+    font-size: clamp(11px, 0.9vw, 13px);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.co-card-category {
+    min-width: 0;
+
+    color: var(--co-primary);
+
+    font-size: clamp(9px, 0.8vw, 11px);
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   CARD ICON
+   Transparent background, no icon box
+========================================================= */
+
+.co-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 52px;
+    height: 52px;
+
+    flex: 0 0 auto;
+
+    margin-top: auto;
+    margin-bottom: clamp(14px, 1.7vw, 20px);
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent !important;
+    box-shadow: none !important;
+
+    color: var(--co-primary);
+}
+
+/* Inline SVG remains transparent */
+
+.co-card-icon svg {
+    display: block;
+
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 auto;
+
+    fill: none;
+    stroke: currentColor;
+
+    background: transparent !important;
+}
+
+/* Keep SVG line icons visible */
+
+.co-card-icon svg path,
+.co-card-icon svg circle,
+.co-card-icon svg rect,
+.co-card-icon svg line,
+.co-card-icon svg polyline,
+.co-card-icon svg polygon,
+.co-card-icon svg ellipse {
+    vector-effect: non-scaling-stroke;
+}
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+.co-card h3 {
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    color: var(--co-ink);
+
+    font-size: clamp(22px, 2.1vw, 29px);
+    font-weight: 800;
+
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+
+    text-transform: uppercase;
+
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+}
+
+.co-card h3 span {
+    display: block;
+
+    color: var(--co-primary);
+
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
+
+.co-card p {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 12px 0 0;
+
+    color: #526d70;
+
+    font-size: clamp(13px, 1vw, 15px);
+    font-weight: 400;
+
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+}
+
+/* =========================================================
+   CARD DIVIDER
+========================================================= */
+
+.co-card-divider {
+    flex: 0 0 1px;
+
+    width: 100%;
+    height: 1px;
+
+    margin-top: 16px;
+
+    background: rgba(0, 109, 119, 0.15);
+}
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.co-card-footer {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-top: 12px;
+
+    color: #617b7d;
+
+    font-size: clamp(10px, 0.75vw, 12px);
+    font-weight: 600;
+
+    line-height: 1.55;
+    letter-spacing: 0.025em;
+}
+
+.co-card-footer span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.co-card-footer span:last-child {
+    text-align: right;
+}
+
+/* =========================================================
+   ACTIVE CENTRE CARD
+========================================================= */
+
+.co-card.is-center {
+    border-color: rgba(0, 109, 119, 0.32);
+
+    box-shadow:
+        0 28px 65px rgba(0, 76, 83, 0.16);
+}
+
+.co-card.is-center .co-card-number {
+    color: #ffffff;
+
+    background: var(--co-primary);
+    border-color: var(--co-primary);
+}
+
+/* =========================================================
+   NAVIGATION ARROWS
+========================================================= */
+
+.co-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    border: 1px solid var(--co-border);
+    border-radius: 4px;
+
+    transform: translateY(-50%);
+
+    color: var(--co-primary);
+    background: #ffffff;
+
+    font-family: Arial, sans-serif;
+    font-size: 23px;
+    line-height: 1;
+
+    box-shadow:
+        0 7px 22px rgba(0, 60, 65, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        background 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease,
+        transform 220ms ease;
+}
+
+.co-arrow:hover {
+    color: #ffffff;
+    background: var(--co-primary);
+    border-color: var(--co-primary);
+
+    transform: translateY(-50%) scale(1.05);
+}
+
+.co-arrow.prev {
+    left: 3%;
+}
+
+.co-arrow.next {
+    right: 3%;
+}
+
+.co-arrow:focus-visible,
+.co-dot:focus-visible {
+    outline: 2px solid var(--co-primary);
+    outline-offset: 4px;
+}
+
+/* =========================================================
+   DOT NAVIGATION
+========================================================= */
+
+.co-dots {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    transform: translateX(-50%);
+}
+
+.co-dot {
+    flex: 0 0 auto;
+
+    width: 25px;
+    height: 4px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: #d7e3e2;
+
+    cursor: pointer;
+
+    transition:
+        width 250ms ease,
+        background 250ms ease;
+}
+
+.co-dot.active {
+    width: 36px;
+    background: var(--co-primary);
+}
+
+/* =========================================================
+   SWIPE HINT
+========================================================= */
+
+.co-swipe-hint {
+    margin-top: 15px;
+    padding: 0 15px;
+
+    color: #718889;
+
+    text-align: center;
+
+    font-size: clamp(10px, 0.8vw, 12px);
+    font-weight: 600;
+
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
+    .co-water-section {
+        min-height: 660px;
+        padding-top: 58px;
+    }
+
+    .co-carousel {
+        height: 465px;
+    }
+
+    .co-card {
+        width: 300px;
+        height: 390px;
+    }
+
+    .co-card-content {
+        padding: 22px;
+    }
+
+    .co-arrow.prev {
+        left: 15px;
+    }
+
+    .co-arrow.next {
+        right: 15px;
+    }
+
+    .co-card h3 {
+        font-size: clamp(22px, 2.8vw, 27px);
+    }
+
+    .co-card p {
+        font-size: clamp(13px, 1.5vw, 14px);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+    .co-water-section {
+        min-height: 0;
+        padding: 45px 0 38px;
+    }
+
+    .co-water-heading {
+        margin-bottom: 22px;
+        padding-inline: 18px;
+    }
+
+    .co-eyebrow {
+        margin-bottom: 9px;
+
+        font-size: 10px;
+        letter-spacing: 0.15em;
+    }
+
+    .co-water-heading h2 {
+        font-size: clamp(26px, 5.8vw, 36px);
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+    }
+
+    .co-water-heading p {
+        max-width: 420px;
+
+        margin-top: 10px;
+
+        font-size: clamp(14px, 2vw, 15px);
+        line-height: 1.7;
+    }
+
+    .co-carousel {
+        height: 415px;
+        perspective: 1100px;
+    }
+
+    .co-card {
+        width: 260px;
+        height: 360px;
+
+        border-radius: 19px;
+    }
+
+    .co-card-content {
+        padding: 19px;
+    }
+
+    .co-card-topline {
+        padding-bottom: 12px;
+        gap: 8px;
+    }
+
+    .co-card-number {
+        flex-basis: 30px;
+
+        width: 30px;
+        height: 30px;
+
+        font-size: 11px;
+    }
+
+    .co-card-category {
+        font-size: 9px;
+        letter-spacing: 0.045em;
+    }
+
+    .co-card-icon {
+        width: 42px;
+        height: 42px;
+
+        margin-bottom: 15px;
+    }
+
+    .co-card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .co-card h3 {
+        font-size: clamp(21px, 4.6vw, 25px);
+        line-height: 1.22;
+        letter-spacing: -0.025em;
+    }
+
+    .co-card p {
+        margin-top: 10px;
+
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .co-card-divider {
+        margin-top: 13px;
+    }
+
+    .co-card-footer {
+        margin-top: 10px;
+
+        font-size: 10px;
+        line-height: 1.5;
+        letter-spacing: 0;
+    }
+
+    .co-arrow {
+        width: 36px;
+        height: 36px;
+
+        font-size: 19px;
+    }
+
+    .co-arrow.prev {
+        left: 7px;
+    }
+
+    .co-arrow.next {
+        right: 7px;
+    }
+
+    .co-dots {
+        gap: 6px;
+        bottom: 7px;
+    }
+
+    .co-dot {
+        width: 19px;
+        height: 4px;
+    }
+
+    .co-dot.active {
+        width: 29px;
+    }
+
+    .co-swipe-hint {
+        margin-top: 12px;
+
+        font-size: 10px;
+        letter-spacing: 0.07em;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+    .co-water-section {
+        padding-top: 38px;
+    }
+
+    .co-water-heading {
+        padding-inline: 16px;
+    }
+
+    .co-water-heading h2 {
+        font-size: clamp(25px, 7vw, 30px);
+    }
+
+    .co-water-heading p {
+        font-size: 14px;
+    }
+
+    .co-carousel {
+        height: 395px;
+    }
+
+    .co-card {
+        width: 245px;
+        height: 340px;
+    }
+
+    .co-card-content {
+        padding: 17px;
+    }
+
+    .co-card-category {
+        font-size: 8.5px;
+    }
+
+    .co-card h3 {
+        font-size: clamp(20px, 5.5vw, 23px);
+        line-height: 1.23;
+    }
+
+    .co-card p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .co-card-icon {
+        margin-bottom: 13px;
+    }
+
+    .co-card-footer {
+        font-size: 9px;
+    }
+
+    .co-arrow {
+        width: 32px;
+        height: 32px;
+
+        font-size: 17px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+    .co-water-heading h2 {
+        font-size: 25px;
+    }
+
+    .co-water-heading p {
+        font-size: 14px;
+    }
+
+    .co-carousel {
+        height: 385px;
+    }
+
+    .co-card {
+        width: 235px;
+        height: 330px;
+    }
+
+    .co-card-content {
+        padding: 15px;
+    }
+
+    .co-card-topline {
+        gap: 6px;
+        padding-bottom: 10px;
+    }
+
+    .co-card-number {
+        flex-basis: 28px;
+
+        width: 28px;
+        height: 28px;
+    }
+
+    .co-card-category {
+        font-size: 8px;
+        letter-spacing: 0.025em;
+    }
+
+    .co-card h3 {
+        font-size: 20px;
+    }
+
+    .co-card p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .co-card-footer {
+        font-size: 9px;
+        gap: 5px;
+    }
+
+    .co-arrow.prev {
+        left: 5px;
+    }
+
+    .co-arrow.next {
+        right: 5px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .co-card,
+    .co-arrow,
+    .co-dot {
+        transition: none !important;
+    }
+  }
